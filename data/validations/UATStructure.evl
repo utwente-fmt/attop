@@ -1,0 +1,66 @@
+context UATS!AttackTree{
+	// AttackTree may only have 1 root, e.g. child without parent(s)
+	// And this root should be the target of the root reference.
+	constraint OneAndOnlyOneChildWithoutParents {
+		check :  UATS!Node.allInstances.select(n|n.parents.size() == 0).size() = 1 and
+		self.Root = UATS!Node.allInstances.select(n|n.parents.size() == 0).first() 
+	}
+	
+	// Every node should be part of the AttackTree
+	constraint AllNodesContainedByAttackTree{
+		check: self.Nodes.size() == UATS!Node.allInstances.size()
+	}
+	
+	constraint NoCycles {
+		check : self.Root.checkForCycles(Set {}) == true
+		message : "Tree has cyclic structure"
+	}
+}
+
+context UATS!Node {
+	// Node must have Role
+	constraint NodeMustHaveRole {
+		check : self.role.size() == 1
+		message : "Node " + self.ID + " does not have Role"
+	}
+	
+	// Node must have Connector
+	constraint NodeMustHaveConnector {
+		check : self.connector.size() == 1
+		message : "Node " + self.id + " does not have Connector"
+	}
+	
+	constraint ParentsMustHaveChildren {
+		check : self.parentsHaveChildren() == true
+		message : "Node " + self.id + " has parent connectivity problem."
+	}
+}
+
+context UATS!Edge{
+	constraint SourceAndTargetNotEqual {
+		check : self.Target <> self.Source 
+	}
+}
+
+operation UATS!Node checkForCycles(parents : Set) : Boolean {
+	if (not parents.add(self)) {
+		return false;
+	}
+
+	for (child : UATS!Node in self.children) {
+		if (not child.checkForCycles(parents)) {
+			return false;
+		}
+	}
+	parents.remove(self);
+	return true;
+}
+
+operation UATS!Node parentsHaveChildren() : Boolean {
+	for (parent : UATS!Node in self.parents) {
+		if (not parent.children.contains(self)) {
+			return false;
+		}
+	}
+	return true;
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="UATMM_values" nsURI="ecore:UATMM_values" nsPrefix="nl.utwente.ewi.fmt.UATMM">
+  <eClassifiers xsi:type="ecore:EClass" name="Attribute">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="ecore:EClass UATMM_structure.ecore#//Node"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Domain">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="purpose" eType="#//Purpose"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" ordered="false"
+        upperBound="-1" eType="#//Attribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" lowerBound="1"
+        eType="#//Type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CostPurpose" eSuperTypes="#//Purpose">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="costType" lowerBound="1"
+        eType="#//CostType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CostType">
+    <eLiterals name="ON_ACTIVATION" value="1" literal="ON_ACTIVATION"/>
+    <eLiterals name="ON_COMPLETION" value="2"/>
+    <eLiterals name="ON_ABORT" value="3"/>
+    <eLiterals name="WHILE_ACTIVE" value="4"/>
+    <eLiterals name="WHILE_COMPLETED" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimePurpose" eSuperTypes="#//Purpose">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeType" lowerBound="1"
+        eType="#//TimeType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeType">
+    <eLiterals name="MINIMUM" value="1"/>
+    <eLiterals name="MAXIMUM" value="2"/>
+    <eLiterals name="EXPONENTIAL" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Purpose" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RealType" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaType" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueClass" lowerBound="1">
+      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RealValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JavaObjectValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProbabilityPurpose" eSuperTypes="#//Purpose">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="probType" lowerBound="1"
+        eType="#//ProbabilityType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ProbabilityType">
+    <eAnnotations source="Documentation">
+      <details key="documentation" value="Probability of emitting a completion signal after the time (if any is specified) has elapsed. If no completion signal is sent, an abort signal is emitted."/>
+    </eAnnotations>
+    <eLiterals name="COMPLETION" value="1" literal="COMPLETION"/>
+  </eClassifiers>
+</ecore:EPackage>

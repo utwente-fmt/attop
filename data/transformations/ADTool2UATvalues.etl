@@ -1,0 +1,120 @@
+pre {
+	var id = new Integer;
+  	var javaDate = new Native("java.util.Date");
+	var timeDomains = Set{"MinTimeSeq", "MinTimePar", "MaxTimeSeq", "MaxTimePar"};
+	var costDomains = Set{"MinCost"};
+	javaDate.toString().println("Starting ADTool2UAT value transformation: ");
+}
+
+post {
+ 	var javaDate = new Native("java.util.Date");
+	javaDate.toString().println("Completed ADTool2UAT value transformation: ");
+}
+
+// Transform all domains and set several attributes by obtaining 
+// info from attributes and child nodes
+@primary
+rule ADToolDomain2UATTimeDomain
+	transform ad : ADTool!t_domain
+	to gad : UATV!Domain {
+	
+	guard : matchesDomain(ad.a_id, timeDomains) //timeDomains.contains(ad.a_id)
+	
+	gad.name = ad.a_id;
+	gad.valueType = new UATV!RealType();
+	gad.purpose = new UATV!TimePurpose();
+	if (ad.a_id.startsWith("Min")) {
+		gad.purpose.timeType = UATV!TimeType#MINIMUM;
+	} else {
+		gad.purpose.timeType = UATV!TimeType#MAXIMUM;
+	}
+}
+
+// Transform all domains and set several attributes by obtaining
+// info from attributes and child nodes
+@primary
+rule ADToolDomain2UATCostDomain
+	transform ad : ADTool!t_domain
+	to gad : UATV!Domain {
+	
+	guard : matchesDomain(ad.a_id, costDomains) //costDomains.contains(ad.a_id)
+	
+	gad.name = ad.a_id;
+	gad.valueType = new UATV!RealType();
+	gad.purpose = new UATV!CostPurpose();
+	gad.purpose.costType = UATV!CostType#ON_ACTIVATION;
+}
+
+@primary
+rule ADToolDomain2UATDomain
+	transform ad : ADTool!t_domain
+	to gad : UATV!Domain {
+	
+	guard : not (matchesDomain(ad.a_id, costDomains) or matchesDomain(ad.a_id, timeDomains)) //costDomains.contains(ad.a_id) or timeDomains.contains(ad.a_id))
+	
+	gad.name = ad.a_id;
+	if (gad.name == "ProbSucc") {
+		gad.valueType = new UATV!RealType();
+	} else {
+		gad.valueType = new UATV!JavaType();
+		gad.valueType.valueClass = new Native("java.lang.Object").getClass();
+	}
+}
+
+rule ADToolTree2UATTree
+	transform ad : ADTool!t_adtree
+	to domains : Set {
+	
+	for(domain in UATV!Domain.allInstances){
+		domains.add(domain);
+	}
+	
+	ad.e_node.recursiveXMLTeardown(domains);
+}
+
+// Recursive XML Teardown operation. Called on XML node and will call method on all child nodes
+// Creates an ATNode, sets its parameters and sets parent/child relation to child ATNodes.
+operation ADTool!t_node recursiveXMLTeardown(domains : Set) {
+	var children = self.c_node;
+	var parameters = self.c_parameter;
+	id = id + 1;
+	
+	
+	// If node has any childeren, call method recursively and add references to results.
+	if(children.size()>0){
+		for(c in children){
+			c.recursiveXMLTeardown(domains);
+	 	}
+	
+	// If there are not any childeren, there can be paramters. Add 
+	} else {
+		for(p in parameters){
+			var result = new UATV!Attribute();
+			var domain = p.findDomain(domains);
+	
+			domain.attributes.add(result);
+			var node = UATS!Node.allInstances().select(a | a.id == (id - 1).asString()).first();
+			result.node = node;
+			if (domain.valueType.isKindOf(UATV!RealType)) {
+				result.value = new UATV!RealValue();
+				result.value.value = new Native("java.lang.Double")(p.text.asString());
+			} else {
+				result.value = new UATV!JavaObjectValue();
+				result.value.value = p.text.asString();
+			}
+		}
+	}
+}
+
+operation ADTool!t_parameter findDomain(domains){
+	return domains.select(d|d.name==self.a_domainId).first();
+}
+
+
+operation matchesDomain(domain, domains) : Boolean {
+	for (d in domains) {
+		if (domain.startsWith(d))
+			return true;
+	}
+	return false;
+}

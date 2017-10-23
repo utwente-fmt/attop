@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pivot:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pivot="http://www.eclipse.org/ocl/2015/Pivot"
+    xsi:schemaLocation="http://www.eclipse.org/ocl/2015/Pivot java://org.eclipse.ocl.pivot.PivotPackage" name="UATMM_values.ecore.oclas" externalURI="platform:/resource/AFTModel/data/models/UATMM_values.ecore.oclas">
+  <ownedImports name="ecore" importedNamespace="pivot:Package http://www.eclipse.org/emf/2002/Ecore.oclas#//@ownedPackages.0"/>
+  <ownedImports name="nl.utwente.ewi.fmt.UATMMs" importedNamespace="pivot:Package UATMM_structure.ecore.oclas#//@ownedPackages.0"/>
+  <ownedPackages xmi:id="P.UATMM_values" name="UATMM_values" URI="http://UATMMv/1.0" nsPrefix="nl.utwente.ewi.fmt.UATMMv">
+    <ownedClasses xmi:id="T.UATMM_values.Attribute" name="Attribute" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.UATMM_values.Attribute.value" name="value" isRequired="false" type="pivot:DataType http://www.eclipse.org/emf/2002/Ecore.oclas#//@ownedPackages.0/@ownedClasses.42"/>
+      <ownedProperties xmi:id="p.UATMM_values.Attribute.domain" name="domain" type="#T.UATMM_values.Domain" opposite="#p.UATMM_values.Domain.Attribute"/>
+      <ownedProperties xmi:id="p.UATMM_values.Attribute.node" name="node" type="pivot:Class UATMM_structure.ecore.oclas#//@ownedPackages.0/@ownedClasses.1"
+          opposite="#p.UATMM_structure.Node.Attribute"/>
+      <ownedProperties xmi:id="p.UATMM_values.Attribute.AttributeSet" name="AttributeSet" isRequired="false" type="#T.UATMM_values.AttributeSet"
+          isImplicit="true" opposite="#p.UATMM_values.AttributeSet.attributes"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.UATMM_values.Domain" name="Domain" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.UATMM_values.Domain.name" name="name" isRequired="false" type="pivot:PrimitiveType http://www.eclipse.org/ocl/2015/Library.oclas#String"/>
+      <ownedProperties xmi:id="p.UATMM_values.Domain.valueType" name="valueType" isRequired="false" type="#//@ownedPackages.2/@ownedClasses.0"/>
+      <ownedProperties xmi:id="p.UATMM_values.Domain.AttributeSet" name="AttributeSet" isRequired="false" type="#T.UATMM_values.AttributeSet"
+          isImplicit="true" opposite="#p.UATMM_values.AttributeSet.domains"/>
+      <ownedProperties xmi:id="p.UATMM_values.Domain.Attribute" name="Attribute" type="#//@ownedPackages.2/@ownedClasses.1" isImplicit="true"
+          opposite="#p.UATMM_values.Attribute.domain"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.UATMM_values.AttributeSet" name="AttributeSet" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclElement">
+      <ownedProperties xmi:id="p.UATMM_values.AttributeSet.domains" name="domains" type="#//@ownedPackages.2/@ownedClasses.2" isComposite="true"
+          isResolveProxies="false" opposite="#p.UATMM_values.Domain.AttributeSet"/>
+      <ownedProperties xmi:id="p.UATMM_values.AttributeSet.attributes" name="attributes" type="#//@ownedPackages.2/@ownedClasses.3" isComposite="true"
+          opposite="#p.UATMM_values.Attribute.AttributeSet"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.UATMM_values.CostDomain" name="CostDomain" superClasses="#T.UATMM_values.Domain">
+      <ownedProperties xmi:id="p.UATMM_values.CostDomain.costType" name="costType" type="#T.UATMM_values.CostType"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:Enumeration" xmi:id="T.UATMM_values.CostType" name="CostType" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.Enumeration">
+      <ownedLiterals name="ON_ACTIVATE" value="1"/>
+      <ownedLiterals name="ON_COMPLETION" value="2"/>
+      <ownedLiterals name="ON_ABORT" value="3"/>
+      <ownedLiterals name="WHILE_ACTIVE" value="4"/>
+      <ownedLiterals name="WHILE_COMPLETED" value="5"/>
+    </ownedClasses>
+    <ownedClasses xmi:id="T.UATMM_values.TimeDomain" name="TimeDomain" superClasses="#T.UATMM_values.Domain">
+      <ownedProperties xmi:id="p.UATMM_values.TimeDomain.timeType" name="timeType" type="#T.UATMM_values.TimeType"/>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:Enumeration" xmi:id="T.UATMM_values.TimeType" name="TimeType" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.Enumeration">
+      <ownedLiterals name="MINIMUM" value="1"/>
+      <ownedLiterals name="MAXIMUM" value="2"/>
+      <ownedLiterals name="EXPONENTIAL" value="3"/>
+    </ownedClasses>
+  </ownedPackages>
+  <ownedPackages xmi:id="P.UATMM_structure" name="UATMM_structure" URI="http://UATMMs/1.0" nsPrefix="nl.utwente.ewi.fmt.UATMMs">
+    <ownedClasses xmi:id="T.UATMM_structure.Node" name="Node">
+      <ownedProperties xmi:id="p.UATMM_structure.Node.Attribute" name="Attribute" type="#//@ownedPackages.2/@ownedClasses.1" isImplicit="true"
+          opposite="#p.UATMM_values.Attribute.node"/>
+    </ownedClasses>
+  </ownedPackages>
+  <ownedPackages xmi:id="P.$$" name="$$" URI="http://www.eclipse.org/ocl/2015/Orphanage" nsPrefix="orphanage">
+    <ownedClasses xsi:type="pivot:DataType" name="EJavaClass" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.$$.EJavaClass.1841727592.287334564.%63%" formal="http://www.eclipse.org/emf/2002/Ecore.oclas#//@ownedPackages.0/@ownedClasses.41/@ownedSignature/@ownedParameters.0">
+          <ownedWildcard xmi:id="T.$$.EJavaClass.1841727592.287334564.%63%" name="?" lowerBound="pivot:AnyType http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+              upperBound="pivot:VoidType http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclVoid"/>
+        </ownedSubstitutions>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:BagType" name="Bag" superClasses="#//@ownedPackages.2/@ownedClasses.4" elementType="#T.UATMM_values.Attribute">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Attribute" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..BagT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:OrderedSetType" name="OrderedSet" superClasses="#//@ownedPackages.2/@ownedClasses.5 #//@ownedPackages.2/@ownedClasses.6"
+        elementType="#T.UATMM_values.Domain">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Domain" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedSetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:SetType" name="Set" superClasses="#//@ownedPackages.2/@ownedClasses.7" elementType="#T.UATMM_values.Attribute">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Attribute" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..SetT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.UATMM_values.Attribute">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Attribute" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="OrderedCollection" superClasses="#//@ownedPackages.2/@ownedClasses.8" elementType="#T.UATMM_values.Domain">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Domain" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..OrderedCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.2/@ownedClasses.8" elementType="#T.UATMM_values.Domain">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Domain" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="UniqueCollection" superClasses="#//@ownedPackages.2/@ownedClasses.4" elementType="#T.UATMM_values.Attribute">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Attribute" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..UniqueCollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+    <ownedClasses xsi:type="pivot:CollectionType" name="Collection" superClasses="http://www.eclipse.org/ocl/2015/Library.oclas#T.ocl.OclAny"
+        elementType="#T.UATMM_values.Domain">
+      <ownedBindings>
+        <ownedSubstitutions actual="#T.UATMM_values.Domain" formal="http://www.eclipse.org/ocl/2015/Library.oclas#t.ocl..CollectionT"/>
+      </ownedBindings>
+    </ownedClasses>
+  </ownedPackages>
+</pivot:Model>

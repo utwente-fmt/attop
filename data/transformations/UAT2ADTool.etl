@@ -1,0 +1,111 @@
+pre {
+
+  	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Starting UAT2ADTool transformation: ");
+  	
+}
+
+post {
+ 	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Completed UAT2ADTool transformation: ");
+}
+
+@primary
+rule UATMM2ADTool
+	transform at : UATS!AttackTree
+	to adt : ADTool!t_adtree {	
+		ADTool.root = adt;
+		adt.appendChild(at.Root.equivalent());
+		for (domain in UATV!Domain.allInstances()) {
+			adt.appendChild(domain.equivalent());
+		}
+	}
+
+rule GAT2ADTool 	
+	transform r : UATS!Node
+	to f : ADTool!t_node {
+	
+	//Set refinement attribute of node
+	f.a_refinement= r.findRefinement();
+	
+	// Create and add label to the current node.
+	var label = new ADTool!t_label;
+	label.text = r.label;
+	f.appendChild(label);
+	
+	// Append all attribute nodes to the current node
+	// Invoke the lazy rule for all attributes (by using equivalent())
+	// then append all children XML nodes to the current node.
+	var attributes = UATV!Attribute.allInstances().select(a | a.node.id = r.id).sortBy(a | a.eContainer.name);
+	for (child in attributes) {
+		f.appendChild(child.equivalent());
+  	}
+	
+	// If the parent ATNode has a different role, add 'switchRole' attribute to the XML node.
+	if(r.parents.size() > 0 and r.parents.first().role <> r.role ){
+		f.a_switchRole = "yes";
+	}
+
+	// Append all child ATNodes to the current node in the XML
+	for (child in r.children.equivalent()) {
+    	f.appendChild(child);
+  	}
+  	
+  	// Append the current node to the root (Not sure why this works, as it is called for all nodes)
+  	ADTool.root.appendChild(f);	
+}
+
+// Simply transform each domain into an XML domain and attach it to the root
+@lazy
+@greedy
+rule Domain2ADToolDomain 
+	transform at : UATV!Domain
+	to ad : ADTool!t_domain {
+	
+	var class = new ADTool!t_class;
+	class.text = at.determineClass();
+	var tool = new ADTool!t_tool;
+	tool.text = "ADTool";
+	ad.a_id = at.name; 
+	
+	ad.appendChild(class);
+	ad.appendChild(tool);
+}
+
+@lazy
+rule Attribute2Param
+	transform a : UATV!Attribute
+	to p : ADTool!t_parameter{
+	
+	p.a_domainId = a.eContainer.name;
+	p.text = a.value.value;
+}
+
+
+// Find the string version of the refinement of ATNode
+operation UATS!Node findRefinement() : String{
+	if(self.connector.isTypeOf(UATS!OR)){
+		return "disjunctive";
+	} else if(self.connector.isTypeOf(UATS!AND)){
+		return "conjunctive";
+	} else if(self.connector.isTypeOf(UATS!SAND)){
+		return "conjunctive";
+	}
+	return "disjunctive";	
+}
+
+
+// Find the string version of the refinement of ATNode
+operation UATV!Domain determineClass() : String{
+	if (self.purpose.isKindOf(UATV!TimePurpose)) {
+		return "lu.uni.adtool.domains.predefined.MinTimePar";
+	} else if (self.purpose.isKindOf(UATV!CostPurpose)) {
+		return "lu.uni.adtool.domains.predefined.MinCost";
+	} else if (self.name.equals("prob")) {
+		return "lu.uni.adtool.domains.predefined.ProbSucc";
+	}
+
+	//Removing trailing digits to determine class
+	return "lu.uni.adtool.domains.predefined."+(self.name.replaceAll("\\d*$", ""));	
+}
+

@@ -1,0 +1,28 @@
+"Starting UAT2BinaryUAT transformation".println();
+var at : AttackTree = UATS!AttackTree.allInstances().first();
+at.Root.NodeToBinary();
+
+"Completed UAT2BinaryUAT transformation".println();
+
+operation UATS!Node NodeToBinary(){
+	if(self.children.size()>2){
+		var newNode = new UATS!Node();
+		newNode.label = "ChildrenToBinary";
+		newNode.id = self.id + "B";
+		at.Nodes.add(newNode);
+		newNode.role = RoleType#Contributing;
+		newNode.connector = self.connector;
+
+		var subset2 := self.children.excluding(self.children.first());
+	
+		newNode.parents.add(self);
+		newNode.children := subset2;
+	
+		self.children.removeAll(subset2);
+		self.children.add(newNode);
+	} 
+	
+	for(child in self.children){
+		child.NodeToBinary();
+	}
+}

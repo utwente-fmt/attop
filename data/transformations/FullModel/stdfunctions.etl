@@ -1,0 +1,577 @@
+/** Add a comment to a given commentable element.
+ * Unfortunately, it seems that commentable elements do not include statements such as declarations etc,
+ * so this function may not be very useful... 
+ */
+operation Uppaal!CommentableElement addComment(comment : String) : Uppaal!CommentableElement
+{
+	self.comment = comment;
+	return self;
+}
+
+/* Create a location with the provided name and exponential rate, and add it to the given template */
+operation Uppaal!Template createExpLocation(name : String) : Uppaal!ExponentialLocation
+{
+	var ret = new Uppaal!ExponentialLocation();
+	ret.name = name;
+	ret.locationTimeKind = Uppaal!LocationKind#NORMAL;
+	self.location.add(ret);
+	return ret;
+}
+
+/* Create a change node, and add it to the given template */
+operation Uppaal!Template createChanceNode(name : String) : Uppaal!ChanceNode
+{
+	var ret = new Uppaal!ChanceNode();
+	ret.name = name;
+	self.location.add(ret);
+	return ret;
+}
+
+operation Uppaal!Template createChanceEdge(source : Uppaal!ChanceNode, target : Uppaal!Location, weight : Integer)
+{
+	var ret = new Uppaal!ChanceEdge();
+	ret.source = source;
+	ret.target = target;
+	ret.weight = weight;
+	self.edge.add(ret);
+	return ret;
+}
+
+/* Create a location with the provided name of normal kind, and add it to the given template */
+operation Uppaal!Template createLocation(name : String) : Uppaal!Location
+{
+	var ret = new Uppaal!Location();
+	ret.name = name;
+	ret.locationTimeKind = Uppaal!LocationKind#NORMAL;
+	self.location.add(ret);
+	return ret;
+}
+
+/* Make the specified location commited */
+operation Uppaal!Location makeCommitted() : Uppaal!Location
+{
+	self.locationTimeKind = Uppaal!LocationKind#COMMITED;
+	return self;
+}
+
+/* Make the specified location urgent */
+operation Uppaal!Location makeUrgent() : Uppaal!Location
+{
+	self.locationTimeKind = Uppaal!LocationKind#URGENT;
+	return self;
+}
+
+/* Add an invariant to a provided location with the given expression.
+ * This operation modified the provided location in-place, and also returns it.
+ */
+operation Uppaal!Location setInvariant(expr : Uppaal!Expression) : Uppaal!Location
+{
+	self.invariant = expr;
+	return self;
+}
+
+/* Create an edge from source to target and add it to the template*/
+operation Uppaal!Template createEdge(source : Uppaal!Location, target : Uppaal!Location) : Uppaal!Edge
+{
+	var ret = new Uppaal!Edge();
+	ret.source = source;
+	ret.target = target;
+	self.edge.add(ret);
+	return ret;
+}
+
+/* Add a synchronization to a provided edge to send/receive the signal corresponding to the provided identifier.
+ * This operation modified the provided edge in-place, and also returns it.
+ */
+operation Uppaal!Edge setSync(identifier : Uppaal!IdentifierExpression, isSend : Boolean) : Uppaal!Edge
+{
+	var sync = new Uppaal!Synchronization();
+	if (isSend)
+		sync.kind = Uppaal!SynchronizationKind#SEND;
+	else
+		sync.kind = Uppaal!SynchronizationKind#RECEIVE;
+	sync.channelExpression = identifier;
+	self.synchronization = sync;
+	return self;
+}
+
+/* Add an update to reset the given clock to the edge.
+ * This operation modified the provided edge in-place, and also returns it.
+ */
+operation Uppaal!Edge resetClock(clock : Uppaal!Variable) : Uppaal!Edge
+{
+	var expr = new Uppaal!AssignmentExpression();
+	expr.firstExpr = new Uppaal!IdentifierExpression();
+	expr.firstExpr.identifier = clock;
+	expr.secondExpr = new Uppaal!LiteralExpression();
+	expr.secondExpr.text = "0";
+	expr.operator = Uppaal!AssignmentOperator#EQUAL;
+	return self.addUpdate(expr);
+}
+
+/** Add a generic expression to the update of a given edge */
+operation Uppaal!Edge addUpdate(update : Uppaal!Expression) : Uppaal!Edge
+{
+	self.update.add(update);
+	return self;
+}
+
+operation Uppaal!Edge setGuard(expr : Uppaal!Expression) : Uppaal!Edge
+{
+	/* We have to do this stupidly complicated or Epsilon trips over the name 'guard' */
+	self.eSet(self.eClass().getEStructuralFeature("guard"), expr);
+	return self;
+}
+
+/** Create an expression referring to the provided variable */
+operation Uppaal!Variable createReferringExpression() : Uppaal!IdentifierExpression
+{
+	var ret = new Uppaal!IdentifierExpression();
+	ret.identifier = self;
+	return ret;
+}
+
+/** Return a literal expression corresponding to the given value/string */
+operation createLiteralExpression(expr : Any) : Uppaal!LiteralExpression
+{
+	var lit = new Uppaal!LiteralExpression();
+	if (expr.isKindOf(Uppaal!IdentifierExpression)) {
+		lit.text = expr.identifier.name;
+	} else {
+		lit.text = expr.asString();
+	}
+	return lit;
+}
+
+/** Turn the given expression into an array expression with the given index */
+operation Uppaal!IdentifierExpression makeArrayExpression(idx : Any) : Uppaal!IdentifierExpression
+{
+	if (idx.isKindOf(Uppaal!Expression))
+		self.index.add(idx);
+	else
+		self.index.add(createLiteralExpression(idx));
+	return self;
+}
+
+/** Create a variable with the given name */
+operation createVariable(name : String) : Uppaal!Variable
+{
+	var ret = new Uppaal!Variable();
+	ret.name = name;
+	return ret;
+}
+
+/** Turn the given expression into an array expression with the given index */
+operation Uppaal!Variable makeArray(idx : Any) : Uppaal!Variable
+{
+	var index = new Uppaal!ValueIndex();
+	index.sizeExpression = createLiteralExpression(idx);
+	self.index.add(index);
+	return self;
+}
+
+/** Create a declaration of the given variable with type 'chan' */
+operation createChannelDeclaration(variable : Uppaal!Variable) : Uppaal!ChannelVariableDeclaration
+{
+	var ret = new Uppaal!ChannelVariableDeclaration();
+	ret.variable.add(variable);
+	ret.typeDefinition = new Uppaal!TypeReference();
+	ret.typeDefinition.referredType = new Uppaal!PredefinedType();
+	ret.typeDefinition.referredType.name = "chan";
+	ret.typeDefinition.referredType.type = Uppaal!BuiltInType#CHAN;
+	return ret;
+}
+
+/** Create a declaration of the given variable with data type, initially 'int'. */
+operation createDataDeclaration(variable : Uppaal!Variable) : Uppaal!DataVariableDeclaration
+{
+	var ret = new Uppaal!DataVariableDeclaration();
+	ret.variable.add(variable);
+	ret.typeDefinition = new Uppaal!TypeReference();
+	ret.typeDefinition.referredType = new Uppaal!PredefinedType();
+	ret.typeDefinition.referredType.name = "int";
+	ret.typeDefinition.referredType.type = Uppaal!BuiltInType#INT;
+	return ret;
+}
+
+/** Set the name of the type with which the variable is declared.
+ * NOTE: THIS DOES NOT CHANGE THE ACTUAL TYPE, ONLY WHAT IS OUTPUT TO XML!
+ */
+operation Uppaal!DataVariableDeclaration setTypeName(name : String) : Uppaal!DataVariableDeclaration
+{
+	self.typeDefinition.referredType.name = name;
+	return self;
+}
+
+/** Initialize an array */
+operation Uppaal!Variable setArrayInitialValues(values : Sequence) : Uppaal!Variable
+{
+	var arrInitializer = new Uppaal!ArrayInitializer();
+	for (value in values) {
+		var initializer = new Uppaal!ExpressionInitializer();
+		initializer.expression = createLiteralExpression(value);
+		arrInitializer.initializer.add(initializer);
+	}
+	self.initializer = arrInitializer;
+	return self;
+}
+
+/** Set the initial value of the variable(/constant) */
+operation Uppaal!Variable setInitialValue(value : Any) : Uppaal!Variable
+{
+	var initializer = new Uppaal!ExpressionInitializer();
+	initializer.expression = createLiteralExpression(value);
+	self.initializer = initializer;
+	return self;
+}
+
+/** Make the given variable declaration constant */
+operation Uppaal!DataVariableDeclaration makeConst() : Uppaal!DataVariableDeclaration
+{
+	self.prefix = Uppaal!DataVariablePrefix#CONST;
+	return self;
+}
+
+/** Make the given channel declaration a broadcast channel */
+operation Uppaal!ChannelVariableDeclaration makeBroadcast() : Uppaal!ChannelVariableDeclaration
+{
+	self.broadcast = true;
+	return self;
+}
+
+/** Add a parameter to the current template for the given declaration, and returns this parameter.
+ */
+operation Uppaal!Template addParameter(decl : Uppaal!VariableDeclaration, passByReference : Boolean) : Uppaal!Parameter
+{
+	var ret = new Uppaal!Parameter();
+	if (passByReference)
+		ret.callType = Uppaal!CallType#CALL_BY_REFERENCE;
+	else
+		ret.callType = Uppaal!CallType#CALL_BY_VALUE;
+	ret.variableDeclaration = decl;
+	self.parameter.add(ret);
+	return ret;
+}
+
+/** Create a generic comparison expression */
+operation createComparison(firstExpr : Uppaal!Expression, comparator : Any, secondExpr : Uppaal!Expression) : Uppaal!CompareExpression
+{
+	var ret = new Uppaal!CompareExpression();
+	ret.firstExpr = firstExpr;
+	ret.operator = comparator;
+	ret.secondExpr = secondExpr;
+	return ret;
+}
+
+/** Create a simple expression comparing a given variable to a constant value. */
+operation Uppaal!Variable simpleComparison(value : Integer, comparator : Any) : Uppaal!CompareExpression
+{
+	return createComparison(self.createReferringExpression(), comparator, createLiteralExpression(value));
+}
+
+/** Create a simple expression comparing a given variable to another variable. */
+operation Uppaal!Variable simpleComparison(value : Uppaal!Variable, comparator : Any) : Uppaal!CompareExpression
+{
+	return createComparison(self.createReferringExpression(), comparator, value.createReferringExpression());
+}
+
+/** Add a declaration for a clock with the given name to the local declarations in the template. */
+operation Uppaal!Template declareClock(name : String) : Uppaal!Variable
+{
+	var ret = createVariable(name);
+	var decl = new Uppaal!ClockVariableDeclaration();
+	decl.variable.add(ret);
+	decl.typeDefinition = new Uppaal!TypeReference();
+	decl.typeDefinition.referredType = new Uppaal!PredefinedType();
+	decl.typeDefinition.referredType.name = "clock";
+	decl.typeDefinition.referredType.type = Uppaal!BuiltInType#CLOCK;
+	if (self.declarations.isUndefined()) {
+		self.declarations = new Uppaal!LocalDeclarations();
+	}
+	self.declarations.declaration.add(decl);
+	return ret;
+}
+
+/** Create a function with the given name, no parameter and void return type */
+operation createFunction(fName : String) : Uppaal!Function
+{
+	var func : Uppaal!Function = new Uppaal!Function();
+	func.name = fName;
+	func.setVoidReturnType();
+	return func;
+}
+
+/** Declare a new function (default return type: void) */
+operation declareFunction(name : String) : Uppaal!FunctionDeclaration
+{
+	var fDecl : Uppaal!FunctionDeclaration = new Uppaal!FunctionDeclaration();
+	var func : Uppaal!Function = createFunction(name);
+	fDecl.`function` = func;
+	return fDecl;
+}
+
+/** Add a parameter to a function declaration */
+operation Uppaal!Function addFunctionParameter(decl : Uppaal!VariableDeclaration, passByReference : Boolean) : Uppaal!Function
+{
+	var param = new Uppaal!Parameter();
+	if (passByReference)
+		param.callType = Uppaal!CallType#CALL_BY_REFERENCE;
+	else
+		param.callType = Uppaal!CallType#CALL_BY_VALUE;
+	param.variableDeclaration = decl;
+	self.parameter.add(param);
+	return self;
+}
+
+/** Change the return type of a declared function to void */
+operation Uppaal!Function setVoidReturnType() : Uppaal!Function
+{
+	var retType : Uppaal!TypeDefinition = new Uppaal!TypeReference();
+	retType.referredType = new Uppaal!PredefinedType();
+	retType.referredType.type = Uppaal!BuiltInType#VOID;
+	retType.referredType.name = "void";
+	self.returnType = retType;
+	return self;
+}
+
+/** Change the return type of a declared function to int */
+operation Uppaal!Function setIntReturnType() : Uppaal!Function
+{
+	var retType : Uppaal!TypeDefinition = new Uppaal!TypeReference();
+	retType.referredType = new Uppaal!PredefinedType();
+	retType.referredType.type = Uppaal!BuiltInType#INT;
+	retType.referredType.name = "int";
+	self.returnType = retType;
+	return self;
+}
+
+/** Change the return type of a declared function to clock */
+operation Uppaal!Function setClockReturnType() : Uppaal!Function
+{
+	var retType : Uppaal!TypeDefinition = new Uppaal!TypeReference();
+	retType.referredType = new Uppaal!PredefinedType();
+	retType.referredType.type = Uppaal!BuiltInType#CLOCK;
+	retType.referredType.name = "clock";
+	self.returnType = retType;
+	return self;
+}
+
+/** Change the return type of a declared function to chan */
+operation Uppaal!Function setChanReturnType() : Uppaal!Function
+{
+	var retType : Uppaal!TypeDefinition = new Uppaal!TypeReference();
+	retType.referredType = new Uppaal!PredefinedType();
+	retType.referredType.type = Uppaal!BuiltInType#CHAN;
+	retType.referredType.name = "chan";
+	self.returnType = retType;
+	return self;
+}
+
+/** Change the return type of a declared function to bool */
+operation Uppaal!Function setBoolReturnType() : Uppaal!Function
+{
+	var retType : Uppaal!TypeDefinition = new Uppaal!TypeReference();
+	retType.referredType = new Uppaal!PredefinedType();
+	retType.referredType.type = Uppaal!BuiltInType#BOOL;
+	retType.referredType.name = "bool";
+	self.returnType = retType;
+	return self;
+}
+
+/** Set the body of a declared function */
+operation Uppaal!Function setBody(block : Uppaal!Block) : Uppaal!Function
+{
+	self.block = block;
+	return self;
+}
+
+/** Create a statement block, given a sequence of declarations and statements */
+operation createStatementBlock(declarations : Sequence, statements : Sequence) : Uppaal!Block
+{
+	var ret : Uppaal!Block = createStatementBlock(statements);
+	var localDeclarations : Uppaal!LocalDeclarations = new Uppaal!LocalDeclarations();
+	for (declaration in declarations) {
+		localDeclarations.declaration.add(declaration);
+	}
+	ret.declarations = localDeclarations;
+	return ret;
+}
+
+/** Create a statement block, given a sequence of statements */
+operation createStatementBlock(statements : Sequence) : Uppaal!Block
+{
+	var ret : Uppaal!Block = new Uppaal!Block();
+	for (statement in statements) {
+		ret.statement.add(statement);
+	}
+	if (ret.declarations.isUndefined()) {
+		ret.declarations = new Uppaal!LocalDeclarations();
+	}
+	return ret;
+}
+
+/** Create an empty statement (NOP) */
+operation createEmptyStatement() : Uppaal!Statement
+{
+	var ret : Uppaal!Statement = new Uppaal!EmptyStatement();
+	return ret;
+}
+
+/** Create an assignment expression */
+operation createAssignmentExpr(firstExpr : Uppaal!Expression, secondExpr : Uppaal!Expression) : Uppaal!AssignmentExpression
+{
+	var assignment : Uppaal!AssignmentExpression = new Uppaal!AssignmentExpression();
+	assignment.firstExpr = firstExpr;
+	assignment.secondExpr = secondExpr;
+	return assignment;
+}
+
+operation Uppaal!Variable simpleAssignment(value) : Uppaal!AssignmentExpression
+{
+	return createAssignmentExpr(self.createReferringExpression(), createLiteralExpression(value));
+}
+
+/** Create an assignment expression */
+operation Uppaal!Variable createIncrementDecrementExpr(doIncrement : Boolean) : Uppaal!IncrementDecrementExpression
+{
+	var ref : Uppaal!Expression = self.createReferringExpression();
+	var ret = new Uppaal!IncrementDecrementExpression();
+	ret.expression = ref;
+	ret.position = Uppaal!IncrementDecrementPosition#POST;
+	if (doIncrement)
+		ret.operator = Uppaal!IncrementDecrementOperator#INCREMENT;
+	else
+		ret.operator = Uppaal!IncrementDecrementOperator#DECREMENT;
+	return ret;
+}
+
+/** Create an assignment statement */
+operation createAssignment(firstExpr : Uppaal!Expression, secondExpr : Uppaal!Expression) : Uppaal!ExpressionStatement
+{
+	var ret : Uppaal!ExpressionStatement = new Uppaal!ExpressionStatement();
+	ret.expression = createAssignmentExpr(firstExpr, secondExpr);
+	return ret;
+}
+
+/** Create if statement */
+operation createIfStatement(ifExpression : Uppaal!Expression, thenStatement : Uppaal!Statement) : Uppaal!Statement
+{
+	var ret : Uppaal!IfStatement = new Uppaal!IfStatement();
+	ret.ifExpression = ifExpression;
+	ret.thenStatement = thenStatement;
+	return ret;
+}
+
+/** Create if statement with else clause */
+operation createIfStatement(ifExpression : Uppaal!Expression, thenStatement : Uppaal!Statement, elseStatement : Uppaal!Statement) : Uppaal!Statement
+{
+	var ret : Uppaal!IfStatement = createIfStatement(ifExpression, thenStatement);
+	ret.elseStatement = elseStatement;
+	return ret;
+}
+
+/** Create a function call to the function with the given name */
+operation createFunctionCall(func : Uppaal!Function) : Uppaal!FunctionCallExpression
+{
+	var ret : Uppaal!FunctionCallExpression = new Uppaal!FunctionCallExpression();
+	ret.`function` = func;
+	return ret;
+}
+
+/** Add an argument to a function call */
+operation Uppaal!FunctionCallExpression addFunctionArgument(arg : Uppaal!Expression): Uppaal!FunctionCallExpression
+{
+	self.argument.add(arg);
+	return self;
+}
+
+/** Create a (non-specified) binary arithmetic expression */
+operation createArithmeticExpression(expr1 : Uppaal!Expression, expr2 : Uppaal!Expression) : Uppaal!Expression
+{
+	var ret : Uppaal!Expression = new Uppaal!ArithmeticExpression();
+	ret.firstExpr = expr1;
+	ret.secondExpr = expr2;
+	return ret;
+}
+
+/** Create a sum of two expressions */
+operation createSum(expr1 : Uppaal!Expression, expr2 : Uppaal!Expression) : Uppaal!ArithmeticExpression
+{
+	var ret : Uppaal!ArithmeticExpression = createArithmeticExpression(expr1, expr2);
+	ret.operator = Uppaal!ArithmeticOperator#ADD;
+	return ret;
+}
+
+/** Create a subtraction of two expressions */
+operation createSubtraction(expr1 : Uppaal!Expression, expr2 : Uppaal!Expression) : Uppaal!Expression
+{
+	var ret : Uppaal!Expression = createArithmeticExpression(expr1, expr2);
+	ret.operator = Uppaal!ArithmeticOperator#SUBTRACT;
+	return ret;
+}
+
+/** Create a multiplication of two expressions */
+operation createMultiplication(expr1 : Uppaal!Expression, expr2 : Uppaal!Expression) : Uppaal!Expression
+{
+	var ret : Uppaal!Expression = createArithmeticExpression(expr1, expr2);
+	ret.operator = Uppaal!ArithmeticOperator#MULTIPLICATE;
+	return ret;
+}
+
+/** Create a division of two expressions */
+operation createDivision(expr1 : Uppaal!Expression, expr2 : Uppaal!Expression) : Uppaal!Expression
+{
+	var ret : Uppaal!Expression = createArithmeticExpression(expr1, expr2);
+	ret.operator = Uppaal!ArithmeticOperator#DIVIDE;
+	return ret;
+}
+
+/** Create a (non-specified) binary logical expression */
+operation createLogicalExpression(expr1 : Uppaal!Expression, expr2 : Uppaal!Expression) : Uppaal!LogicalExpression
+{
+	var ret : Uppaal!Expression = new Uppaal!LogicalExpression();
+	ret.firstExpr = expr1;
+	ret.secondExpr = expr2;
+	return ret;
+}
+
+/** Create a conjunction of two expressions */
+operation createConjunction(expr1 : Uppaal!Expression, expr2 : Uppaal!Expression) : Uppaal!LogicalExpression
+{
+	var ret : Uppaal!LogicalExpression = createLogicalExpression(expr1, expr2);
+	ret.operator = Uppaal!LogicalOperator#AND;
+	return ret;
+}
+
+// Returns an activation cost, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getActivationCost()
+{
+		var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+		var attrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!CostPurpose));
+		attrs = attrs.select(a | a.eContainer.purpose.costType = UATV!CostType#ON_ACTIVATION);
+		if (attrs.isEmpty())
+			return -1;
+		return attrs.first().value.value.asReal();
+}
+
+operation Uppaal!Template addDontCareTransitions(from : Uppaal!Location, parentCountVar : Uppaal!Variable,
+                                                 parents : Collection, aborted : Uppaal!Location)
+{
+	for (p in parents) {
+		var abortVar : Uppaal!Variable = createVariable("dontcare");
+		var abortSignal = abortVar.createReferringExpression().makeArrayExpression(idToGateSignalNum.get(p.id));
+		var abortEdge = self.createEdge(from, aborted);
+		abortEdge.setSync(abortSignal, false);
+		if (parents.size() > 1) {
+			var loopEdge = self.createEdge(from, from);
+			loopEdge.setGuard(parentCountVar.simpleComparison(1, Uppaal!CompareOperator#GREATER));
+			loopEdge.addUpdate(parentCountVar.createIncrementDecrementExpr(false));
+			abortVar = createVariable("dontcare");
+			abortSignal = abortVar.createReferringExpression().makeArrayExpression(idToGateSignalNum.get(p.id));
+			loopEdge.setSync(abortSignal, false);
+			abortEdge.addUpdate(parentCountVar.createIncrementDecrementExpr(false));
+			abortEdge.setGuard(parentCountVar.simpleComparison(1, Uppaal!CompareOperator#EQUAL));
+		}
+	}
+}

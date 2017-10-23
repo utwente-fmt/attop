@@ -1,0 +1,80 @@
+pre {
+	var id = new Integer;
+  	var javaDate = new Native("java.util.Date");
+	javaDate.toString().println("Starting ADTool2UAT structure transformation: ");
+}
+
+post {
+ 	var javaDate = new Native("java.util.Date");
+	javaDate.toString().println("Completed ADTool2UAT structure transformation: ");
+}
+
+// Transform all domains and set several attributes by obtaining 
+// info from attributes and child nodes
+rule ADToolTree2UATTree
+	transform ad : ADTool!t_adtree
+	to uat : UATS!AttackTree {
+	ad.e_node.recursiveXMLTeardown(true, null);
+}
+
+// Recursive XML Teardown operation. Called on XML node and will call method on all child nodes
+// Creates an ATNode, sets its parameters and sets parent/child relation to child ATNodes.
+operation ADTool!t_node recursiveXMLTeardown(role : Boolean, parent : UATS!Node) : UATS!Node{
+	var children = self.c_node;
+	var parameters = self.c_parameter;
+	var result = new UATS!Node();
+	
+	result.label = self.e_label.text;
+	result.id = id.asString();
+	id = id + 1;
+	
+	// Reverse roles if node contains switchRole attribute
+	if(("yes").equals(self.a_switchRole)){
+		role = not role;
+	}
+	
+	result.role = self.findRole(role);
+		
+	getAttackTree().Nodes.add(result);
+	
+	// If there is a parent, add it.
+	if(parent<>null){
+		result.parents.add(parent);
+	} else {
+		getAttackTree().Root = result;
+	}
+
+	// If node has any childeren, call method recursively and add references to results.
+	if(children.size()>0){
+		result.connector = self.findConnector();
+		for(c in children){
+			var child : UATS!Node = c.recursiveXMLTeardown(role, result);
+			result.children.add(child);
+	 	}
+	
+	// If there are not any childeren, there can be paramters. Add 
+	}
+	
+	return result;
+}
+
+operation ADTool!t_node findConnector(){
+	if(self.a_refinement.equals("disjunctive")){
+		return new UATS!OR();
+	} else {
+		return new UATS!AND();
+	}
+}
+
+operation ADTool!t_node findRole(role:Boolean){
+	if(role){
+		return UATS!RoleType#Contributing;
+	} else {
+		return UATS!RoleType#Counteracting;
+	}
+}
+
+@cached
+operation getAttackTree() : UATS!AttackTree{
+	return UATS!AttackTree.allInstances.last();	
+}

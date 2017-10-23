@@ -1,0 +1,162 @@
+pre {
+	var failureModelNumbers : Map;
+  	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Starting UAT2FaultTreePlus transformation: ");
+}
+
+post {
+ 	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Completed UAT2FaultTreePlus transformation: ");
+}
+
+@primary
+rule FaultTreePlus
+	transform at : UATS!AttackTree
+	to out : FaultTreePlus!t_XMLDataSet
+{
+	FaultTreePlus.root = out;
+	var projectInfo = new FaultTreePlus!t_Project;
+	out.appendChild(projectInfo);
+	var id = new FaultTreePlus!t_Id;
+	id.text = "Generated fault tree";
+	projectInfo.appendChild(id);
+	var version = new FaultTreePlus!t_ProductVersionLong;
+	version.text = "12.0.0.0";
+	projectInfo.appendChild(version);
+	version = new FaultTreePlus!t_ProductVersion;
+	version.text = "12.0";
+	projectInfo.appendChild(version);
+
+	var failureModes = UATV!Attribute.allInstances.equivalents().flatten();
+	var i = 0;
+	for (mode in failureModes) {
+		failureModelNumbers.put(mode.e_Id.text, i);
+		i = i + 1;
+		out.appendChild(mode);
+	}
+
+	var nodeNumbers : Map;
+	var gates = UATV!Node.allInstances.select(g | not g.children.isEmpty()).equivalents("Gate").flatten();
+	i = 0;
+	for (gate in gates) {
+		nodeNumbers.put(gate.e_Id.text, i);
+		i = i + 1;
+		out.appendChild(gate);
+	}
+
+	var events = UATV!Node.allInstances.select(g | g.children.isEmpty()).equivalent();
+	i = 0;
+	for (event in events) {
+		nodeNumbers.put(event.e_Id.text, i);
+		i = i + 1;
+	}
+
+	for (gate in UATV!Node.allInstances.select(g | not g.children.isEmpty())) {
+		var inputs = gateToInputs(out, gate, nodeNumbers);
+	}
+	
+	for (event in events) {
+		out.appendChild(event);
+	}
+}
+
+@lazy
+rule Attribute2FailureModel
+	transform att : UATV!Attribute
+	to out : FaultTreePlus!t_FailureModels
+{
+	guard : (att.eContainer.purpose.isKindOf(UATV!TimePurpose) and att.eContainer.purpose.timeType == UATV!TimeType#EXPONENTIAL)
+			or (att.eContainer.purpose.isKindOf(UATV!ProbabilityPurpose) and att.eContainer.purpose.probType == UATV!ProbabilityType#FAILURE)
+	
+	var id = new FaultTreePlus!t_Id;
+	id.text = att.node.id;
+	out.appendChild(id);
+	var type = new FaultTreePlus!t_ModelType;
+	out.appendChild(type);
+	if (att.eContainer.purpose.isKindOf(UATV!TimePurpose)) {
+		type.text = "1";
+		var rate = new FaultTreePlus!t_FailureRate;
+		rate.text = att.value.value;
+		out.appendChild(rate);
+	} else {
+		type.text = "0";
+		var prob = new FaultTreePlus!t_Unavailability;
+		prob.text = att.value.value;
+		out.appendChild(prob);
+	}
+	var generic = new FaultTreePlus!t_Generic;
+	generic.text = "false";
+	out.appendChild(generic);
+}
+
+@lazy
+rule Gate
+	transform gate : UATS!Node
+	to out : FaultTreePlus!t_Gates
+{
+	guard : not gate.children.isEmpty()
+	
+	System.out.println("Gate " + gate.id);
+	var id = new FaultTreePlus!t_Id;
+	id.text = gate.id;
+	out.appendChild(id);
+	var type = new FaultTreePlus!t_Type;
+	out.appendChild(type);
+	if (gate.connector.isKindOf(UATS!OR)) {
+		type.text = "0";
+	} else if (gate.connector.isKindOf(UATS!AND)) {
+		type.text = "1";
+	} else if (gate.connector.isKindOf(UATS!KofN)) {
+		type.text = "2";
+		var thres = new FaultTreePlus!t_Vote;
+		thres.text = gate.connector.Threshold;
+		out.appendChild(thres);
+	}
+}
+
+@lazy
+rule BasicEvent
+	transform event : UATS!Node
+	to out : FaultTreePlus!t_PrimaryEvents
+{
+	guard : event.children.isEmpty()
+	
+	var id = new FaultTreePlus!t_Id;
+	id.text = event.id;
+	out.appendChild(id);
+	var descr = new FaultTreePlus!t_Description;
+	descr.text = event.label;
+	out.appendChild(descr);
+	var type = new FaultTreePlus!t_EventType;
+	type.text = "0";
+	out.appendChild(type);
+	var fModel = new FaultTreePlus!t_FailureModel;
+	fModel.text = failureModelNumbers.get(event.id);
+	out.appendChild(fModel);
+}
+
+operation gateToInputs(out, gate, nodeNumbers)
+{
+	var gateNum = nodeNumbers.get(gate.id);
+	var index = 0;
+	for (child in gate.children) {
+		var input = new FaultTreePlus!t_GateInputs;
+		out.appendChild(input);
+		var gateElem = new FaultTreePlus!t_Gate;
+		gateElem.text = gateNum;
+		input.appendChild(gateElem);
+		var subIdx = new FaultTreePlus!t_SubIndex;
+		subIdx.text = index;
+		input.appendChild(subIdx);
+		index = index + 1;
+		var type = new FaultTreePlus!t_ObjectType;
+		if (child.children.isEmpty())
+			type.text = 1;
+		else
+			type.text = 0;
+		input.appendChild(type);
+		var idx = new FaultTreePlus!t_ObjectIndex;
+		idx.text = nodeNumbers.get(child.id);
+		input.appendChild(idx);
+	}
+}

@@ -1,0 +1,69 @@
+pre {
+
+  	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Starting ATA2UAT transformation: ");
+	var id : Integer = 0;
+  	
+}
+
+post {
+ 	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Completed ATA2UAT transformation: ");
+}
+
+rule ATATree2UATTree
+	transform ad : ATA!t_adtree
+	to uat : UATS!AttackTree {
+	
+	ad.e_node.recursiveXMLTeardown(uat, true, null);
+}
+
+// Recursive XML Teardown operation. Called on XML node and will call method on all child nodes
+// Creates an ATNode, sets its parameters and sets parent/child relation to child ATNodes.
+operation ATA!t_node recursiveXMLTeardown(uat : UATS!AttackTree, role : Boolean, parent : UATS!Node) : UATS!Node{
+	var children = self.c_node;
+	var parameters = self.c_parameter;
+	var result = new UATS!Node();
+	
+	result.label = self.e_label.text;
+	result.id = id.asString();
+	id = id + 1;
+	
+	result.role = UATS!RoleType#Contributing;
+
+	result.connector = self.findConnector();
+		
+	uat.Nodes.add(result);
+	
+	// If there is a parent, add it.
+	if(parent<>null){
+		result.parents.add(parent);
+	} else {
+		getAttackTree().Root = result;
+	}
+
+	// If node has any childeren, call method recursively and add references to results.
+	if(children.size()>0){
+		for(c in children){
+			var child = c.recursiveXMLTeardown(uat, role, result);
+			result.children.add(child);
+	 	}
+	
+	// If there are not any childeren, there can be paramters. Add 
+	}
+
+	return result;
+}
+
+operation ATA!t_node findConnector(){
+	if(self.a_refinement.equals("disjunctive")){
+		return new UATS!OR();
+	} else {
+		return new UATS!AND();
+	}
+}
+
+@cached
+operation getAttackTree() : UATS!AttackTree{
+	return UATS!AttackTree.allInstances().last();	
+}

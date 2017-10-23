@@ -1,0 +1,101 @@
+@lazy
+@cached
+rule TimeBoundedBE
+	transform node : UATS!Node
+	to ret : List
+	{
+		guard : node.children.size() == 0
+			and UATV!Attribute.allInstances().select(a | a.node.id = node.id and a.eContainer.purpose.isKindOf(UATV!TimePurpose) and a.eContainer.purpose.timeType = UATV!TimeType#MINIMUM).size() > 0
+			and UATV!Attribute.allInstances().select(a | a.node.id == node.id 
+					and ( //Avoid creating basic events which have an infinite minimum time or infinite cost: they cannot be done anyway.
+						  (a.eContainer.purpose.isKindOf(UATV!TimePurpose) and a.eContainer.purpose.timeType=UATV!TimeType#MINIMUM and a.value.value.asString().startsWith("Infinity"))
+					   or (a.eContainer.purpose.isKindOf(UATV!CostPurpose) and a.value.value.asString().startsWith("Infinity"))
+					)
+			    ).size() = 0
+		
+		var sigExpr = createVariable("complete").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+		var activateVar = createVariable("activate").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+
+		/* Count how many parents are still waiting for our completion. */
+		var parentCountVar = createVariable("parentCount");
+		var parents = UATS!Node.allInstances.select(n | n.children.includes(node));
+		parentCountVar.setInitialValue(parents.size());
+
+		var tmpl = new Uppaal!Template();
+		tmpl.name = "TimeBoundedBE_" + node.id;
+		var timeVar = tmpl.declareClock("elapsedTime");
+		tmpl.declarations.declaration.add(createDataDeclaration(parentCountVar));
+
+		var attributes = UATV!Attribute.allInstances().select(n | n.node.id == node.id);
+		/* Find minimum time */
+		var minAttr = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose) and a.eContainer.purpose.timeType = UATV!TimeType#MINIMUM);//a.eContainer.name.equals("MinTimeSeq") or a.eContainer.name.equals("MinTimePar"));
+		var minTimeValue = minAttr.get(0).value.value.asInteger();
+		/*if (minTimeValue > 1073741822) {
+			minTimeValue = 1073741822;
+		}*/
+
+		/* Find maximum time, if none declared, reuse minimum time. */
+		var maxAttr = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose) and a.eContainer.purpose.timeType = UATV!TimeType#MAXIMUM); //a.eContainer.name.equals("MaxTimeSeq") or a.eContainer.name.equals("MaxTimePar"));
+		if (maxAttr.size() == 0)
+			maxAttr = minAttr;
+		var maxTimeValue = maxAttr.get(0).value.value.asInteger();
+		/*if (maxTimeValue > 1073741822) {
+			maxTimeValue = 1073741822;
+		}*/
+
+		var initLocation = tmpl.createLocation("Init");
+		tmpl.init = initLocation;
+	
+		var stopLocation = tmpl.createLocation("Completed");
+		var activeLocation = tmpl.createLocation("Active");
+		activeLocation.setInvariant(timeVar.simpleComparison(maxTimeValue, Uppaal!CompareOperator#LESS_OR_EQUAL)); //when maxAttr.size() == 0, we have minTimeValue == maxTimeValue, which means that we have to use the "=" in both conditions
+		var aCost = node.getActivationCost();
+		if (aCost <> -1) {
+			var iLocation = tmpl.createLocation("Activating").makeCommitted();
+			var abortLocation = tmpl.createLocation("Aborting").makeUrgent();
+			var activationEdge = tmpl.createEdge(initLocation, iLocation).setSync(activateVar, false).resetClock(timeVar);
+			var otherEdge = tmpl.createEdge(iLocation, activeLocation);
+			var incrementer = createAssignmentExpr(
+					createVariable("cost").createReferringExpression(),
+				    createLiteralExpression(aCost.asInteger().asString())
+			);
+			incrementer.operator=Uppaal!AssignmentOperator#PLUS_EQUAL;
+			otherEdge.addUpdate(incrementer);
+
+			tmpl.addDontCareTransitions(iLocation, parentCountVar, parents, stopLocation);
+	
+			tmpl.createEdge(iLocation, abortLocation);
+			var stopEdge = tmpl.createEdge(abortLocation, stopLocation);
+			var abortVar : Uppaal!Variable = createVariable("abort");
+			var abortSignal = abortVar.createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+			stopEdge.setSync(abortSignal, true);
+		} else {
+			var activationEdge = tmpl.createEdge(initLocation, activeLocation).setSync(activateVar, false).resetClock(timeVar);
+		}
+
+		var completedEdge = tmpl.createEdge(activeLocation, stopLocation).setSync(sigExpr, true).setGuard(timeVar.simpleComparison(minTimeValue, Uppaal!CompareOperator#GREATER_OR_EQUAL));
+	
+		tmpl.addDontCareTransitions(initLocation, parentCountVar, parents, stopLocation);
+		tmpl.addDontCareTransitions(activeLocation, parentCountVar, parents, stopLocation);
+
+/*
+		for ( d in domains ) {
+			if (not (d.startsWith("MinTime") or d.startsWith("MinCost"))) {
+				var handleFunction = createFunction("handle" + d).addFunctionParameter(createDataDeclaration(createVariable("id")), false);
+				var handleCall = createFunctionCall(handleFunction).addFunctionArgument(createLiteralExpression(nodeId2LeafId.get(node.id)));
+				completedEdge.addUpdate(handleCall);
+			}
+		}
+		*/
+	
+
+		ret.add(tmpl);
+		
+	/* Now converting to template declaration */
+		var decl = new Uppaal!TemplateDeclaration();
+		ret.add(decl);
+
+		decl.declaredTemplate = new Uppaal!RedefinedTemplate();
+		decl.declaredTemplate.referredTemplate = tmpl;
+		decl.declaredTemplate.name = "process" + node.id.asString();
+	}

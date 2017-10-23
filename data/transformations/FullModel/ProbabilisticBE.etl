@@ -1,0 +1,96 @@
+@lazy
+@cached
+rule probBE
+	transform node : UATS!Node
+	to ret : List
+	{
+		guard : node.children.size() == 0 and node.getProbability() > -1 and not node.hasTimeDelay()
+
+		var tmpl = new Uppaal!Template();
+		tmpl.name = "ProbabilisticBE_" + node.id;
+		tmpl.declarations = new Uppaal!LocalDeclarations();
+
+		/* The parameter on which to broadcast the signal */
+		var sigVar = createVariable("complete").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+		var abortVar = createVariable("abort").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+		var activateVar = createVariable("activate").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+
+		var initLocation = tmpl.createLocation("Init");
+		tmpl.init = initLocation;
+		/* The activating location is completely pointless, except that UPPAAL crashes if you synchronize on entry to a chance node. */
+		var activatingLocation = tmpl.createLocation("Activating").makeCommitted();
+
+		var activeLocation = tmpl.createChanceNode("Choosing");
+
+		var completingLocation = tmpl.createLocation("Completing").makeCommitted();
+		var abortingLocation = tmpl.createLocation("Aborting").makeCommitted();
+		var finalLocation = tmpl.createLocation("Done");
+	
+		var activationEdge = tmpl.createEdge(initLocation, activatingLocation);
+		activationEdge.setSync(activateVar, false);
+		tmpl.createEdge(activatingLocation, activeLocation);
+
+		var aCost = node.getActivationCost();
+		if (aCost <> -1) {
+			activationEdge.addUpdate(
+				createAssignmentExpr(
+					createVariable("cost").createReferringExpression(),
+					createSum(createVariable("cost").createReferringExpression(),
+							  createLiteralExpression(aCost.asInteger().asString()))
+				)
+			);
+		}
+
+		var prob : Real = node.getProbability();
+		var weight1 : Integer = (prob * 32768.0).round();
+		var weight2 : Integer = 32768 - weight1;
+		if (weight1 == 32768 and prob < 1.0) {
+			System.err.println("Warning: BE" + node.id + " has very high probability rounding off to 1, results will be inaccurate.");
+			weight1 = 32767;
+			weight2 = 1;
+		} else if (prob == 1.0) {
+			weight1 = 1;
+		} else if (weight1 == 0 and prob > 0.0) {
+			System.err.println("Warning: BE" + node.id + " has very low probability rounding off to 0, results will be inaccurate.");
+			weight1 = 1;
+			weight2 = 32767;
+		} else if (prob == 0.0) {
+			weight2 = 1;
+		}
+		tmpl.createChanceEdge(activeLocation, completingLocation, weight1);
+		tmpl.createChanceEdge(activeLocation, abortingLocation, weight2);
+
+		var completedEdge = tmpl.createEdge(completingLocation, finalLocation).setSync(sigVar, true);
+		var abortedEdge = tmpl.createEdge(abortingLocation, finalLocation).setSync(abortVar, true);
+		
+		ret.add(tmpl);
+		
+		/* Now adding template declaration */
+		var decl = new Uppaal!TemplateDeclaration();
+		ret.add(decl);
+
+		decl.declaredTemplate = new Uppaal!RedefinedTemplate();
+		decl.declaredTemplate.referredTemplate = tmpl;
+		decl.declaredTemplate.name = "process" + node.id.asString();
+	}
+
+// Returns an associated completion probability, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getProbability()
+{
+		var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+		var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!ProbabilityPurpose));
+		var expAttrs = delayAttrs.select(a | a.eContainer.purpose.probType = UATV!ProbabilityType#COMPLETION);
+		if (expAttrs.isEmpty())
+			return -1;
+		return expAttrs.first().value.value.asReal();
+}
+
+// Returns whether the node has any attributes with time purpose.
+@cached
+operation UATS!Node hasTimeDelay()
+{
+		var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+		var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+		return not delayAttrs.isEmpty();
+}

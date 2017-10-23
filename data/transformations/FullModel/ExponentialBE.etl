@@ -1,0 +1,83 @@
+@lazy
+@cached
+rule expBE
+	transform node : UATS!Node
+	to ret : List
+	{
+		guard : node.children.size() == 0 and node.getExpTime() > -1
+
+		var tmpl = new Uppaal!Template();
+		tmpl.name = "ExponentialBE_" + node.id;
+		tmpl.declarations = new Uppaal!LocalDeclarations();
+
+		/* The parameter on which to broadcast the signal */
+		var sigVar = createVariable("complete").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+		var activateVar = createVariable("activate").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+
+		/* Count how many parents are still waiting for our completion. */
+		var parentCountVar = createVariable("parentCount");
+		var parents = UATS!Node.allInstances.select(n | n.children.includes(node));
+		parentCountVar.setInitialValue(parents.size());
+		tmpl.declarations.declaration.add(createDataDeclaration(parentCountVar));
+
+		var delayTime = node.getExpTime();
+		var delayArg = new Uppaal!LiteralExpression();
+		delayArg.text = delayTime.asString();
+
+		var initLocation = tmpl.createLocation("Init");
+		tmpl.init = initLocation;
+
+		var activeLocation = tmpl.createExpLocation("Active");
+		activeLocation.exitRate = createLiteralExpression(delayArg.text);
+		activeLocation.name = "Active";
+
+		var middleLocation = tmpl.createLocation("Completing").makeCommitted();
+		var completedLocation = tmpl.createLocation("Completed");
+	
+		var aCost = node.getActivationCost();
+		if (aCost <> -1) {
+			var iLocation = tmpl.createLocation("Activating");
+			iLocation.makeCommitted();
+			var activationEdge = tmpl.createEdge(initLocation, iLocation);
+			activationEdge.setSync(activateVar, false);
+			var otherEdge = tmpl.createEdge(iLocation, activeLocation);
+			otherEdge.addUpdate(
+				createAssignmentExpr(
+					createVariable("cost").createReferringExpression(),
+					createSum(createVariable("cost").createReferringExpression(),
+							  createLiteralExpression(aCost.asInteger().asString()))
+				)
+			);
+		} else {
+			var activationEdge = tmpl.createEdge(initLocation, activeLocation);
+			activationEdge.setSync(activateVar, false);
+		}
+		tmpl.createEdge(activeLocation, middleLocation);
+
+		var completedEdge = tmpl.createEdge(middleLocation, completedLocation).setSync(sigVar, true);
+		
+		ret.add(tmpl);
+		
+		tmpl.addDontCareTransitions(initLocation, parentCountVar, parents, completedLocation);
+		tmpl.addDontCareTransitions(activeLocation, parentCountVar, parents, completedLocation);
+		
+		/* Now adding template declaration */
+		var decl = new Uppaal!TemplateDeclaration();
+		ret.add(decl);
+
+		decl.declaredTemplate = new Uppaal!RedefinedTemplate();
+		decl.declaredTemplate.referredTemplate = tmpl;
+		decl.declaredTemplate.name = "process" + node.id.asString();
+	}
+
+// Returns an associated exponential time, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getExpTime()
+{
+		var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+		var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+		var expAttrs = delayAttrs.select(a | a.eContainer.purpose.timeType = UATV!TimeType#EXPONENTIAL);
+		if (expAttrs.isEmpty())
+			return -1;
+		return expAttrs.first().value.value.asReal();
+}

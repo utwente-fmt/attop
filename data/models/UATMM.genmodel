@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/AFTModel/src" modelPluginID="AFTModel" modelName="UATMM"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>UATMM_values.ecore</foreignModel>
+  <genPackages prefix="UATMM_values" basePackage="nl.utwente.ewi.fmt.UATMM" disposableProviderFactory="true"
+      ecorePackage="UATMM_values.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="UATMM_values.ecore#//CostType">
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//CostType/ON_ACTIVATION"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//CostType/ON_COMPLETION"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//CostType/ON_ABORT"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//CostType/WHILE_ACTIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//CostType/WHILE_COMPLETED"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="UATMM_values.ecore#//TimeType">
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//TimeType/MINIMUM"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//TimeType/MAXIMUM"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_values.ecore#//TimeType/EXPONENTIAL"/>
+    </genEnums>
+    <genClasses ecoreClass="UATMM_values.ecore#//Attribute">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UATMM_values.ecore#//Attribute/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_values.ecore#//Attribute/node"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_values.ecore#//Domain">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_values.ecore#//Domain/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_values.ecore#//Domain/purpose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UATMM_values.ecore#//Domain/attributes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_values.ecore#//Domain/valueType"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_values.ecore#//CostPurpose">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_values.ecore#//CostPurpose/costType"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_values.ecore#//TimePurpose">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_values.ecore#//TimePurpose/timeType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="UATMM_values.ecore#//Purpose"/>
+    <genClasses image="false" ecoreClass="UATMM_values.ecore#//Type"/>
+    <genClasses ecoreClass="UATMM_values.ecore#//RealType"/>
+    <genClasses ecoreClass="UATMM_values.ecore#//JavaType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_values.ecore#//JavaType/valueClass"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="UATMM_values.ecore#//Value"/>
+    <genClasses ecoreClass="UATMM_values.ecore#//RealValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_values.ecore#//RealValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_values.ecore#//JavaObjectValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_values.ecore#//JavaObjectValue/value"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="UATMM_structure" basePackage="nl.utwente.ewi.fmt.UATMM" disposableProviderFactory="true"
+      ecorePackage="UATMM_structure.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="UATMM_structure.ecore#//RoleType">
+      <genEnumLiterals ecoreEnumLiteral="UATMM_structure.ecore#//RoleType/Contributing"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_structure.ecore#//RoleType/Counteracting"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="UATMM_structure.ecore#//Nature">
+      <genEnumLiterals ecoreEnumLiteral="UATMM_structure.ecore#//Nature/Attack"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_structure.ecore#//Nature/Fault"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_structure.ecore#//Nature/Hybrid"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="UATMM_structure.ecore#//EdgeKind">
+      <genEnumLiterals ecoreEnumLiteral="UATMM_structure.ecore#//EdgeKind/DEPENCENCY"/>
+      <genEnumLiterals ecoreEnumLiteral="UATMM_structure.ecore#//EdgeKind/TRIGGER"/>
+    </genEnums>
+    <genClasses ecoreClass="UATMM_structure.ecore#//AttackTree">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//AttackTree/Root"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//AttackTree/Nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//AttackTree/Edges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//AttackTree/metadata"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_structure.ecore#//Node">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//Node/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//Node/children"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//Node/parents"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//Node/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//Node/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//Node/nature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//Node/role"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_structure.ecore#//Edge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//Edge/Target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference UATMM_structure.ecore#//Edge/Source"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//Edge/edgeKind"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_structure.ecore#//Connector"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//AND"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//OR"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//XOR"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//TreeMetaData">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//TreeMetaData/Key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//TreeMetaData/Value"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_structure.ecore#//PAND"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//TAND"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//KofN">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//KofN/Threshold"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_structure.ecore#//Weighted">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//Weighted/Treshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute UATMM_structure.ecore#//Weighted/Weights"/>
+    </genClasses>
+    <genClasses ecoreClass="UATMM_structure.ecore#//SAND"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//SOR"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//FDEP"/>
+    <genClasses ecoreClass="UATMM_structure.ecore#//Spare"/>
+  </genPackages>
+</genmodel:GenModel>

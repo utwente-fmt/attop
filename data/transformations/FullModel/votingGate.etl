@@ -1,0 +1,155 @@
+@lazy
+@cached
+rule votingGate
+	transform node : UATS!Node
+	to ret : List
+	{
+		guard : node.connector.isKindOf(UATS!AND) or node.connector.isKindOf(UATS!OR) or node.connector.isKindOf(UATS!KofN)
+
+		var tmpl = new Uppaal!Template();
+		tmpl.name = "gate_" + node.id;
+		tmpl.declarations = new Uppaal!LocalDeclarations();
+
+		var completedVar = createVariable("complete");
+		var abortedVar = createVariable("abort");
+		var dontCareVar = createVariable("dontcare");
+		/* The parameter on which to broadcast the signal */
+		var activateVar = createVariable("activate").createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+
+		var attributes = UATV!Attribute.allInstances().select(n | n.node == node);
+
+		var initLocation = tmpl.createLocation("Init");
+		tmpl.init = initLocation;
+
+		var activatingLocation = tmpl.createLocation("Activating").makeCommitted();
+		var waitingLocation = tmpl.createLocation("Waiting");
+		var comparingLocation = tmpl.createLocation("Comparing").makeCommitted();
+		var completedLocation = tmpl.createLocation("Completed");
+		var completingLocation = tmpl.createLocation("Finishing").makeCommitted();
+		
+		/* Count the parents */
+		var parentCountVar = createVariable("parentCount");
+		var parents = node.parents;
+		parentCountVar.setInitialValue(parents.size());
+		tmpl.declarations.declaration.add(createDataDeclaration(parentCountVar));
+
+		/* Create an array of the children to iterate over */
+		var numChildren = node.children.size();
+		var childArrayVar = createVariable("children").makeArray(numChildren + 1);
+		var childIds : Sequence;
+		for (child : UATS!Node in node.children) {
+			childIds.add(idToSignalNum.get(child.id));
+		}
+		childIds.add(0);
+		childArrayVar.setArrayInitialValues(childIds);
+		var childArrayDecl = createDataDeclaration(childArrayVar);
+		tmpl.declarations.declaration.add(childArrayDecl);
+
+		/* Transmit an activation signal to all the children (in deterministic order) */
+		var activatedVar = createVariable("activated");
+		var activatedExpr = activatedVar.createReferringExpression();
+		tmpl.declarations.declaration.add(createDataDeclaration(activatedVar));
+		var activateOneEdge : Uppaal!Edge = tmpl.createEdge(activatingLocation, activatingLocation);
+		activateOneEdge.setGuard(activatedVar.simpleComparison(numChildren, Uppaal!CompareOperator#LESS));
+		var activationVar = createVariable("activate").createReferringExpression().makeArrayExpression(
+			createVariable("children").createReferringExpression().makeArrayExpression(
+				activatedVar.createReferringExpression()
+			)
+		);
+		activateOneEdge.setSync(activationVar, true);
+		/* Warning: Do not re-use activatedExpr in the sum expression, or you get a null pointer exception */
+		var updateExpr = createAssignmentExpr(activatedExpr, createSum(activatedVar.createReferringExpression(), createLiteralExpression(1)));
+		activateOneEdge.addUpdate(updateExpr);
+
+		var activationEdge = tmpl.createEdge(initLocation, activatingLocation);
+		activationEdge.setSync(activateVar, false);
+		var activationDoneEdge = tmpl.createEdge(activatingLocation, waitingLocation);
+		activationDoneEdge.setGuard(activatedVar.simpleComparison(numChildren, Uppaal!CompareOperator#EQUAL));
+
+		/* Keep track of the number of completed children */
+		var completionCountVar = createVariable("completionCount");
+		var completionCountExpr = completionCountVar.createReferringExpression();
+		tmpl.declarations.declaration.add(createDataDeclaration(completionCountVar));
+		var abortCountVar = createVariable("abortCount");
+		var abortCountExpr = completionCountVar.createReferringExpression();
+		tmpl.declarations.declaration.add(createDataDeclaration(abortCountVar));
+
+		for (child in node.children) {
+			var completedEdge = tmpl.createEdge(waitingLocation, comparingLocation);
+			var completedExpr = completedVar.createReferringExpression().makeArrayExpression(
+				idToSignalNum.get(child.id)
+			);
+			completedEdge.setSync(completedExpr, false);
+			updateExpr = completionCountVar.createIncrementDecrementExpr(true);
+			completedEdge.addUpdate(updateExpr);
+			
+			completedEdge = tmpl.createEdge(comparingLocation, comparingLocation);
+			completedExpr = completedVar.createReferringExpression().makeArrayExpression(
+				idToSignalNum.get(child.id)
+			);
+			completedEdge.setSync(completedExpr, false);
+			updateExpr = completionCountVar.createIncrementDecrementExpr(true);
+			completedEdge.addUpdate(updateExpr);
+
+			var abortedEdge = tmpl.createEdge(waitingLocation, comparingLocation);
+			var abortedExpr = abortedVar.createReferringExpression().makeArrayExpression(
+				idToSignalNum.get(child.id)
+			);
+			abortedEdge.setSync(abortedExpr, false);
+			updateExpr = abortCountVar.createIncrementDecrementExpr(true);
+			abortedEdge.addUpdate(updateExpr);
+			
+			abortedEdge = tmpl.createEdge(comparingLocation, comparingLocation);
+			abortedExpr = abortedVar.createReferringExpression().makeArrayExpression(
+				idToSignalNum.get(child.id)
+			);
+			abortedEdge.setSync(abortedExpr, false);
+			updateExpr = abortCountVar.createIncrementDecrementExpr(true);
+			abortedEdge.addUpdate(updateExpr);
+		}
+
+		var cThres;
+		if (node.connector.isKindOf(UATS!AND))
+			cThres = node.children.size();
+		else if (node.connector.isKindOf(UATS!OR))
+			cThres = 1;
+		else if (node.connector.isKindOf(UATS!KofN))
+			cThres = node.connector.Threshold;
+		else
+			throw "Internal error: voting gate trying unknown gate type";
+		var aThres = node.children.size() - cThres + 1;
+
+		var notCompletedEdge = tmpl.createEdge(comparingLocation, waitingLocation);
+		notCompletedEdge.setGuard(createConjunction(
+			completionCountVar.simpleComparison(cThres, Uppaal!CompareOperator#LESS),
+			abortCountVar.simpleComparison(aThres, Uppaal!CompareOperator#LESS)
+		));
+
+		var completedEdge = tmpl.createEdge(comparingLocation, completingLocation);
+		completedEdge.setGuard(completionCountVar.simpleComparison(cThres, Uppaal!CompareOperator#GREATER_OR_EQUAL));
+		var completedExpr = completedVar.createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+		completedEdge.setSync(completedExpr, true);
+		completedEdge = tmpl.createEdge(completingLocation, completedLocation);
+		var dontCareExpr = dontCareVar.createReferringExpression().makeArrayExpression(idToGateSignalNum.get(node.id));
+		completedEdge.setSync(dontCareExpr, true);
+		completedEdge.addUpdate(completionCountVar.simpleAssignment(0));
+		completedEdge.addUpdate(abortCountVar.simpleAssignment(0));
+
+		var abortedEdge = tmpl.createEdge(comparingLocation, completingLocation);
+		abortedEdge.setGuard(abortCountVar.simpleComparison(aThres, Uppaal!CompareOperator#GREATER_OR_EQUAL));
+		var abortedExpr = abortedVar.createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+		abortedEdge.setSync(abortedExpr, true);
+		
+		tmpl.addDontCareTransitions(initLocation, parentCountVar, parents, completingLocation);
+		tmpl.addDontCareTransitions(activatingLocation, parentCountVar, parents, completingLocation);
+		tmpl.addDontCareTransitions(waitingLocation, parentCountVar, parents, completingLocation);
+		ret.add(tmpl);
+		
+		/* Now adding template declaration */
+		var decl = new Uppaal!TemplateDeclaration();
+		ret.add(decl);
+
+		decl.declaredTemplate = new Uppaal!RedefinedTemplate();
+		decl.declaredTemplate.referredTemplate = tmpl;
+		decl.declaredTemplate.name = "process" + node.id.asString();
+	}

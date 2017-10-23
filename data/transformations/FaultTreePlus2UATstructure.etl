@@ -1,0 +1,119 @@
+pre
+{
+  	var javaDate = new Native("java.util.Date");
+	javaDate.toString().println("Starting FaultTree+2UAT structure transformation: ");
+}
+
+post
+{
+ 	var javaDate = new Native("java.util.Date");
+	javaDate.toString().println("Completed FaultTree+2UAT structure transformation: ");
+}
+
+// Transform all domains and set several attributes by obtaining 
+// info from attributes and child nodes
+@primary
+rule FT2UATTree
+	transform ftp : FaultTreePlus!t_XMLDataSet
+	to uat : UATS!AttackTree
+{
+	var gates;
+	var events;
+	gates = FaultTreePlus!t_Gates.allInstances().equivalent();
+	events = FaultTreePlus!t_PrimaryEvents.allInstances().equivalent();
+	uat.Nodes.addAll(gates);
+	uat.Nodes.addAll(events);
+	for (connection in FaultTreePlus!t_GateInputs.allInstances()) {
+		makeConnection(connection, gates, events);
+	}
+	var possibleRoots : Bag;
+	for (gate in gates) {
+		if (gate.parents.isEmpty()) {
+			possibleRoots.add(gate);
+		}
+	}
+	if (possibleRoots.isEmpty()) {
+		throw "Error: Fault tree is cyclic (no root element)";
+	}
+	if (possibleRoots.size() > 1) {
+		var options : Sequence;
+		for (root in possibleRoots)
+			options.add(root.id);
+		var chosen = System.user.choose("Please select the desired root element.", options);
+		possibleRoots = possibleRoots.select(r | r.id.equals(chosen));
+	}
+	uat.Root = possibleRoots.first();
+	while (gates.select(g|g.parents.isEmpty()).size() > 1) {
+		var unreachable : Bag = gates.select(g | g.parents.isEmpty());
+		unreachable.remove(uat.Root);
+		delete(unreachable);
+		gates.removeAll(unreachable);
+	}
+	for (event in events) {
+		if (event.parents.isEmpty())
+			delete(event);
+	}
+}
+
+operation makeConnection(conn, gates : Sequence, events : Sequence)
+{
+	var gid = conn.e_Gate.text.asInteger();
+	var gate = gates.get(gid);
+	var type = conn.e_ObjectType.text.asInteger();
+	var cid = conn.e_ObjectIndex.text.asInteger();
+	var child : UATS!Node;
+	if (type == 0) {
+		child = gates.get(cid);
+	} else if (type == 1) {
+		child = events.get(cid);
+	} else {
+		System.err.println("Unknown gate connection type: " + type + ", ignoring");
+	}
+	gate.children.add(conn.e_SubIndex.text.asInteger(), child);
+	child.parents.add(gate);
+}
+
+@lazy
+rule BasicEvent
+	transform input : FaultTreePlus!t_PrimaryEvents
+	to ret : UATS!Node
+{
+	ret.id = input.e_Id.text;
+	if (input.c_Description.size() > 0 and not input.e_Description.text.equals("")) {
+		ret.label = input.e_Description.text;
+	} else {
+		ret.label = input.e_Id.text;
+	}
+	ret.nature = UATS!Nature#Fault;
+}
+
+@lazy
+rule Gate
+	transform input : FaultTreePlus!t_Gates
+	to ret : UATS!Node
+{
+	ret.id = input.e_Id.text;
+	if (input.c_Description.size() > 0 and not input.e_Description.text.equals("")) {
+		ret.label = input.e_Description.text;
+	} else {
+		ret.label = input.e_Id.text;
+	}
+	ret.nature = UATS!Nature#Fault;
+	ret.role = UATS!RoleType#Contributing;
+	switch(input.e_Type.text.asInteger()) {
+		case 0:
+			ret.connector = new UATS!OR();
+			break;
+		case 1:
+			ret.connector = new UATS!AND();
+			break;
+		case 2:
+			ret.connector = new UATS!KofN();
+			ret.connector.Threshold = input.e_Vote.text.asInteger();
+			break;
+		default:
+			System.err.println("Unsupported gate type " + input.e_Type.text + ", converting to OR.");
+			ret.connector = new UATS!OR();
+			break;
+	}
+}

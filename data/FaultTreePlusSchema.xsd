@@ -1,0 +1,83 @@
+  <xs:schema id="XMLDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="XMLDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Project">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:string" />
+                <xs:element name="Description" type="xs:string" minOccurs="0" />
+                <xs:element name="FileName" type="xs:string" minOccurs="0" />
+                <xs:element name="ProjectVersionLong" type="xs:string" minOccurs="0" />
+                <xs:element name="ProductVersion" type="xs:string" minOccurs="0" />
+                <xs:element name="Notes" type="xs:string" minOccurs="0" />
+                <xs:element name="CompiledBy" type="xs:string" minOccurs="0" />
+                <xs:element name="ApprovedBy" type="xs:string" minOccurs="0" />
+                <xs:element name="DefAnalyst" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="FailureModels">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:string" />
+                <xs:element name="Description" type="xs:string" minOccurs="0" />
+                <xs:element name="ModelType" type="xs:int" minOccurs="0" />
+                <xs:element name="Generic" type="xs:boolean" minOccurs="0" />
+                <xs:element name="FailureRate" type="xs:double" minOccurs="0" />
+                <xs:element name="Unavailability" type="xs:double" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Gates">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:string" />
+                <xs:element name="Description" type="xs:string" minOccurs="0" />
+                <xs:element name="Type" type="xs:int" minOccurs="0" />
+                <xs:element name="Vote" type="xs:int" minOccurs="0" />
+                <xs:element name="Quantity" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="GateInputs">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Gate" type="xs:int" minOccurs="0" />
+                <xs:element name="SubIndex" type="xs:int" minOccurs="0" />
+                <xs:element name="ObjectType" type="xs:int" minOccurs="0" />
+                <xs:element name="ObjectIndex" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PrimaryEvents">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Id" type="xs:string" />
+                <xs:element name="Description" type="xs:string" minOccurs="0" />
+                <xs:element name="EventType" type="xs:int" minOccurs="0" />
+                <xs:element name="ModelType" type="xs:int" minOccurs="0" />
+                <xs:element name="FailureModel" type="xs:int" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Project" />
+        <xs:field xpath="Id" />
+      </xs:unique>
+      <xs:unique name="FailureModels_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//FailureModels" />
+        <xs:field xpath="Id" />
+      </xs:unique>
+      <xs:unique name="Gates_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//Gates" />
+        <xs:field xpath="Id" />
+      </xs:unique>
+      <xs:unique name="PrimaryEvents_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PrimaryEvents" />
+        <xs:field xpath="Id" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>

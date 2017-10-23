@@ -1,0 +1,74 @@
+[%
+  	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Starting UAT2ATCalc generation: ");
+
+var attackTree : UATS!AttackTree = UATS!AttackTree.allInstances().first();
+
+var root : UATS!Node = attackTree.Root;
+
+var nodes: Set = attackTree.Nodes;
+
+// Empty set used to determine nodes already added to output
+var nodesUsed: Set;
+%]
+[* Start with printing the root*]
+toplevel "[%=root.label%]";
+
+[* First we print out the tree. All nodes with their children *]
+[% for (i in nodes) { %]
+	[* For each node with children (that is not already defined), print them *]
+	[* ATCalc does not accept double definitions (for OR and AND, but does for SEQAND) *]
+	[% if(i.children.size() > 0 and not (nodesUsed.select(n|n.label=i.label).size() > 0) ) { %]
+		[% if(i.connector.isTypeOf(UATS!OR)) { %]
+"[%=i.label%]" or [% for (y in i.children) { %]"[%=y.label%]" [% } %];
+		[% } else if (i.connector.isTypeOf(UATS!SAND)) {%]
+"[%=i.label%]" seqand [% for (y in i.children) { %]"[%=y.label%]" [% } %];
+		[% } else {%]
+"[%=i.label%]" and [% for (y in i.children) { %]"[%=y.label%]" [% } %];
+		[% }%]
+	[% nodesUsed.add(i);
+	}%]
+[% } %]
+
+[* Then we print out the attributes of each leaf*]
+[% for (i in nodes) { %]
+	[% if(i.children.size() <= 0) { %]
+		[% var attributes : Sequence = UATV!Attribute.allInstances().select(a|a.node.id == i.id);
+		var attP : String;
+		if (attributes.select(a|a.eContainer.name.equals("ProbSucc")).size > 0) {
+			attP = "prob=" + attributes.select(a|a.eContainer.name.equals("ProbSucc")).first().value.value.asString();
+		} else {
+			attP = "prob=1.0";
+		}
+		var lambda : String;
+		if (attributes.select(a|a.eContainer.name.equals("MinTimeSeq")).size() > 0) {
+			lambda = attributes.select(a|a.eContainer.name.equals("MinTimeSeq")).first().value.value.divideBy().asString();
+		} else if (attributes.select(a|a.eContainer.name.equals("lambda")).size() > 0) {
+			lambda = attributes.select(a|a.eContainer.name.equals("lambda")).first().value.value.asString();
+		} else {
+			lambda = "0";
+		}
+		%]
+"[%=i.label%]" lambda=[%=lambda %] dorm=0 [%=attP %];		
+	[% }%]
+[% } 
+
+
+ 	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Completed UAT2ATCalc generation: ");
+  	
+operation String divideBy() : Real {
+	if(self.asInteger()>0){
+		return 1.0/(self.asInteger());
+	}
+	return 0;
+}
+
+operation Integer divideBy() : Real {
+	if(self>0){
+		return 1.0/self;
+	}
+	return 0;
+	
+}
+%]

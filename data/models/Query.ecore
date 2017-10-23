@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Query" nsURI="ecore:UATMM_query" nsPrefix="nl.utwente.ewi.fmt.UATMM">
+  <eClassifiers xsi:type="ecore:EClass" name="Constraints">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
+        eType="#//Relational"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domain" lowerBound="1"
+        eType="ecore:EClass UATMM_values.ecore#//Domain"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="ecore:EClass UATMM_values.ecore#//Value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Query" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="constraints" upperBound="-1"
+        eType="#//Constraints" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Relational">
+    <eLiterals name="Maximum" value="2"/>
+    <eLiterals name="Minimum" value="1"/>
+    <eLiterals name="Equal" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpectedValueQuery" eSuperTypes="#//Query">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domains" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass UATMM_values.ecore#//Domain"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReachabilityQuery" eSuperTypes="#//Query"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ProbabilityQuery" eSuperTypes="#//Query"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OptimalQuery" eSuperTypes="#//Query">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domain" lowerBound="1"
+        eType="ecore:EClass UATMM_values.ecore#//Domain"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="goal" lowerBound="1" eType="#//OptimizationGoal"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OptimizationGoal">
+    <eLiterals name="Maximum" value="2"/>
+    <eLiterals name="Minimum" value="1"/>
+  </eClassifiers>
+</ecore:EPackage>

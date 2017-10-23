@@ -1,0 +1,102 @@
+pre {
+
+  	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Starting UAT2ATE transformation: ");
+  	
+}
+
+post {
+ 	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Completed UAT2ATE transformation: ");
+}
+
+@primary
+rule UATMM2ADTool
+	transform at : UATS!AttackTree
+	to adt : ATE!t_adtree {	
+		ATE.root = adt;
+		adt.appendChild(at.Root.equivalent());
+	}
+
+rule GAT2ADTool 	
+	transform r : UATS!Node
+	to f : ATE!t_node {
+	
+	//Set refinement attribute of node
+	f.a_refinement= r.findRefinement();
+	
+	// Create and add label to the current node.
+	var label = new ATE!t_label;
+	label.text = r.label;
+	f.appendChild(label);
+	
+	// Append all attribute nodes to the current node
+	// Invoke the lazy rule for all attributes (by using equivalent())
+	// then append all children XML nodes to the current node.
+	var attributes = UATV!Attribute.allInstances().select(a | a.node.id = r.id).sortBy(a | a.eContainer.name);
+	for (child in attributes) {
+		f.appendChild(child.equivalent());
+  	}
+  	if (attributes.size() > 0) {
+		  var domains = attributes.collect(a | a.eContainer);
+		  if (not domains.exists(d | d.name.equals("likelihood"))) {
+			  var p = new ATE!t_parameter();
+			  p.a_name = "likelihood";
+			  p.a_class = "ordinal";
+			  p.text = "H";
+			  f.appendChild(p);
+		}
+		  if (not domains.exists(d | d.name.equals("difficulty"))) {
+			  var p = new ATE!t_parameter();
+			  p.a_name = "difficulty";
+			  p.a_class = "ordinal";
+			  p.text = "L";
+			  f.appendChild(p);
+		}
+	}
+	
+	// If the parent ATNode has a different role, add 'switchRole' attribute to the XML node.
+	if(r.parents.size() > 0 and r.parents.first().role <> r.role ){
+		f.a_switchRole = "yes";
+	}
+
+	// Append all child ATNodes to the current node in the XML
+	for (child in r.children.equivalent()) {
+    	f.appendChild(child);
+  	}
+  	
+  	// Append the current node to the root (Not sure why this works, as it is called for all nodes)
+  	ATE.root.appendChild(f);	
+}
+
+@lazy
+rule Attribute2Param
+	transform a : UATV!Attribute
+	to p : ATE!t_parameter{
+	
+	p.a_name = a.eContainer.name;
+	if (a.eContainer.purpose.isKindOf(UATV!TimePurpose)) {
+		p.a_name = "time";
+	} else if (a.eContainer.purpose.isKindOf(UATV!CostPurpose)) {
+		p.a_name = "cost";
+	} else {
+		p.a_name = a.eContainer.name;
+	}
+	if (a.eContainer.valueType.isKindOf(UATV!RealType)) {
+		p.a_class = "numeric";
+		p.text = a.value.value.asReal();
+	} else {
+		p.a_class = "numeric";
+		p.text = "000"; // TODO: Figure out how to use other types properly.
+	}
+}
+
+// Find the string version of the refinement of ATNode
+operation UATS!Node findRefinement() : String{
+	if(self.connector.isTypeOf(UATS!OR)){
+		return "disjunctive";
+	} else if(self.connector.isTypeOf(UATS!AND)){
+		return "conjunctive";
+	}
+	return "disjunctive";	
+}
