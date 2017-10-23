@@ -1,0 +1,13 @@
+toplevel "CID";
+"CID" sand "AHN" "ESV" "RMS";
+"AHN" and "GATPN" "GC";
+"GATPN" or "AL" "AW";
+"AL" and "FLAP" "SMA";
+"AW" and "FW" "BWK";
+"RMS" cost=100 mintime=30 maxtime=30;
+"ESV" cost=10 mintime=60 maxtime=60;
+"GC" cost=100 mintime=600 maxtime=600;
+"FLAP" cost=10 mintime=60 maxtime=60;
+"SMA" cost=50 mintime=30 maxtime=30;
+"FW" cost=10 mintime=300 maxtime=300;
+"BWK" cost=100 mintime=120 maxtime=120;

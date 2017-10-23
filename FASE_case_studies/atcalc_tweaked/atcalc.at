@@ -1,0 +1,15 @@
+toplevel "CID";
+
+"AW" and "FW" "BWK" ;
+"AHN" and "GATPN" "GC" ;
+"AL" and "FLAP" "SMA" ;
+"CID" csp "AHN" "ESV" "RMS" ;
+"GATPN" or "AL" "AW" ;
+
+"FW" lambda=0.2 dorm=1;
+"FLAP" lambda=1.0 dorm=1;
+"SMA" lambda=2.0 dorm=1;
+"BWK" lambda=0.5 dorm=1;
+"ESV" lambda=1.0 dorm=0;
+"RMS" lambda=2.0 dorm=0;
+"GC" lambda=0.1 dorm=1;

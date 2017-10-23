@@ -1,0 +1,1 @@
+Pr[toplevel.time <= 10] (<>toplevel.Completed)
