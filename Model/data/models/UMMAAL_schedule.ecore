@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="UMMAAL_schedule" nsURI="ecore:UMMAAL_schedule" nsPrefix="nl.utwente.ewi.fmt.UMMAAL_schedule">
+  <eClassifiers xsi:type="ecore:EClass" name="Executor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Executable" abstract="true">
+    <eAnnotations source="abstract"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Time">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startTime" lowerBound="1"
+        eType="#//Time"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endTime" lowerBound="1"
+        eType="#//Time"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executable" lowerBound="1"
+        eType="#//Executable"/>
+  </eClassifiers>
+</ecore:EPackage>

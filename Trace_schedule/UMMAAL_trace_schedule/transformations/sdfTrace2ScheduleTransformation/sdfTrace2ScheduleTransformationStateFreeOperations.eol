@@ -1,0 +1,110 @@
+import "../trace2ScheduleTransformationTemplate/trace2ScheduleTemplateStateFreeOperations.eol";
+
+/*
+
+	Author: 
+		Bugra M. Yildiz
+		Stefano Schivo
+
+	Date: 22 February 2017
+
+	Description: 
+		This file includes the state-free helper operations for the sdfTrace2ScheduleTransformation transformation.
+
+		State-free means, the operations in this file do not depend on the execution state of the 
+		transformation, and as a result of this, they don't require any assumptions before calling.  
+
+	Models:
+		The same as sdfTrace2ScheduleTransformation.etl.
+
+	Assumptions:
+		The same as sdfTrace2ScheduleTransformation.etl.
+*/
+
+/*************************************************************************
+
+						CONSTANTS
+
+**************************************************************************/
+
+@cached
+operation getGlobalClockName(): String
+{
+	return "globalClock";
+}
+
+@cached
+operation getSDFTemplateName(): String
+{
+	return "SDF_Graph";
+}
+
+@cached
+operation getSDFTemplateSuffix() : String
+{
+	return "_SDF_Graph_template";
+}
+
+@cached
+operation getPAMTemplateSuffix() : String
+{
+	return "_PAM_template";
+}
+
+@cached
+operation getSchedulerTemplateName(): String
+{
+	return "Scheduler";
+}
+
+/*
+	The template instances corresponding to the processors are named:
+	
+	templateInstance.name = <prefix> + <processor_identifier>.identifier.
+
+	This operation returns the prefix for template instance names.
+*/
+@cached
+operation getProcessorTemplateInstanceNamePrefix(): String 
+{
+	return "Redefined_PAM_";
+}
+
+/*
+	For each actor in SDF graph, a counter variable is created with the name
+ 
+	<prefix> + actor.identifier
+
+	, which keeps track of how many times an actor fires.  
+
+	This operation returns the prefix for these variables.
+*/
+@cached
+operation getFireCounterNamePrefix(): String 
+{
+	return "counter_";
+}
+
+/*
+	Returns the name of the channel for firing 
+*/
+@cached
+operation getChannelNameForFiring(): String
+{
+	return "fire";
+}
+
+/*
+	Returns the name of the channel for end 
+*/
+@cached
+operation getChannelNameForEnding(): String
+{
+	return "end";
+}
+
+/*************************************************************************
+
+						GENERAL PURPOSE OPERATIONS
+
+**************************************************************************/

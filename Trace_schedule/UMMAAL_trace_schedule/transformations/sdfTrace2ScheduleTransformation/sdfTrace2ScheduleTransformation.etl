@@ -1,0 +1,162 @@
+import "../trace2ScheduleTransformationTemplate/trace2ScheduleTemplate.etl";
+
+import "sdfTrace2ScheduleTransformationStateDependentOperations.eol";
+import "sdfTrace2ScheduleTransformationStateFreeOperations.eol";
+
+
+/*
+	Author: 
+		Bugra M. Yildiz
+		Stefano Schivo
+
+	Date: 
+		22 February 2017
+	
+	Description: 
+		This transformation generates a schedule instance from a given SDF model UPPAAL Trace. It uses the template.
+
+	Models:
+
+		The models coming from the template:
+
+			InIntermediateTraceModel: an instance of IntermediateTrace metamodel. This model is read-only.
+			
+			OutUMMAALScheduleModel: an instance of UMMAALSchedule metamodel. This case, we are using UMMAALScheduleSimple metamodel, which 
+									extends UMMAALSchedule metamodel.
+	
+	Assumptions:
+		None.
+			
+*/ 
+
+pre pre_sdfTrace2ScheduleTransformation
+{
+	
+	/********************************************
+		This part schedules the rule execution.
+	*********************************************/
+	
+	//1. Execute the rule TemplateInstance2Executor 
+	for(curElement in InIntermediateTraceModel!TemplateInstance.allInstances())
+	{
+		curElement.equivalent("TemplateInstance2Executor");
+	}
+	
+	//2. Execute the rule CounterVariable2Executable
+	for(curElement in InIntermediateTraceModel!Valuation.allInstances())
+	{
+		curElement.equivalent("CounterVariable2Executable");
+	}
+	
+	//3. Execute the rule EdgeTransition2Task
+	//Note that this also sets the start times
+	for(curElement in InIntermediateTraceModel!EdgeTransition.allInstances())
+	{
+		curElement.equivalent("EdgeTransition2Task");
+	}
+	
+	//4. Execute the rule EdgeTransition2EndTime
+	for(curElement in InIntermediateTraceModel!EdgeTransition.allInstances())
+	{
+		var endtime = curElement.equivalent("EdgeTransition2EndTime");
+	}
+}	
+	
+
+
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+
+	Rule for creating OutUMMAALScheduleModel!SimpleExecutor
+
+	For each InIntermediateTraceModel!TemplateInstance that is different than "Scheduler" and 
+	"SDF_Graph", it corresponds to an instance of an Executor.
+*/
+@lazy
+rule TemplateInstance2Executor transform
+	templateInstance: InIntermediateTraceModel!TemplateInstance to simpleExecutor: OutUMMAALScheduleModel!SimpleExecutor
+{
+	guard: templateInstance.representsExecutor()
+	
+	simpleExecutor.name = templateInstance.name.getPrefixRemoved( getProcessorTemplateInstanceNamePrefix() );	
+	simpleExecutor.uuid = simpleExecutor.name + getUniqueUUID();
+}
+
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+
+	Rule for creating OutUMMAALScheduleModel!SimpleExecutable
+
+	Per Actor
+		a variable in global declarations with name counter_<actor_name>  //This is customizable in model transformation
+
+	TODO: Check which is the name of the variable below (We use name):
+		class Valuation
+		{
+			attribute variable : String[1];
+			attribute name : String[1];		
+		} 
+*/
+@lazy
+rule CounterVariable2Executable transform 
+	counterVariable: InIntermediateTraceModel!Valuation to simpleExecutable: OutUMMAALScheduleModel!SimpleExecutable
+{
+	guard: counterVariable.name.startsWith( getFireCounterNamePrefix() ) and not OutUMMAALScheduleModel!SimpleExecutable.allInstances().exists( se | se.name = counterVariable.name.getPrefixRemoved( getFireCounterNamePrefix() ) )  
+
+	simpleExecutable.name = counterVariable.name.getPrefixRemoved( getFireCounterNamePrefix() );
+	
+	simpleExecutable.uuid = simpleExecutable.name + getUniqueUUID();
+	
+}
+
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+
+	Rule for creating OutUMMAALScheduleModel!Task
+
+	Every time a fire event happens, then this means a task starts its execution.
+*/
+@lazy
+rule EdgeTransition2Task transform
+	edgeTransition: InIntermediateTraceModel!EdgeTransition to task : OutUMMAALScheduleModel!Task
+{
+	guard: edgeTransition.getActorNameFiring() <> null
+	
+	task.executable = OutUMMAALScheduleModel!SimpleExecutable.allInstances().select( se | se.name = edgeTransition.getActorNameFiring() ).at(0);
+	task.executor = OutUMMAALScheduleModel!SimpleExecutor.allInstances().select( se | se.name = edgeTransition.getProcessorName() ).at(0);
+	
+	task.uuid = getUniqueUUID();	
+	
+	task.startTime = edgeTransition.equivalent("EdgeTransition2StartTime");
+	
+}
+
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+	
+	Rule for creating start time of a task from given transition.
+*/
+@lazy
+rule EdgeTransition2StartTime transform
+	edgeTransition: InIntermediateTraceModel!EdgeTransition to startTime : OutUMMAALScheduleModel!ExactTimeInt
+{
+	guard: edgeTransition.getActorNameFiring() <> null
+	
+	startTime.value = edgeTransition.source.getGlobalClockValue();
+}
+
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+	
+	Rule for creating end time of a task from given transition.
+*/
+@lazy
+rule EdgeTransition2EndTime transform
+	edgeTransition: InIntermediateTraceModel!EdgeTransition to endTime : OutUMMAALScheduleModel!ExactTimeInt
+{
+	guard: edgeTransition.getActorNameEnding() <> null
+	
+	endTime.value = edgeTransition.source.getGlobalClockValue();
+	
+	edgeTransition.getFiringTransition().equivalent("EdgeTransition2Task").endTime = endTime;	
+}

@@ -1,0 +1,263 @@
+@lazy
+@cached
+rule expBE
+	transform node : UATS!Node
+	to ret : List
+	{
+		guard : node.children.size() == 0 and not node.getRates().isEmpty()
+
+		var tmpl = new Uppaal!Template();
+		tmpl.name = "ExponentialBE_" + node.id;
+		tmpl.declarations = new Uppaal!LocalDeclarations();
+		var accFactor = createVariable("RDEPfactor");
+		accFactor.setInitialValue("1.0");
+		var accDecl = createDataDeclaration(accFactor);
+		accDecl.typeDefinition.referredType = Uppaal!DoubleType.allInstances().first();
+		tmpl.declarations.declaration.add(accDecl);
+		var naccVar = createVariable("RDEPcount");
+		var naccDecl = createDataDeclaration(naccVar);
+		tmpl.declarations.declaration.add(naccDecl);
+
+		/* The parameter on which to broadcast the signal */
+		var sigVar = completeArray.createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+
+		/* Count how many parents are still waiting for our completion. */
+		var parentCountVar = createVariable("parentCount");
+		var parents = UATS!Node.allInstances.select(n | n.children.includes(node));
+		parentCountVar.setInitialValue(parents.size());
+		tmpl.declarations.declaration.add(createDataDeclaration(parentCountVar));
+
+		var initLocation = tmpl.createLocation("Init");
+		tmpl.init = initLocation;
+		if (parents.select(p | not p.connector.isKindOf(UATS!RDEP)).isEmpty())
+			initLocation.makeCommitted();
+
+		var middleLocation = tmpl.createLocation("Completing").makeCommitted();
+		var completedLocation = tmpl.createLocation("Completed");
+		
+		var inspections = UATM!NodeCondition.allInstances().select(n | n.node.id == node.id);
+		var repairs = UATM!RepairEffect.allInstances().select(r | r.node.id == node.id);
+	
+		var firstActiveLocation = null;
+		var prevLocation = null;
+		var activeLocations : Set; /* All locations after activation but before completion. More specifically: all locations that can be repaired without emitting a 'repaired' signal */
+		var i : Integer = 1;
+		inspections = inspections.select(i | i.state.isKindOf(UATM!LinearNodeState));
+		for (rate : Real in node.getRates()) {
+			var delayArg = createMultiplication(accFactor.createReferringExpression(), createLiteralExpression(rate));
+			
+			var j : Integer = 0;
+			var condition : Real = i - 1;
+			condition /= node.getRates().size().asReal();
+			for (insp in inspections.select(c | (c.state.fraction <= condition and c.orGreater) or (c.state.fraction == condition))) {
+				var loc = tmpl.createLocation("Insp" + i + "_" + j).makeCommitted();
+				activeLocations.add(loc);
+				var signum = inspectionSignals.get(nodeId2LeafId.get(node.id) + "(" + insp.state + ")");
+				if (prevLocation == null) {
+					prevLocation = tmpl.createLocation("Initial_inspection").makeCommitted();
+					firstActiveLocation = prevLocation;
+				}
+				var edge = tmpl.createEdge(prevLocation, loc);
+				var signal = inspArray.createReferringExpression().makeArrayExpression(signum);
+				edge.setSync(signal, true);
+				prevLocation = loc;
+			}
+
+			var activeLocation = tmpl.createExpLocation("Active" + i);
+			activeLocations.add(activeLocation);
+			activeLocation.exitRate = delayArg;
+			if (prevLocation == null) {
+				firstActiveLocation = activeLocation;
+			} else {
+				tmpl.createEdge(prevLocation, activeLocation);
+			}
+			if (not node.isRepairable()) {
+				tmpl.addDontCareTransitions(activeLocation, parentCountVar, parents, completedLocation);
+			}
+			i = i + 1;
+			prevLocation = activeLocation;
+		}
+
+		var aCost = node.getActivationCost();
+		var activationEdge;
+		if (aCost <> -1) {
+			var iLocation = tmpl.createLocation("Activating");
+			iLocation.makeCommitted();
+			activationEdge = tmpl.createEdge(initLocation, iLocation);
+			if (not parents.select(p | not p.connector.isKindOf(UATS!RDEP)).isEmpty()) {
+				var activateVar = activateArray.createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+				activationEdge.setSync(activateVar, false);
+			}
+			var otherEdge = tmpl.createEdge(iLocation, firstActiveLocation);
+			otherEdge.addUpdate(
+				createAssignmentExpr(
+					createVariable("cost").createReferringExpression(),
+					createSum(createVariable("cost").createReferringExpression(),
+							  createLiteralExpression(aCost.asInteger().asString()))
+				)
+			);
+		} else {
+			activationEdge = tmpl.createEdge(initLocation, firstActiveLocation);
+			if (not parents.select(p | not p.connector.isKindOf(UATS!RDEP)).isEmpty()) {
+				var activateVar = activateArray.createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+				activationEdge.setSync(activateVar, false);
+			}
+		}
+		
+		/* Inspections that trigger on failure. */
+		var j : Integer = 0;
+		for (insp in inspections.select(c | (c.state.fraction <= 1 and c.orGreater) or (c.state.fraction == 1))) {
+			var loc = tmpl.createLocation("Insp_C" + j).makeCommitted();
+			activeLocations.add(loc);
+			var signum = inspectionSignals.get(nodeId2LeafId.get(node.id) + "(" + insp.state + ")");
+			var edge = tmpl.createEdge(prevLocation, loc);
+			var signal = inspArray.createReferringExpression().makeArrayExpression(signum);
+			edge.setSync(signal, true);
+			prevLocation = loc;
+		}
+
+		tmpl.createEdge(prevLocation, middleLocation);
+		activeLocations.add(middleLocation);
+		
+		var prob = node.getProbability();
+		if (prob > -1) {
+			var committedLocation = tmpl.createLocation("Workaround"); // Needed because UPPAAL crashes if the entry to a chance node has a sync.
+			committedLocation.makeCommitted();
+			var choosingLocation = tmpl.createChanceNode("MaybeActivating");
+			var weight1 : Integer = (prob * 32768.0).round();
+			var weight2 : Integer = 32768 - weight1;
+			if (weight1 == 32768 and prob < 1.0) {
+				System.err.println("Warning: BE" + node.id + " has very high probability rounding off to 1, results will be inaccurate.");
+				weight1 = 32767;
+				weight2 = 1;
+			} else if (prob == 1.0) {
+				weight1 = 1;
+			} else if (weight1 == 0 and prob > 0.0) {
+				System.err.println("Warning: BE" + node.id + " has very low probability rounding off to 0, results will be inaccurate.");
+				weight1 = 1;
+				weight2 = 32767;
+			} else if (prob == 0.0) {
+				weight2 = 1;
+			}
+			var target = activationEdge.target;
+			activationEdge.target = committedLocation;
+			tmpl.createEdge(committedLocation, choosingLocation);
+			var abortedLocation = tmpl.createLocation("Aborted");
+			tmpl.createChanceEdge(choosingLocation, abortedLocation, weight2);
+			tmpl.createChanceEdge(choosingLocation, target, weight1);
+		}
+
+		var completedEdge = tmpl.createEdge(middleLocation, completedLocation).setSync(sigVar, true);
+	
+		ret.add(tmpl);
+	
+		if (not node.isRepairable()) {
+			tmpl.addDontCareTransitions(initLocation, parentCountVar, parents, completedLocation);
+		}
+
+		if (not repairs.isEmpty()) {
+			var repairedLoc = tmpl.createLocation("Repairing").makeCommitted();
+			/* Assuming for now that all repairs lead back to the initial state */
+			var repairsDone : Set;
+			for (rep  in repairs) {
+				var repNum = repairSignals.get(nodeId2LeafId.get(node.id) + "(" + rep.newState + ")");
+				if (repairsDone.contains(repNum))
+					continue;
+				repairsDone.add(repNum);
+				for (loc in activeLocations) {
+					var sync = repairArray.createReferringExpression().makeArrayExpression(repNum);
+					var edge = tmpl.createEdge(loc, firstActiveLocation).setSync(sync, false);
+				}
+				var sync = repairArray.createReferringExpression().makeArrayExpression(repNum);
+				var edge = tmpl.createEdge(completedLocation, repairedLoc).setSync(sync, false);
+			}
+			var sync = repairedArray.createReferringExpression().makeArrayExpression(idToSignalNum.get(node.id));
+			var edge = tmpl.createEdge(repairedLoc, firstActiveLocation).setSync(sync, true);
+		}
+		
+		/* Now adding template declaration */
+		var decl = new Uppaal!TemplateDeclaration();
+		ret.add(decl);
+
+		decl.declaredTemplate = new Uppaal!RedefinedTemplate();
+		decl.declaredTemplate.referredTemplate = tmpl;
+		decl.declaredTemplate.name = "process" + node.id.asString();
+		
+		for (i in tmpl.location) {
+			if (repairs.isEmpty() and i == completedLocation)
+				continue;
+			if (repairs.isEmpty() and i == middleLocation)
+				continue;
+			for (conn in UATS!RDEP.allInstances()) {
+				var gate = conn.gate;
+				if (not gate.children.contains(node))
+					continue;
+				if (node == gate.children.first())
+					continue; /* We are the trigger and don't care about the RDEP */
+				var e = tmpl.createEdge(i, i);
+				var failSig = completeArray.createReferringExpression().makeArrayExpression(idToSignalNum.get(gate.children.first().id));
+				e.setSync(failSig, false);
+				var update = naccVar.createIncrementDecrementExpr(true);
+				e.addUpdate(update);
+				update = createAssignmentExpr(
+					accFactor.createReferringExpression(),
+					createMultiplication(accFactor.createReferringExpression(), createLiteralExpression(conn.factor))
+				);
+				e.addUpdate(update);
+				e = tmpl.createEdge(i, i);
+				var repairedSig = repairedArray.createReferringExpression().makeArrayExpression(idToSignalNum.get(gate.children.first().id));
+				e.setSync(repairedSig, false);
+				var update = naccVar.createIncrementDecrementExpr(false);
+				e.addUpdate(update);
+				update = createAssignmentExpr(
+					accFactor.createReferringExpression(),
+					createTernaryExpression(
+						naccVar.simpleComparison(0, Uppaal!CompareOperator#GREATER),
+						createDivision(accFactor.createReferringExpression(), createLiteralExpression(conn.factor)),
+						createLiteralExpression("1.0")
+					)
+				);
+				e.addUpdate(update);
+			}
+		}
+	}
+
+// Returns an associated exponential time, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getExpRate()
+{
+		var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+		var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+		var expAttrs = delayAttrs.select(a | a.eContainer.purpose.timeType = UATV!TimeType#EXPONENTIAL);
+		if (expAttrs.isEmpty())
+			return -1;
+		return expAttrs.first().value.value.asReal();
+}
+
+// Returns a sequence describing a the rate to leave each phase, or the empty sequence of the
+// BE does not have a hypo-exponential distribution.
+@cached
+operation UATS!Node getRates() : Sequence
+{
+	var exp : Real = self.getExpRate();
+	if (exp > -1)
+		return Sequence {exp};
+	var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+	var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+	var expAttrs = delayAttrs.select(a | a.eContainer.purpose.timeType = UATV!TimeType#HYPO_EXPONENTIAL);
+	if (expAttrs.isEmpty())
+		return Sequence {};
+	return expAttrs.first().value.sequence.asSequence();
+}
+
+// Returns an associated completion probability, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getProbability()
+{
+		var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+		var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!ProbabilityPurpose));
+		var expAttrs = delayAttrs.select(a | a.eContainer.purpose.probType = UATV!ProbabilityType#COMPLETION);
+		if (expAttrs.isEmpty())
+			return -1;
+		return expAttrs.first().value.value.asReal();
+}

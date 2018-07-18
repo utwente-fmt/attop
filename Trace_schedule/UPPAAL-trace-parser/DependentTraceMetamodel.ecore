@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="DependentTraceMetamodel" nsURI="http://fmt.ewi.utwente.nl/FMT/AFTModel/DependentTraceMetamodel"
+    nsPrefix="dtm">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+    <details key="uppaalSMC" value="http://fmt.ewi.utwente.nl/FMT/AFTModel/uppaalSMC#/"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
+        eType="#//LocationInstance" containment="true" eOpposite="#//LocationInstance/template"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocationInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" lowerBound="1"
+        eType="#//TemplateInstance" eOpposite="#//TemplateInstance/locations"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" lowerBound="1"
+        eType="ecore:EClass http://www.muml.org/uppaal/1.0.0#//templates/Location"/>
+  </eClassifiers>
+  <eSubpackages name="clocks" nsURI="dtm.Clocks" nsPrefix="dtm.Clocks">
+    <eClassifiers xsi:type="ecore:EClass" name="AbstractClockBoundary" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="relation" lowerBound="1"
+          eType="#//clocks/Relation" defaultValueLiteral="LE"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral=""/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SingleClockBoundary" eSuperTypes="#//clocks/AbstractClockBoundary"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InverseClockBoundary" eSuperTypes="#//clocks/AbstractClockBoundary"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CombinedClockBoundary" eSuperTypes="#//clocks/AbstractClockBoundary">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="subtrahend" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Relation">
+      <eLiterals name="EQ"/>
+      <eLiterals name="NE" value="1"/>
+      <eLiterals name="LT" value="2"/>
+      <eLiterals name="LE" value="3"/>
+      <eLiterals name="GT" value="4"/>
+      <eLiterals name="GE" value="5"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>

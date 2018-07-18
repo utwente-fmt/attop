@@ -1,0 +1,74 @@
+[%
+var javaDate = new Native("java.util.Date");
+javaDate.toString().println("Starting UAT2NuSMV values generation: ");
+var attackTree : UATS!AttackTree = UATS!AttackTree.allInstances().first();
+var nodes: Set = attackTree.Nodes;
+
+var beNum : Integer = 1;
+var BEs = nodes.select(n|n.children.isEmpty()).sortBy(n|n.id);
+for (be in BEs) {
+	var rates = be.getRates();
+	var dorm = be.getDormFactor();
+
+	if (rates.size() > 1) {
+		for (rate in rates) {
+			%]BE_[%=beNum%].active_transition = [%=loopCount - 1%] : [%=rate.format("%.10f").replace(",",".")%]
+			[%
+			if (dorm <> 0) {
+				%]BE_[%=beNum%].dormant_transition = [%=loopCount - 1%] : [%=(rate * dorm).format("%.10f").replace(",",".")%]
+				[%
+			}
+		}
+	} else {
+		%]BE_[%=beNum%].active_transition = TRUE : [%=rates.get(0).format("%.10f").replace(",",".")%]
+		[%
+		if (dorm <> 0) {
+			%]BE_[%=beNum%].dormant_transition = TRUE : [%=(rates.get(0) * dorm).format("%.10f").replace(",",".")%]
+			[%
+		}
+	}
+	beNum = beNum + 1;
+}
+
+var javaDate = new Native("java.util.Date");
+javaDate.toString().println("Completed UAT2NuSMV values generation: ");
+  	
+// Returns an associated exponential time, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getExpRate()
+{
+	var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+	var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+	var expAttrs = delayAttrs.select(a | a.eContainer.purpose.timeType = UATV!TimeType#EXPONENTIAL);
+	if (expAttrs.isEmpty())
+		return -1;
+	return expAttrs.first().value.value.asReal();
+}
+
+// Returns an associated dormancy factor, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getDormFactor()
+{
+	var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+	var dormAttrs = attributes.select(a | a.eContainer.name.equals("dorm"));
+	if (dormAttrs.isEmpty())
+		return 1;
+	return dormAttrs.first().value.value.asReal();
+}
+
+// Returns a sequence describing a the rate to leave each phase, or the empty sequence of the
+// BE does not have a hyper-exponential distribution.
+@cached
+operation UATS!Node getRates() : Sequence
+{
+	var exp : Real = self.getExpRate();
+	if (exp > -1)
+		return Sequence {exp};
+	var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+	var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+	var expAttrs = delayAttrs.select(a | a.eContainer.purpose.timeType = UATV!TimeType#HYPO_EXPONENTIAL);
+	if (expAttrs.isEmpty())
+		return Sequence {};
+	return expAttrs.first().value.sequence.asSequence();
+}
+%]

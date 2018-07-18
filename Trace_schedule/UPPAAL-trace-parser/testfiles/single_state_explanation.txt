@@ -1,0 +1,23 @@
+State: 
+	Sys._id9 
+	d_Door._id3 
+	d_Window._id3 
+	d_EnterRoom._id2 
+
+	f = 0 
+	t = 1 
+	system_done = 0 
+	d_Door.min = 5 
+	d_Door.max = 6 
+	d_Door.id = 0 
+	d_Window.min = 10 
+	d_Window.max = 12 
+	d_Window.id = 1 
+
+	// useless
+	t(0)-Sys.clk<=0 
+	t(0)-d_Door.clk<=0 
+	t(0)-d_Window.clk<=0 
+	Sys.clk-d_Door.clk<=0 
+	d_Door.clk-d_Window.clk<=0
+	d_Window.clk-t(0)<=0 

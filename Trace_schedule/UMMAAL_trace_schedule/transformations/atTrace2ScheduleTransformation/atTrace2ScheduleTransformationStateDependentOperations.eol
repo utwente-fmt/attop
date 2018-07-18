@@ -1,0 +1,161 @@
+import "atTrace2ScheduleTransformationStateFreeOperations.eol";
+import "../trace2ScheduleTransformationTemplate/trace2ScheduleTemplateStateDependentOperations.eol";
+
+/*
+
+	Author: 
+		Rajesh Kumar
+		Stefano	Schivo
+
+	Date: 10 April 2017
+
+	Description: 
+		This file includes the state-free helper operations for the atTrace2ScheduleTransformation transformation.
+		
+		To use the operations in this file, one needs to check the assumptions of each operation.
+		These assumptions are prerequisites that need to be fulfilled before using the related 
+		operation.    
+
+	Models:
+		The same as atTrace2ScheduleTransformation.etl.
+
+	Assumptions:
+		The same as atTrace2ScheduleTransformation.etl.
+*/
+
+
+/*
+	An executable is represented by a template instance with a name different from "TopLevel" and 
+	"gate_*".
+
+	Returns if this TemplateInstance represents an executable. 
+*/
+operation UPPAALTrace!TemplateInstance representsExecutable(): Boolean
+{
+	return not self.template.endsWith(getTopLevelTemplateName()) and not self.template.startsWith(getGatePrefix());
+}
+
+
+
+
+/*
+	Check whether the transition has a synchronization on the given channel name.
+
+	Assumption 1: Since this operation is called on an EdgeTransition, self.edges.size() must be >= 1.
+
+	Assumption 2: If self.edges.size() = 2, then this is a binary synchronization, otherwise it is a broadcast.
+
+	Based on the assumption 2, it is enough to check only the edge at index 1.
+
+*/
+operation UPPAALTrace!EdgeTransition doesSynchronizationOnChannel(channelName : String): Boolean
+{
+	var result = false;
+	if (self.edges.size() < 2) { // We only look at synchronizations, so we need at least 2 edges.
+		return false;
+	}
+	
+	var edge = self.edges.at(1); // We just need one edge, as they will all synchronize on the same channel.
+	/*edge.println("Edge: ");
+	for (feat in edge.eClass.eStructuralFeatures) {
+		feat.println("Feature: ");
+		feat.name.println("feat. name: ");
+	}
+	"".println();*/
+	
+	if (edge.synchronization.channelExpression.identifier.`name`.equals(channelName)) {
+		return true;
+	}
+	
+	return false;
+	
+}
+
+
+
+/*
+	Returns name/ID of the basic attack step that is starting on this EdgeTransition.
+
+	Returns null if there is no synchronization.
+
+*/
+operation UPPAALTrace!EdgeTransition getReceivingProcessID(channelName : String): String
+{
+	if ((not self.doesSynchronizationOnChannel(channelName)) or self.edges.size() < 2) {
+		return null;
+	}
+	for (edge in self.edges) {
+		if (edge.synchronization.kind <> Uppaal!SynchronizationKind#RECEIVE) { //We want the receiving index
+			continue;
+		}
+		var indexes = edge.synchronization.channelExpression.index;
+		if (indexes.size() < 1) {
+			return null;
+		}
+		var index = indexes.get(0); //This is an array of indexes, but we use a vector of channels, so there is only one dimension
+		return index.text;
+		/*if (edge <> null and edge.contains(channelName)) {
+			var channelSynch = edge.substring(edge.indexOf(channelName));
+			var startName = channelSynch.indexOf("[") + 1; //Look for the index in the "activate" channel: it should indicate the ID of the basic event. +1 is to skip the "[" character
+			var endName = channelSynch.indexOf("]?");
+			if (endName <> -1) { //We may have found "]!" instead, which uses another naming convention, so we don't try anything with it
+				result = channelSynch.substring(startName, endName); //This should be an integer ID
+				break;
+			}
+		}*/
+	}
+	return null;
+}
+
+
+/*
+	Assumption: This edgeTransition has a basic attack step ending.  
+		If not, this operation returns null.
+
+	This operation returns the corresponding EdgeTransition where the
+	attack step was started (so we can get to the corresponding Task and update its EndTime).
+*/
+operation UPPAALTrace!EdgeTransition getFiringTransition(): UPPAALTrace!EdgeTransition
+{
+	var nodeIDEndingHere = self.getReceivingProcessID(getChannelNameForEnding());
+	
+	if ( nodeIDEndingHere = null) {
+		return null;
+	}
+	
+	//Initialization for the search
+	var edgeTransitionUnderExamination = self.source.transitionFrom;
+	
+	//Go back in time looking for the transition that started this attack step:
+	// - it must be an EdgeTransition (not a DelayTransition)
+	// - its node ID (attack step) must be the same as mine (and not null)
+	// - its processor must be the same as mine (and not null)
+	while( edgeTransitionUnderExamination.type().name <> "EdgeTransition"
+		 or edgeTransitionUnderExamination.getReceivingProcessID(getChannelNameForFiring()) = null
+		 or edgeTransitionUnderExamination.getReceivingProcessID(getChannelNameForFiring()) <> nodeIDEndingHere) {
+		if (edgeTransitionUnderExamination == null or not edgeTransitionUnderExamination.isDefined()) { //We can go no further: it means that we found no corresponding firing action (??)
+			return null;
+		}
+		edgeTransitionUnderExamination = edgeTransitionUnderExamination.source.transitionFrom;
+	}
+	
+	return edgeTransitionUnderExamination;	
+}
+
+
+/*
+	Returns the value of the global clock.
+
+	Assumed to be an integer value. Otherwise, returns -1. 
+
+*/
+operation UPPAALTrace!State getGlobalClockValue(): Integer
+{
+	var globalClockName = getGlobalClockName();
+	var result = -1;
+	var clockVar = self.valuations.select(v | v.name = getGlobalClockName()).at(0);
+	if (clockVar <> null and clockVar.isDefined()) {
+		result = clockVar.value.value;
+	}
+	return result;
+}

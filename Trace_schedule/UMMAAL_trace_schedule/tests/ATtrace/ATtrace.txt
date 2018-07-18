@@ -1,0 +1,207 @@
+Options for the verification:
+  Generating some trace
+  Search order is random depth first
+  Using conservative space optimisation
+  Seed is 1491832317
+  State space representation uses minimal constraint systems
+
+Verifying formula 1 at line 1
+ -- Formula is satisfied.
+Showing example trace.
+
+State:
+( process0.Init process1.Init process2.Init process3.Init process4.Init process5.Init process6.Init toplevel.Init )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=0 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=0 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  toplevel.Init->toplevel.Waiting { 1, activate[0]!, 1 }
+  process0.Init->process0.Activating { 1, activate[0]?, 1 }
+
+State:
+( process0.Activating process1.Init process2.Init process3.Init process4.Init process5.Init process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=0 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=0 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process0.Activating->process0.Activating { activated < 2, activate[children[activated]]!, activated := activated + 1 }
+  process1.Init->process1.Activating { 1, activate[1]?, 1 }
+
+State:
+( process0.Activating process1.Activating process2.Init process3.Init process4.Init process5.Init process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=1 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=0 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process1.Activating->process1.Activating { activated < 2, activate[children[activated]]!, activated := activated + 1 }
+  process2.Init->process2.Activating { 1, activate[2]?, elapsedTime := 0 }
+
+State:
+( process0.Activating process1.Activating process2.Activating process3.Init process4.Init process5.Init process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=1 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=1 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process0.Activating->process0.Activating { activated < 2, activate[children[activated]]!, activated := activated + 1 }
+  process4.Init->process4.Activating { 1, activate[4]?, 1 }
+
+State:
+( process0.Activating process1.Activating process2.Activating process3.Init process4.Activating process5.Init process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=1 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process2.Activating->process2.Aborting { 1, tau, 1 }
+
+State:
+( process0.Activating process1.Activating process2.Aborting process3.Init process4.Activating process5.Init process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=1 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process1.Activating->process1.Activating { activated < 2, activate[children[activated]]!, activated := activated + 1 }
+  process3.Init->process3.Activating { 1, activate[3]?, elapsedTime := 0 }
+
+State:
+( process0.Activating process1.Activating process2.Aborting process3.Activating process4.Activating process5.Init process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process3.Activating->process3.Aborting { 1, tau, 1 }
+
+State:
+( process0.Activating process1.Activating process2.Aborting process3.Aborting process4.Activating process5.Init process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=0 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process4.Activating->process4.Activating { activated < 2, activate[children[activated]]!, activated := activated + 1 }
+  process5.Init->process5.Activating { 1, activate[5]?, elapsedTime := 0 }
+
+State:
+( process0.Activating process1.Activating process2.Aborting process3.Aborting process4.Activating process5.Activating process6.Init toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=1 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process4.Activating->process4.Activating { activated < 2, activate[children[activated]]!, activated := activated + 1 }
+  process6.Init->process6.Activating { 1, activate[6]?, elapsedTime := 0 }
+
+State:
+( process0.Activating process1.Activating process2.Aborting process3.Aborting process4.Activating process5.Activating process6.Activating toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process4.Activating->process4.Waiting { activated == 2, tau, 1 }
+
+State:
+( process0.Activating process1.Activating process2.Aborting process3.Aborting process4.Waiting process5.Activating process6.Activating toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process1.Activating->process1.Waiting { activated == 2, tau, 1 }
+
+State:
+( process0.Activating process1.Waiting process2.Aborting process3.Aborting process4.Waiting process5.Activating process6.Activating toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=0 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process6.Activating->process6.Active { 1, tau, cost += 20 }
+
+State:
+( process0.Activating process1.Waiting process2.Aborting process3.Aborting process4.Waiting process5.Activating process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=20 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process0.Activating->process0.Waiting { activated == 2, tau, 1 }
+
+State:
+( process0.Waiting process1.Waiting process2.Aborting process3.Aborting process4.Waiting process5.Activating process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=20 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process5.Activating->process5.Active { 1, tau, cost += 5 }
+
+State:
+( process0.Waiting process1.Waiting process2.Aborting process3.Aborting process4.Waiting process5.Active process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=25 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process3.Aborting->process3.Completed { 1, abort[3]!, 1 }
+  process1.Waiting->process1.Comparing { 1, abort[3]?, abortCount++ }
+
+State:
+( process0.Waiting process1.Comparing process2.Aborting process3.Completed process4.Waiting process5.Active process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=25 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=0 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=1 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process1.Comparing->process1.Finishing { abortCount == 1, abort[1]!, 1 }
+  process0.Waiting->process0.Comparing { 1, abort[1]?, abortCount++ }
+
+State:
+( process0.Comparing process1.Finishing process2.Aborting process3.Completed process4.Waiting process5.Active process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=25 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=1 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process0.Comparing->process0.Waiting { completionCount < 1 && abortCount < 2, tau, 1 }
+
+State:
+( process0.Waiting process1.Finishing process2.Aborting process3.Completed process4.Waiting process5.Active process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=25 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=1 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process1.Finishing->process1.Completed { 1, dontcare[1]!, completionCount := 0, abortCount := 0 }
+
+State:
+( process0.Waiting process1.Completed process2.Aborting process3.Completed process4.Waiting process5.Active process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=25 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process2.Aborting->process2.Completed { 1, abort[2]!, 1 }
+
+State:
+( process0.Waiting process1.Completed process2.Completed process3.Completed process4.Waiting process5.Active process6.Active toplevel.Waiting )
+process2.elapsedTime=0 process3.elapsedTime=0 process5.elapsedTime=0 process6.elapsedTime=0 toplevel.time=0 cost=25 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Delay: 1
+
+State:
+( process0.Waiting process1.Completed process2.Completed process3.Completed process4.Waiting process5.Active process6.Active toplevel.Waiting )
+process2.elapsedTime=1 process3.elapsedTime=1 process5.elapsedTime=1 process6.elapsedTime=1 toplevel.time=1 cost=25 result_DiffLMH1=0 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=0 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process6.Active->process6.Completed { elapsedTime >= 1, complete[6]!, handleDiffLMH1(3) }
+  process4.Waiting->process4.Comparing { 1, complete[6]?, completionCount++ }
+
+State:
+( process0.Waiting process1.Completed process2.Completed process3.Completed process4.Comparing process5.Active process6.Completed toplevel.Waiting )
+process2.elapsedTime=1 process3.elapsedTime=1 process5.elapsedTime=1 process6.elapsedTime=1 toplevel.time=1 cost=25 result_DiffLMH1=1 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=1 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process4.Comparing->process4.Waiting { completionCount < 2 && abortCount < 1, tau, 1 }
+
+State:
+( process0.Waiting process1.Completed process2.Completed process3.Completed process4.Waiting process5.Active process6.Completed toplevel.Waiting )
+process2.elapsedTime=1 process3.elapsedTime=1 process5.elapsedTime=1 process6.elapsedTime=1 toplevel.time=1 cost=25 result_DiffLMH1=1 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=1 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Delay: 9
+
+State:
+( process0.Waiting process1.Completed process2.Completed process3.Completed process4.Waiting process5.Active process6.Completed toplevel.Waiting )
+process2.elapsedTime=10 process3.elapsedTime=10 process5.elapsedTime=10 process6.elapsedTime=10 toplevel.time=10 cost=25 result_DiffLMH1=1 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=1 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process5.Active->process5.Completed { elapsedTime >= 10, complete[5]!, handleDiffLMH1(2) }
+  process4.Waiting->process4.Comparing { 1, complete[5]?, completionCount++ }
+
+State:
+( process0.Waiting process1.Completed process2.Completed process3.Completed process4.Comparing process5.Completed process6.Completed toplevel.Waiting )
+process2.elapsedTime=10 process3.elapsedTime=10 process5.elapsedTime=10 process6.elapsedTime=10 toplevel.time=10 cost=25 result_DiffLMH1=1 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=0 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=2 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process4.Comparing->process4.Finishing { completionCount == 2, complete[4]!, 1 }
+  process0.Waiting->process0.Comparing { 1, complete[4]?, completionCount++ }
+
+State:
+( process0.Comparing process1.Completed process2.Completed process3.Completed process4.Finishing process5.Completed process6.Completed toplevel.Waiting )
+process2.elapsedTime=10 process3.elapsedTime=10 process5.elapsedTime=10 process6.elapsedTime=10 toplevel.time=10 cost=25 result_DiffLMH1=1 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=1 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=2 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 
+
+Transitions:
+  process0.Comparing->process0.Finishing { completionCount == 1, complete[0]!, 1 }
+  toplevel.Waiting->toplevel.Completed { 1, complete[0]?, 1 }
+
+State:
+( process0.Finishing process1.Completed process2.Completed process3.Completed process4.Finishing process5.Completed process6.Completed toplevel.Completed )
+process2.elapsedTime=10 process3.elapsedTime=10 process5.elapsedTime=10 process6.elapsedTime=10 toplevel.time=10 cost=25 result_DiffLMH1=1 DiffLMH1[0]=2 DiffLMH1[1]=1 DiffLMH1[2]=1 DiffLMH1[3]=1 process0.parentCount=0 process0.children[0]=1 process0.children[1]=4 process0.children[2]=0 process0.activated=2 process0.completionCount=1 process0.abortCount=1 process1.parentCount=1 process1.children[0]=2 process1.children[1]=3 process1.children[2]=0 process1.activated=2 process1.completionCount=0 process1.abortCount=0 process2.parentCount=1 process3.parentCount=1 process4.parentCount=1 process4.children[0]=5 process4.children[1]=6 process4.children[2]=0 process4.activated=2 process4.completionCount=2 process4.abortCount=0 process5.parentCount=1 process6.parentCount=1 

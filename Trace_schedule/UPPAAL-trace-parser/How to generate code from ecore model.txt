@@ -1,0 +1,13 @@
+- register (right-click -> Register EPackages) all .ecore files that you need to use/import in your ecore model.
+- make sure that the imports you declare in the .ecore file are correct. It is important that you don't use local or relative paths (../../model/otherModel.ecore) but proper URIs instead (http://com.example/myproject/model)
+- DO NOT UNDER ANY CIRCUMSTANCE use the "OCLinEcore Editor" to open the .ecore, as it automatically invents a lot of imports that don't ever work
+- right-click your .ecore file -> Eugenia -> "Generate EMF Genmodel"
+- right-click .genmodel file -> Open with -> "EMF Generator"
+- it may not work or give errors. The fake imports are still there, for some unknown reason.
+  - if it does open without errors, just select the package, make sure that the "Base package" property (Properties tab, category All when the package is selected in the .genmodel "EMF Generator" editor) is set to something useful (for example: "nl.utwente.ewi.fmt" for package "uppaalSMC"), or you will get all code without further packages.
+  - right-click the package for which you want to generate the code (you may even delete some packages), then select "Generate model code": it should put the code in "src". Some other properties of the .genmodel file may help in putting the code somewhere else.
+- right-click .genmodel file -> Reload...
+- select Ecore model
+- go through, select those things you were supposed to import
+- there will be errors, but it won't matter
+- do again the right-click on .genmodel -> EMF Generator: this time it should work (?!?): proceed to generate the code

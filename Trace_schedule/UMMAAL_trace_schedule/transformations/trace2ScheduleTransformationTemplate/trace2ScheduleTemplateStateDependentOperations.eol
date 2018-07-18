@@ -1,0 +1,21 @@
+/*
+
+	Author: 
+		Bugra M. Yildiz
+		Stefano	Schivo
+
+	Date: 22 February 2017
+
+	Description: 
+		This file includes the state-free helper operations for the trace2ScheduleTemplate transformation.
+		
+		To use the operations in this file, one needs to check the assumptions of each operation.
+		These assumptions are prerequisites that need to be fulfilled before using the related 
+		operation.    
+
+	Models:
+		The same as trace2ScheduleTemplate.etl.
+
+	Assumptions:
+		The same as trace2ScheduleTemplate.etl.
+*/

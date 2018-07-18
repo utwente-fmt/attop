@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ASCII"?>
+<nl.utwente.ewi.fmt.UATMM:AttackTree xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl.utwente.ewi.fmt.UATMM="ecore:UATMM_structure" Root="0">
+  <Nodes children="1 4" id="0" label="EnterBuilding">
+    <connector xsi:type="nl.utwente.ewi.fmt.UATMM:OR"/>
+  </Nodes>
+  <Nodes children="2 3" parents="0" id="1" label="Door">
+    <connector xsi:type="nl.utwente.ewi.fmt.UATMM:AND"/>
+  </Nodes>
+  <Nodes parents="1" id="2" label="OpenDoor"/>
+  <Nodes parents="1" id="3" label="DisableAlarm"/>
+  <Nodes children="5 6" parents="0" id="4" label="Window">
+    <connector xsi:type="nl.utwente.ewi.fmt.UATMM:AND"/>
+  </Nodes>
+  <Nodes parents="4" id="5" label="DisableAlarm"/>
+  <Nodes parents="4" id="6" label="OpenWindow"/>
+</nl.utwente.ewi.fmt.UATMM:AttackTree>

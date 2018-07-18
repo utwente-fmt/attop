@@ -1,0 +1,47 @@
+operation Uppaal!NTA addTopLevel(root : UATS!Node)
+{
+	var tmpl : Uppaal!Template = new Uppaal!Template();
+	tmpl.name = "TopLevel";
+	
+	var initLocation = tmpl.createLocation("Init").makeCommitted();
+	tmpl.init = initLocation;
+	tmpl.declarations = new Uppaal!LocalDeclarations();
+	var waitingLocation = tmpl.createLocation("Waiting");
+	var completedLocation = tmpl.createLocation("Completed");
+
+	var failsVar : Uppaal!Variable = createVariable("num_completions");
+	var decl = createDataDeclaration(failsVar);
+	decl.typeDefinition.referredType = Uppaal!PredefinedType.allInstances().select(t | t.name = "int").first();
+	tmpl.declarations.declaration.add(decl);
+
+
+	var activateEdge : Uppaal!Edge = tmpl.createEdge(initLocation, waitingLocation);
+	var activationVar = activateArray.createReferringExpression().makeArrayExpression(
+		idToSignalNum.get(root.id)
+	);
+	activateEdge.setSync(activationVar, true);
+
+	var completeEdge : Uppaal!Edge = tmpl.createEdge(waitingLocation, completedLocation);
+	var completeVar = completeArray.createReferringExpression().makeArrayExpression(
+		idToSignalNum.get(root.id)
+	);
+	completeEdge.setSync(completeVar, false);
+	var update = failsVar.createIncrementDecrementExpr(true);
+	completeEdge.addUpdate(update);
+
+	var repairedVar = repairedArray.createReferringExpression().makeArrayExpression(
+		idToSignalNum.get(root.id)
+	);
+	var repairedEdge = tmpl.createEdge(completedLocation, waitingLocation);
+	repairedEdge.setSync(repairedVar, false);
+	self.template.add(tmpl);
+	tmpl.declareClock("time");
+
+	decl = new Uppaal!TemplateDeclaration();
+	decl.declaredTemplate = new Uppaal!RedefinedTemplate();
+	decl.declaredTemplate.referredTemplate = tmpl;
+	decl.declaredTemplate.name = "toplevel";
+	self.systemDeclarations.declaration.add(decl);
+
+	self.systemDeclarations.system.instantiationList.at(0).template.add(decl.declaredTemplate);
+}

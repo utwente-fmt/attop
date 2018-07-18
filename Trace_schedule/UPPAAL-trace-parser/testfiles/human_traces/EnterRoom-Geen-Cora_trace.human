@@ -1,0 +1,17 @@
+State: Sys._id9 d_Door._id3 d_Window._id3 d_EnterRoom._id2 f = 0 t = 1 system_done = 0 d_Door.min = 5 d_Door.max = 6 d_Door.id = 0 d_Window.min = 10 d_Window.max = 12 d_Window.id = 1 t(0)-Sys.clk<=0 t(0)-d_Door.clk<=0 t(0)-d_Window.clk<=0 Sys.clk-d_Door.clk<=0 d_Door.clk-d_Window.clk<=0 d_Window.clk-t(0)<=0 
+
+Transition: Sys._id9 -> Sys.busy {1; 0; clk = 0;} 
+
+State: Sys.busy d_Door._id3 d_Window._id3 d_EnterRoom._id2 f = 0 t = 1 system_done = 0 d_Door.min = 5 d_Door.max = 6 d_Door.id = 0 d_Window.min = 10 d_Window.max = 12 d_Window.id = 1 t(0)-Sys.clk<=0 t(0)-d_Door.clk<=0 t(0)-d_Window.clk<=0 Sys.clk-d_Door.clk<=0 d_Door.clk-d_Window.clk<=0 d_Window.clk-Sys.clk<=0 
+
+Transition: d_Door._id3 -> d_Door._id6 {1; 0; clk = 0;} 
+
+State: Sys.busy d_Door._id6 d_Window._id3 d_EnterRoom._id2 f = 0 t = 1 system_done = 0 d_Door.min = 5 d_Door.max = 6 d_Door.id = 0 d_Window.min = 10 d_Window.max = 12 d_Window.id = 1 t(0)-Sys.clk<=0 t(0)-d_Door.clk<=0 t(0)-d_Window.clk<=0 Sys.clk-d_Window.clk<=0 d_Door.clk-t(0)<6 d_Door.clk-Sys.clk<=0 d_Window.clk-Sys.clk<=0 
+
+Transition: d_Door._id6 -> d_Door.fired {clk > min && !system_done; a!; 1;} d_EnterRoom._id2 -> d_EnterRoom._id1 {1; b?; 1;} 
+
+State: Sys.busy d_Door.fired d_Window._id3 d_EnterRoom._id1 f = 0 t = 1 system_done = 0 d_Door.min = 5 d_Door.max = 6 d_Door.id = 0 d_Window.min = 10 d_Window.max = 12 d_Window.id = 1 t(0)-Sys.clk<=0 t(0)-d_Door.clk<-5 t(0)-d_Window.clk<=0 Sys.clk-d_Window.clk<=0 d_Door.clk-t(0)<6 d_Door.clk-Sys.clk<=0 d_Window.clk-Sys.clk<=0 
+
+Transition: d_EnterRoom._id1 -> d_EnterRoom.done {1; a!; 1;} Sys.busy -> Sys.done {1; a?; system_done = 1;} 
+
+State: Sys.done d_Door.fired d_Window._id3 d_EnterRoom.done f = 0 t = 1 system_done = 1 d_Door.min = 5 d_Door.max = 6 d_Door.id = 0 d_Window.min = 10 d_Window.max = 12 d_Window.id = 1 t(0)-Sys.clk<=0 t(0)-d_Door.clk<-5 t(0)-d_Window.clk<=0 Sys.clk-d_Window.clk<=0 d_Door.clk-Sys.clk<=0 d_Window.clk-Sys.clk<=0 

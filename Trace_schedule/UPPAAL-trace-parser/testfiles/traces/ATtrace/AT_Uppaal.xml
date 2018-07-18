@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:declarations="http://www.muml.org/uppaal/declarations/1.0.0" xmlns:expressions="http://www.muml.org/uppaal/expressions/1.0.0" xmlns:statements="http://www.muml.org/uppaal/statements/1.0.0" xmlns:system="http://www.muml.org/uppaal/declarations/system/1.0.0" xmlns:types="http://www.muml.org/uppaal/types/1.0.0" xmlns:uppaal="http://www.muml.org/uppaal/1.0.0">
+  <uppaal:NTA>
+    <globalDeclarations>
+      <declaration xsi:type="declarations:ChannelVariableDeclaration" broadcast="true">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/1"/>
+        <variable name="complete">
+          <index xsi:type="declarations:ValueIndex">
+            <sizeExpression xsi:type="expressions:LiteralExpression" text="7"/>
+          </index>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:ChannelVariableDeclaration" broadcast="true">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/2"/>
+        <variable name="activate">
+          <index xsi:type="declarations:ValueIndex">
+            <sizeExpression xsi:type="expressions:LiteralExpression" text="7"/>
+          </index>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:ChannelVariableDeclaration" broadcast="true">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/3"/>
+        <variable name="abort">
+          <index xsi:type="declarations:ValueIndex">
+            <sizeExpression xsi:type="expressions:LiteralExpression" text="7"/>
+          </index>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:ChannelVariableDeclaration" broadcast="true">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/4"/>
+        <variable name="dontcare">
+          <index xsi:type="declarations:ValueIndex">
+            <sizeExpression xsi:type="expressions:LiteralExpression" text="3"/>
+          </index>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:DataVariableDeclaration">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/5"/>
+        <variable name="cost"/>
+      </declaration>
+      <declaration xsi:type="declarations:DataVariableDeclaration" prefix="const">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/6"/>
+        <variable name="L">
+          <initializer xsi:type="declarations:ExpressionInitializer">
+            <expression xsi:type="expressions:LiteralExpression" text="0"/>
+          </initializer>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:DataVariableDeclaration" prefix="const">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/7"/>
+        <variable name="M">
+          <initializer xsi:type="declarations:ExpressionInitializer">
+            <expression xsi:type="expressions:LiteralExpression" text="1"/>
+          </initializer>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:DataVariableDeclaration" prefix="const">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/8"/>
+        <variable name="H">
+          <initializer xsi:type="declarations:ExpressionInitializer">
+            <expression xsi:type="expressions:LiteralExpression" text="2"/>
+          </initializer>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:DataVariableDeclaration" prefix="const">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/9"/>
+        <variable name="E">
+          <initializer xsi:type="declarations:ExpressionInitializer">
+            <expression xsi:type="expressions:LiteralExpression" text="3"/>
+          </initializer>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:DataVariableDeclaration">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/10"/>
+        <variable name="result_DiffLMH1">
+          <initializer xsi:type="declarations:ExpressionInitializer">
+            <expression xsi:type="expressions:LiteralExpression" text="L"/>
+          </initializer>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:DataVariableDeclaration">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/11"/>
+        <variable name="DiffLMH1">
+          <index xsi:type="declarations:ValueIndex">
+            <sizeExpression xsi:type="expressions:LiteralExpression" text="4"/>
+          </index>
+          <initializer xsi:type="declarations:ArrayInitializer">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="H"/>
+            </initializer>
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="M"/>
+            </initializer>
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="M"/>
+            </initializer>
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="M"/>
+            </initializer>
+          </initializer>
+        </variable>
+      </declaration>
+      <declaration xsi:type="declarations:FunctionDeclaration">
+        <function name="handleDiffLMH1">
+          <returnType xsi:type="types:TypeReference" referredType="/12"/>
+          <block>
+            <declarations/>
+            <statement xsi:type="statements:IfStatement">
+              <ifExpression xsi:type="expressions:CompareExpression" operator=">">
+                <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/14">
+                  <index xsi:type="expressions:IdentifierExpression" identifier="/0/@globalDeclarations/@declaration.11/@function/@parameter.0/@variableDeclaration/@variable.0"/>
+                </firstExpr>
+                <secondExpr xsi:type="expressions:IdentifierExpression" identifier="/15"/>
+              </ifExpression>
+              <thenStatement xsi:type="statements:Block">
+                <declarations/>
+                <statement xsi:type="statements:ExpressionStatement">
+                  <expression xsi:type="expressions:AssignmentExpression">
+                    <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/16"/>
+                    <secondExpr xsi:type="expressions:IdentifierExpression" identifier="/14">
+                      <index xsi:type="expressions:IdentifierExpression" identifier="/0/@globalDeclarations/@declaration.11/@function/@parameter.0/@variableDeclaration/@variable.0"/>
+                    </secondExpr>
+                  </expression>
+                </statement>
+              </thenStatement>
+            </statement>
+          </block>
+          <parameter>
+            <variableDeclaration xsi:type="declarations:DataVariableDeclaration">
+              <typeDefinition xsi:type="types:TypeReference" referredType="/13"/>
+              <variable name="id"/>
+            </variableDeclaration>
+          </parameter>
+        </function>
+      </declaration>
+    </globalDeclarations>
+    <template name="gate_0" init="/0/@template.0/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/21"/>
+          <variable name="parentCount">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="0"/>
+            </initializer>
+          </variable>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/22"/>
+          <variable name="children">
+            <index xsi:type="declarations:ValueIndex">
+              <sizeExpression xsi:type="expressions:LiteralExpression" text="3"/>
+            </index>
+            <initializer xsi:type="declarations:ArrayInitializer">
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="1"/>
+              </initializer>
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="4"/>
+              </initializer>
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="0"/>
+              </initializer>
+            </initializer>
+          </variable>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/23"/>
+          <variable name="activated"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/27"/>
+          <variable name="completionCount"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/29"/>
+          <variable name="abortCount"/>
+        </declaration>
+      </declarations>
+      <location name="Init"/>
+      <location name="Activating" locationTimeKind="COMMITED"/>
+      <location name="Waiting"/>
+      <location name="Comparing" locationTimeKind="COMMITED"/>
+      <location name="Completed"/>
+      <location name="Finishing" locationTimeKind="COMMITED"/>
+      <edge source="/0/@template.0/@location.1" target="/0/@template.0/@location.1">
+        <guard xsi:type="expressions:CompareExpression" operator="&lt;">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:ArithmeticExpression">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.2/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+          </secondExpr>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/24">
+            <index xsi:type="expressions:IdentifierExpression" identifier="/25">
+              <index xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.2/@variable.0"/>
+            </index>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.0" target="/0/@template.0/@location.1">
+        <synchronization>
+          <channelExpression identifier="/20">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.1" target="/0/@template.0/@location.2">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+      </edge>
+      <edge source="/0/@template.0/@location.2" target="/0/@template.0/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.3/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/17">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.2" target="/0/@template.0/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.4/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/18">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.2" target="/0/@template.0/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.3/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/17">
+            <index xsi:type="expressions:LiteralExpression" text="4"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.2" target="/0/@template.0/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.4/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/18">
+            <index xsi:type="expressions:LiteralExpression" text="4"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.3" target="/0/@template.0/@location.2">
+        <guard xsi:type="expressions:LogicalExpression">
+          <firstExpr xsi:type="expressions:CompareExpression" operator="&lt;">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.3/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+          </firstExpr>
+          <secondExpr xsi:type="expressions:CompareExpression" operator="&lt;">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.4/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+          </secondExpr>
+        </guard>
+      </edge>
+      <edge source="/0/@template.0/@location.3" target="/0/@template.0/@location.5">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.3/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+        </guard>
+        <synchronization kind="!">
+          <channelExpression identifier="/17">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.5" target="/0/@template.0/@location.4">
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.3/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.4/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/19">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.0/@location.3" target="/0/@template.0/@location.5">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.0/@declarations/@declaration.4/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+        <synchronization kind="!">
+          <channelExpression identifier="/18">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <template name="gate_1" init="/0/@template.1/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/37"/>
+          <variable name="parentCount">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="1"/>
+            </initializer>
+          </variable>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/38"/>
+          <variable name="children">
+            <index xsi:type="declarations:ValueIndex">
+              <sizeExpression xsi:type="expressions:LiteralExpression" text="3"/>
+            </index>
+            <initializer xsi:type="declarations:ArrayInitializer">
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="2"/>
+              </initializer>
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="3"/>
+              </initializer>
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="0"/>
+              </initializer>
+            </initializer>
+          </variable>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/39"/>
+          <variable name="activated"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/43"/>
+          <variable name="completionCount"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/45"/>
+          <variable name="abortCount"/>
+        </declaration>
+      </declarations>
+      <location name="Init"/>
+      <location name="Activating" locationTimeKind="COMMITED"/>
+      <location name="Waiting"/>
+      <location name="Comparing" locationTimeKind="COMMITED"/>
+      <location name="Completed"/>
+      <location name="Finishing" locationTimeKind="COMMITED"/>
+      <edge source="/0/@template.1/@location.1" target="/0/@template.1/@location.1">
+        <guard xsi:type="expressions:CompareExpression" operator="&lt;">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:ArithmeticExpression">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.2/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+          </secondExpr>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/40">
+            <index xsi:type="expressions:IdentifierExpression" identifier="/41">
+              <index xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.2/@variable.0"/>
+            </index>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.0" target="/0/@template.1/@location.1">
+        <synchronization>
+          <channelExpression identifier="/36">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.1" target="/0/@template.1/@location.2">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+      </edge>
+      <edge source="/0/@template.1/@location.2" target="/0/@template.1/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.3/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/33">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.2" target="/0/@template.1/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.4/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/34">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.2" target="/0/@template.1/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.3/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/33">
+            <index xsi:type="expressions:LiteralExpression" text="3"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.2" target="/0/@template.1/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.4/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/34">
+            <index xsi:type="expressions:LiteralExpression" text="3"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.3" target="/0/@template.1/@location.2">
+        <guard xsi:type="expressions:LogicalExpression">
+          <firstExpr xsi:type="expressions:CompareExpression" operator="&lt;">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.3/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+          </firstExpr>
+          <secondExpr xsi:type="expressions:CompareExpression" operator="&lt;">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.4/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+          </secondExpr>
+        </guard>
+      </edge>
+      <edge source="/0/@template.1/@location.3" target="/0/@template.1/@location.5">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.3/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+        <synchronization kind="!">
+          <channelExpression identifier="/33">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.5" target="/0/@template.1/@location.4">
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.3/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.4/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/35">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.3" target="/0/@template.1/@location.5">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.1/@declarations/@declaration.4/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+        </guard>
+        <synchronization kind="!">
+          <channelExpression identifier="/34">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.0" target="/0/@template.1/@location.5">
+        <synchronization>
+          <channelExpression identifier="/46">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.1" target="/0/@template.1/@location.5">
+        <synchronization>
+          <channelExpression identifier="/47">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.1/@location.2" target="/0/@template.1/@location.5">
+        <synchronization>
+          <channelExpression identifier="/48">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <template name="TimeBoundedBE_2" init="/0/@template.2/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:ClockVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/51"/>
+          <variable name="elapsedTime"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/52"/>
+          <variable name="parentCount">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="1"/>
+            </initializer>
+          </variable>
+        </declaration>
+      </declarations>
+      <location name="Init"/>
+      <location name="Completed"/>
+      <location name="Active">
+        <invariant xsi:type="expressions:CompareExpression" operator="&lt;=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.2/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </invariant>
+      </location>
+      <location name="Activating" locationTimeKind="COMMITED"/>
+      <location name="Aborting" locationTimeKind="URGENT"/>
+      <edge source="/0/@template.2/@location.0" target="/0/@template.2/@location.3">
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.2/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/50">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.2/@location.3" target="/0/@template.2/@location.2">
+        <update xsi:type="expressions:AssignmentExpression" operator="+=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/53"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="10"/>
+        </update>
+      </edge>
+      <edge source="/0/@template.2/@location.3" target="/0/@template.2/@location.1">
+        <synchronization>
+          <channelExpression identifier="/54">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.2/@location.3" target="/0/@template.2/@location.4"/>
+      <edge source="/0/@template.2/@location.4" target="/0/@template.2/@location.1">
+        <synchronization kind="!">
+          <channelExpression identifier="/55">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.2/@location.2" target="/0/@template.2/@location.1">
+        <guard xsi:type="expressions:CompareExpression" operator=">=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.2/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+        <update xsi:type="expressions:FunctionCallExpression" function="/58">
+          <argument xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/49">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.2/@location.0" target="/0/@template.2/@location.1">
+        <synchronization>
+          <channelExpression identifier="/56">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.2/@location.2" target="/0/@template.2/@location.1">
+        <synchronization>
+          <channelExpression identifier="/57">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <template name="TimeBoundedBE_3" init="/0/@template.3/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:ClockVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/63"/>
+          <variable name="elapsedTime"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/64"/>
+          <variable name="parentCount">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="1"/>
+            </initializer>
+          </variable>
+        </declaration>
+      </declarations>
+      <location name="Init"/>
+      <location name="Completed"/>
+      <location name="Active">
+        <invariant xsi:type="expressions:CompareExpression" operator="&lt;=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.3/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="20"/>
+        </invariant>
+      </location>
+      <location name="Activating" locationTimeKind="COMMITED"/>
+      <location name="Aborting" locationTimeKind="URGENT"/>
+      <edge source="/0/@template.3/@location.0" target="/0/@template.3/@location.3">
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.3/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/62">
+            <index xsi:type="expressions:LiteralExpression" text="3"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.3/@location.3" target="/0/@template.3/@location.2">
+        <update xsi:type="expressions:AssignmentExpression" operator="+=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/65"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="5"/>
+        </update>
+      </edge>
+      <edge source="/0/@template.3/@location.3" target="/0/@template.3/@location.1">
+        <synchronization>
+          <channelExpression identifier="/66">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.3/@location.3" target="/0/@template.3/@location.4"/>
+      <edge source="/0/@template.3/@location.4" target="/0/@template.3/@location.1">
+        <synchronization kind="!">
+          <channelExpression identifier="/67">
+            <index xsi:type="expressions:LiteralExpression" text="3"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.3/@location.2" target="/0/@template.3/@location.1">
+        <guard xsi:type="expressions:CompareExpression" operator=">=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.3/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="20"/>
+        </guard>
+        <update xsi:type="expressions:FunctionCallExpression" function="/70">
+          <argument xsi:type="expressions:LiteralExpression" text="1"/>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/61">
+            <index xsi:type="expressions:LiteralExpression" text="3"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.3/@location.0" target="/0/@template.3/@location.1">
+        <synchronization>
+          <channelExpression identifier="/68">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.3/@location.2" target="/0/@template.3/@location.1">
+        <synchronization>
+          <channelExpression identifier="/69">
+            <index xsi:type="expressions:LiteralExpression" text="1"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <template name="gate_4" init="/0/@template.4/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/77"/>
+          <variable name="parentCount">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="1"/>
+            </initializer>
+          </variable>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/78"/>
+          <variable name="children">
+            <index xsi:type="declarations:ValueIndex">
+              <sizeExpression xsi:type="expressions:LiteralExpression" text="3"/>
+            </index>
+            <initializer xsi:type="declarations:ArrayInitializer">
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="5"/>
+              </initializer>
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="6"/>
+              </initializer>
+              <initializer xsi:type="declarations:ExpressionInitializer">
+                <expression xsi:type="expressions:LiteralExpression" text="0"/>
+              </initializer>
+            </initializer>
+          </variable>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/79"/>
+          <variable name="activated"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/83"/>
+          <variable name="completionCount"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/85"/>
+          <variable name="abortCount"/>
+        </declaration>
+      </declarations>
+      <location name="Init"/>
+      <location name="Activating" locationTimeKind="COMMITED"/>
+      <location name="Waiting"/>
+      <location name="Comparing" locationTimeKind="COMMITED"/>
+      <location name="Completed"/>
+      <location name="Finishing" locationTimeKind="COMMITED"/>
+      <edge source="/0/@template.4/@location.1" target="/0/@template.4/@location.1">
+        <guard xsi:type="expressions:CompareExpression" operator="&lt;">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:ArithmeticExpression">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.2/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+          </secondExpr>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/80">
+            <index xsi:type="expressions:IdentifierExpression" identifier="/81">
+              <index xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.2/@variable.0"/>
+            </index>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.0" target="/0/@template.4/@location.1">
+        <synchronization>
+          <channelExpression identifier="/76">
+            <index xsi:type="expressions:LiteralExpression" text="4"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.1" target="/0/@template.4/@location.2">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.2/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+      </edge>
+      <edge source="/0/@template.4/@location.2" target="/0/@template.4/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.3/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/73">
+            <index xsi:type="expressions:LiteralExpression" text="5"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.2" target="/0/@template.4/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.4/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/74">
+            <index xsi:type="expressions:LiteralExpression" text="5"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.2" target="/0/@template.4/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.3/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/73">
+            <index xsi:type="expressions:LiteralExpression" text="6"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.2" target="/0/@template.4/@location.3">
+        <update xsi:type="expressions:IncrementDecrementExpression" position="POST">
+          <expression xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.4/@variable.0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/74">
+            <index xsi:type="expressions:LiteralExpression" text="6"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.3" target="/0/@template.4/@location.2">
+        <guard xsi:type="expressions:LogicalExpression">
+          <firstExpr xsi:type="expressions:CompareExpression" operator="&lt;">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.3/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+          </firstExpr>
+          <secondExpr xsi:type="expressions:CompareExpression" operator="&lt;">
+            <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.4/@variable.0"/>
+            <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+          </secondExpr>
+        </guard>
+      </edge>
+      <edge source="/0/@template.4/@location.3" target="/0/@template.4/@location.5">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.3/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="2"/>
+        </guard>
+        <synchronization kind="!">
+          <channelExpression identifier="/73">
+            <index xsi:type="expressions:LiteralExpression" text="4"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.5" target="/0/@template.4/@location.4">
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.3/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.4/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/75">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.3" target="/0/@template.4/@location.5">
+        <guard xsi:type="expressions:CompareExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.4/@declarations/@declaration.4/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+        </guard>
+        <synchronization kind="!">
+          <channelExpression identifier="/74">
+            <index xsi:type="expressions:LiteralExpression" text="4"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.0" target="/0/@template.4/@location.5">
+        <synchronization>
+          <channelExpression identifier="/86">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.1" target="/0/@template.4/@location.5">
+        <synchronization>
+          <channelExpression identifier="/87">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.4/@location.2" target="/0/@template.4/@location.5">
+        <synchronization>
+          <channelExpression identifier="/88">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <template name="TimeBoundedBE_5" init="/0/@template.5/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:ClockVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/91"/>
+          <variable name="elapsedTime"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/92"/>
+          <variable name="parentCount">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="1"/>
+            </initializer>
+          </variable>
+        </declaration>
+      </declarations>
+      <location name="Init"/>
+      <location name="Completed"/>
+      <location name="Active">
+        <invariant xsi:type="expressions:CompareExpression" operator="&lt;=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.5/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="10"/>
+        </invariant>
+      </location>
+      <location name="Activating" locationTimeKind="COMMITED"/>
+      <location name="Aborting" locationTimeKind="URGENT"/>
+      <edge source="/0/@template.5/@location.0" target="/0/@template.5/@location.3">
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.5/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/90">
+            <index xsi:type="expressions:LiteralExpression" text="5"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.5/@location.3" target="/0/@template.5/@location.2">
+        <update xsi:type="expressions:AssignmentExpression" operator="+=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/93"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="5"/>
+        </update>
+      </edge>
+      <edge source="/0/@template.5/@location.3" target="/0/@template.5/@location.1">
+        <synchronization>
+          <channelExpression identifier="/94">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.5/@location.3" target="/0/@template.5/@location.4"/>
+      <edge source="/0/@template.5/@location.4" target="/0/@template.5/@location.1">
+        <synchronization kind="!">
+          <channelExpression identifier="/95">
+            <index xsi:type="expressions:LiteralExpression" text="5"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.5/@location.2" target="/0/@template.5/@location.1">
+        <guard xsi:type="expressions:CompareExpression" operator=">=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.5/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="10"/>
+        </guard>
+        <update xsi:type="expressions:FunctionCallExpression" function="/98">
+          <argument xsi:type="expressions:LiteralExpression" text="2"/>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/89">
+            <index xsi:type="expressions:LiteralExpression" text="5"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.5/@location.0" target="/0/@template.5/@location.1">
+        <synchronization>
+          <channelExpression identifier="/96">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.5/@location.2" target="/0/@template.5/@location.1">
+        <synchronization>
+          <channelExpression identifier="/97">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <template name="TimeBoundedBE_6" init="/0/@template.6/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:ClockVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/103"/>
+          <variable name="elapsedTime"/>
+        </declaration>
+        <declaration xsi:type="declarations:DataVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/104"/>
+          <variable name="parentCount">
+            <initializer xsi:type="declarations:ExpressionInitializer">
+              <expression xsi:type="expressions:LiteralExpression" text="1"/>
+            </initializer>
+          </variable>
+        </declaration>
+      </declarations>
+      <location name="Init"/>
+      <location name="Completed"/>
+      <location name="Active">
+        <invariant xsi:type="expressions:CompareExpression" operator="&lt;=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.6/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+        </invariant>
+      </location>
+      <location name="Activating" locationTimeKind="COMMITED"/>
+      <location name="Aborting" locationTimeKind="URGENT"/>
+      <edge source="/0/@template.6/@location.0" target="/0/@template.6/@location.3">
+        <update xsi:type="expressions:AssignmentExpression">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.6/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="0"/>
+        </update>
+        <synchronization>
+          <channelExpression identifier="/102">
+            <index xsi:type="expressions:LiteralExpression" text="6"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.6/@location.3" target="/0/@template.6/@location.2">
+        <update xsi:type="expressions:AssignmentExpression" operator="+=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/105"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="20"/>
+        </update>
+      </edge>
+      <edge source="/0/@template.6/@location.3" target="/0/@template.6/@location.1">
+        <synchronization>
+          <channelExpression identifier="/106">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.6/@location.3" target="/0/@template.6/@location.4"/>
+      <edge source="/0/@template.6/@location.4" target="/0/@template.6/@location.1">
+        <synchronization kind="!">
+          <channelExpression identifier="/107">
+            <index xsi:type="expressions:LiteralExpression" text="6"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.6/@location.2" target="/0/@template.6/@location.1">
+        <guard xsi:type="expressions:CompareExpression" operator=">=">
+          <firstExpr xsi:type="expressions:IdentifierExpression" identifier="/0/@template.6/@declarations/@declaration.0/@variable.0"/>
+          <secondExpr xsi:type="expressions:LiteralExpression" text="1"/>
+        </guard>
+        <update xsi:type="expressions:FunctionCallExpression" function="/110">
+          <argument xsi:type="expressions:LiteralExpression" text="3"/>
+        </update>
+        <synchronization kind="!">
+          <channelExpression identifier="/101">
+            <index xsi:type="expressions:LiteralExpression" text="6"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.6/@location.0" target="/0/@template.6/@location.1">
+        <synchronization>
+          <channelExpression identifier="/108">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.6/@location.2" target="/0/@template.6/@location.1">
+        <synchronization>
+          <channelExpression identifier="/109">
+            <index xsi:type="expressions:LiteralExpression" text="2"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <template name="TopLevel" init="/0/@template.7/@location.0">
+      <declarations>
+        <declaration xsi:type="declarations:ClockVariableDeclaration">
+          <typeDefinition xsi:type="types:TypeReference" referredType="/115"/>
+          <variable name="time"/>
+        </declaration>
+      </declarations>
+      <location name="Init" locationTimeKind="COMMITED"/>
+      <location name="Waiting"/>
+      <location name="Completed"/>
+      <edge source="/0/@template.7/@location.0" target="/0/@template.7/@location.1">
+        <synchronization kind="!">
+          <channelExpression identifier="/113">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+      <edge source="/0/@template.7/@location.1" target="/0/@template.7/@location.2">
+        <synchronization>
+          <channelExpression identifier="/114">
+            <index xsi:type="expressions:LiteralExpression" text="0"/>
+          </channelExpression>
+        </synchronization>
+      </edge>
+    </template>
+    <systemDeclarations>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="process0" referredTemplate="/0/@template.0"/>
+      </declaration>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="process1" referredTemplate="/0/@template.1"/>
+      </declaration>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="process2" referredTemplate="/0/@template.2"/>
+      </declaration>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="process3" referredTemplate="/0/@template.3"/>
+      </declaration>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="process4" referredTemplate="/0/@template.4"/>
+      </declaration>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="process5" referredTemplate="/0/@template.5"/>
+      </declaration>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="process6" referredTemplate="/0/@template.6"/>
+      </declaration>
+      <declaration xsi:type="system:TemplateDeclaration">
+        <declaredTemplate name="toplevel" referredTemplate="/0/@template.7"/>
+      </declaration>
+      <system>
+        <instantiationList template="/0/@systemDeclarations/@declaration.0/@declaredTemplate /0/@systemDeclarations/@declaration.1/@declaredTemplate /0/@systemDeclarations/@declaration.2/@declaredTemplate /0/@systemDeclarations/@declaration.3/@declaredTemplate /0/@systemDeclarations/@declaration.4/@declaredTemplate /0/@systemDeclarations/@declaration.5/@declaredTemplate /0/@systemDeclarations/@declaration.6/@declaredTemplate /0/@systemDeclarations/@declaration.7/@declaredTemplate"/>
+      </system>
+    </systemDeclarations>
+  </uppaal:NTA>
+  <types:PredefinedType name="chan" type="chan"/>
+  <types:PredefinedType name="chan" type="chan"/>
+  <types:PredefinedType name="chan" type="chan"/>
+  <types:PredefinedType name="chan" type="chan"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="void" type="void"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="DiffLMH1"/>
+  <declarations:Variable name="result_DiffLMH1"/>
+  <declarations:Variable name="result_DiffLMH1"/>
+  <declarations:Variable name="complete"/>
+  <declarations:Variable name="abort"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="activate"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="activate"/>
+  <declarations:Variable name="children"/>
+  <expressions:IdentifierExpression identifier="/0/@template.0/@declarations/@declaration.3/@variable.0"/>
+  <types:PredefinedType name="int"/>
+  <expressions:IdentifierExpression identifier="/0/@template.0/@declarations/@declaration.3/@variable.0"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="complete"/>
+  <declarations:Variable name="abort"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="activate"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="activate"/>
+  <declarations:Variable name="children"/>
+  <expressions:IdentifierExpression identifier="/0/@template.1/@declarations/@declaration.3/@variable.0"/>
+  <types:PredefinedType name="int"/>
+  <expressions:IdentifierExpression identifier="/0/@template.1/@declarations/@declaration.3/@variable.0"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="complete"/>
+  <declarations:Variable name="activate"/>
+  <types:PredefinedType name="clock" type="clock"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="cost"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="abort"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Function name="handleDiffLMH1">
+    <returnType xsi:type="types:TypeReference" referredType="/59"/>
+    <parameter>
+      <variableDeclaration xsi:type="declarations:DataVariableDeclaration">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/60"/>
+        <variable name="id"/>
+      </variableDeclaration>
+    </parameter>
+  </declarations:Function>
+  <types:PredefinedType name="void" type="void"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="complete"/>
+  <declarations:Variable name="activate"/>
+  <types:PredefinedType name="clock" type="clock"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="cost"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="abort"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Function name="handleDiffLMH1">
+    <returnType xsi:type="types:TypeReference" referredType="/71"/>
+    <parameter>
+      <variableDeclaration xsi:type="declarations:DataVariableDeclaration">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/72"/>
+        <variable name="id"/>
+      </variableDeclaration>
+    </parameter>
+  </declarations:Function>
+  <types:PredefinedType name="void" type="void"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="complete"/>
+  <declarations:Variable name="abort"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="activate"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="activate"/>
+  <declarations:Variable name="children"/>
+  <expressions:IdentifierExpression identifier="/0/@template.4/@declarations/@declaration.3/@variable.0"/>
+  <types:PredefinedType name="int"/>
+  <expressions:IdentifierExpression identifier="/0/@template.4/@declarations/@declaration.3/@variable.0"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="complete"/>
+  <declarations:Variable name="activate"/>
+  <types:PredefinedType name="clock" type="clock"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="cost"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="abort"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Function name="handleDiffLMH1">
+    <returnType xsi:type="types:TypeReference" referredType="/99"/>
+    <parameter>
+      <variableDeclaration xsi:type="declarations:DataVariableDeclaration">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/100"/>
+        <variable name="id"/>
+      </variableDeclaration>
+    </parameter>
+  </declarations:Function>
+  <types:PredefinedType name="void" type="void"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="complete"/>
+  <declarations:Variable name="activate"/>
+  <types:PredefinedType name="clock" type="clock"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="cost"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="abort"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Variable name="dontcare"/>
+  <declarations:Function name="handleDiffLMH1">
+    <returnType xsi:type="types:TypeReference" referredType="/111"/>
+    <parameter>
+      <variableDeclaration xsi:type="declarations:DataVariableDeclaration">
+        <typeDefinition xsi:type="types:TypeReference" referredType="/112"/>
+        <variable name="id"/>
+      </variableDeclaration>
+    </parameter>
+  </declarations:Function>
+  <types:PredefinedType name="void" type="void"/>
+  <types:PredefinedType name="int"/>
+  <declarations:Variable name="activate"/>
+  <declarations:Variable name="complete"/>
+  <types:PredefinedType name="clock" type="clock"/>
+</xmi:XMI>

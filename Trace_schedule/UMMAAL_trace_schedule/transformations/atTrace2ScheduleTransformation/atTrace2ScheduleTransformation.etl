@@ -1,0 +1,176 @@
+import "../trace2ScheduleTransformationTemplate/trace2ScheduleTemplate.etl";
+
+import "atTrace2ScheduleTransformationStateDependentOperations.eol";
+import "atTrace2ScheduleTransformationStateFreeOperations.eol";
+
+/*
+	Author: 
+		Rajesh Kumar
+		Stefano Schivo
+
+	Date: 
+		10 April 2017
+	
+	Description: 
+		This transformation generates a schedule instance from a given AT model UPPAAL Trace. It uses the template.
+
+	Models:
+
+		The models coming from the template:
+
+			UPPAALTrace: an instance of IntermediateTrace metamodel. This model is read-only.
+			
+			Schedule: an instance of UMMAALSchedule metamodel. This case, we are using UMMAALScheduleSimple metamodel, which 
+									extends UMMAALSchedule metamodel.
+	
+	Assumptions:
+		None.
+			
+*/ 
+
+
+// Executor:   it's always the attacker, so we may just manage to use only one
+// Executable: basic attack steps. Each of them is identified by an automaton,
+// 			   whose name is based on the original ID of the attack step in the AFT model.
+// StartTime:  the value of the clock topLevel.time when the automaton corresponding to the
+//			   basic attack step receives a communication on its own activate[] channel (index is the ID)
+// EndTime:	   value of topLevel.time when the automaton sends a communication on its complete[] channel
+
+
+pre pre_sdfTrace2ScheduleTransformation
+{
+	
+	/********************************************
+		This part schedules the rule execution.
+	*********************************************/
+	
+	var attacker = null;
+	/*//1. Execute the rule Trace2Executor 
+	for(curElement in UPPAALTrace!Trace.allInstances())
+	{
+		attacker = curElement.equivalent("Trace2Executor"); //There should be only one Trace, as it is the root node of the model
+	}*/
+	attacker = new Schedule!SimpleExecutor();
+	attacker.name = "Attacker";	
+	attacker.uuid = attacker.name + getUniqueUUID();
+	
+	//2. Execute the rule TemplateInstance2Executable
+	UPPAALTrace!TemplateInstance.allInstances().size().println("Number of template instances: ");
+	for(curElement in UPPAALTrace!TemplateInstance.allInstances())
+	{
+		curElement.equivalent("TemplateInstance2Executable");
+	}
+	
+	//3. Execute the rule EdgeTransition2Task
+	//Note that this also sets the start times
+	for(curElement in UPPAALTrace!EdgeTransition.allInstances())
+	{
+		//curElement.println("\n\nedgetransition: ");
+		//curElement.doesSynchronizationOnChannel(getChannelNameForFiring()).println("does synch on channel? ");
+		curElement.equivalent("EdgeTransition2Task");
+	}
+	
+	//4. Execute the rule EdgeTransition2EndTime
+	for(curElement in UPPAALTrace!EdgeTransition.allInstances())
+	{
+		var endtime = curElement.equivalent("EdgeTransition2EndTime");
+	}
+	
+}	
+
+
+// To generate a declaration of an Executor that represents the attacker: translate something into it.
+// Just take the trace itself
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+
+	Rule for creating Schedule!SimpleExecutor
+
+	Given the UPPAALTrace!Trace, create the Executor named "Attacker"
+*/
+@lazy
+rule Trace2Executor transform
+	trace: UPPAALTrace!Trace to simpleExecutor: Schedule!SimpleExecutor
+{
+	
+	simpleExecutor.name = "Attacker";	
+	simpleExecutor.uuid = simpleExecutor.name + getUniqueUUID();
+}
+
+
+
+
+
+// Look at all T.A. template declarations to find those that represent basic attack steps:
+// make an Executable for each one of them.
+// Use the guard to limit the applicability of the rule: we only want those templates that use a particular naming convention
+rule TemplateInstance2Executable transform
+	templateInstance: UPPAALTrace!TemplateInstance to simpleExecutable: Schedule!SimpleExecutable
+{
+	guard: templateInstance.name <> "toplevel" //TODO: note that at the moment we cannot distinguish between gates and basic attack steps (in the model, their are all called "processXY"), so we take all of them!
+	
+	//This way, the 'name' corresponds to the node id in the original AFT model
+	simpleExecutable.name = templateInstance.name.getATnodeID(); //templateInstance.name is the name of the instance, while templateInstance.template should refer to the original T.A. template
+	simpleExecutable.uuid = simpleExecutable.name + getUniqueUUID();
+	//simpleExecutable.externalReference = templateInstance; //TODO: Apparently, not all types are EObjects??
+}
+
+
+
+
+// Tasks connect an Executor (in our case, always the attacker) to an Executable (basic attack step),
+// and additionally have a StartTime and an EndTime.
+// Look at the transitions: each time you can make a new StartTime, that is where a Task "begins"
+//  (the Executor is the attacker, and the Executable is the T.A. that does the activate[]?).
+// The EndTime can be found similarly to what we did with SDF (see getFiringTransition()),
+//  looking for transitions that have a synchronization on "complete[]"
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+
+	Rule for creating Schedule!Task
+
+	Every time an 'activate' synchronization occurs (with a T.A. representing an Executable), a task starts its execution.
+*/
+@lazy
+rule EdgeTransition2Task transform
+	edgeTransition: UPPAALTrace!EdgeTransition to task : Schedule!Task
+{
+	guard: edgeTransition.doesSynchronizationOnChannel(getChannelNameForFiring()) and Schedule!SimpleExecutable.allInstances().exists(se | se.name = edgeTransition.getReceivingProcessID(getChannelNameForFiring()))
+	
+	task.executable = Schedule!SimpleExecutable.allInstances().select( se | se.name = edgeTransition.getReceivingProcessID(getChannelNameForFiring()) ).at(0);
+	task.executor = attacker;
+	
+	task.uuid = getUniqueUUID();	
+	
+	task.startTime = edgeTransition.equivalent("EdgeTransition2StartTime");
+	
+}
+
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+	
+	Rule for creating start time of a task from given transition.
+*/
+@lazy
+rule EdgeTransition2StartTime transform
+	edgeTransition: UPPAALTrace!EdgeTransition to startTime : Schedule!ExactTimeInt
+{
+	
+	startTime.value = edgeTransition.source.getGlobalClockValue();
+}
+
+/*
+	Note: BE CAREFUL ABOUT EXECUTION ORDER. CHECK PRE PART OF THIS TRANSFORMATION.
+	
+	Rule for creating end time of a task from given transition.
+*/
+@lazy
+rule EdgeTransition2EndTime transform
+	edgeTransition: UPPAALTrace!EdgeTransition to endTime : Schedule!ExactTimeInt
+{
+	guard: edgeTransition.doesSynchronizationOnChannel(getChannelNameForEnding()) and Schedule!SimpleExecutable.allInstances().exists(se | se.name = edgeTransition.getReceivingProcessID(getChannelNameForEnding()))
+	
+	endTime.value = edgeTransition.source.getGlobalClockValue();
+	
+	edgeTransition.getFiringTransition().equivalent("EdgeTransition2Task").endTime = endTime;	
+}

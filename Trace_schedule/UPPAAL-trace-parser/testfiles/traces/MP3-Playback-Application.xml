@@ -1,0 +1,52 @@
+<sdf3 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" type="sdf" 
+      xsi:noNamespaceSchemaLocation="http://www.es.ele.tue.nl/sdf3/xsd/sdf3-sdf.xsd">
+    <applicationGraph name='MP3-Playback-Application'>
+	<sdf name="MP3-Playback-Application" type="mp3-playback-application">
+            <actor name='A' type='MP3'>
+                <port name='outb' type='out' rate='470'/>
+                <port name='outa' type='out' rate='1'/>
+                <port name='inb' type='in' rate='470'/>
+                <port name='ina' type='in' rate='1'/>
+            </actor>
+            <actor name='B' type='SRC'>
+                <port name='ina' type='in' rate='6'/>
+                <port name='inc' type='in' rate='8'/>
+                <port name='inb' type='in' rate='1'/>
+                <port name='outa' type='out' rate='6'/>
+                <port name='outb' type='out' rate='1'/>
+                <port name='outc' type='out' rate='8'/>
+            </actor>
+            <actor name='C' type='DAC'>
+                <port name='inb' type='in' rate='1'/>
+                <port name='inc' type='in' rate='1'/>
+                <port name='outb' type='out' rate='1'/>
+                <port name='outc' type='out' rate='1'/>
+            </actor>
+
+            <channel name='a2b' srcActor='A' srcPort='outb' dstActor='B' dstPort='ina' initialTokens='0'/>
+            <channel name='a2a' srcActor='A' srcPort='outa' dstActor='A' dstPort='ina' initialTokens='1'/>
+            <channel name='b2a' srcActor='B' srcPort='outa' dstActor='A' dstPort='inb' initialTokens='520'/>
+            <channel name='b2c' srcActor='B' srcPort='outc' dstActor='C' dstPort='inb' initialTokens='0'/>
+            <channel name='b2b' srcActor='B' srcPort='outb' dstActor='B' dstPort='inb' initialTokens='1'/>
+            <channel name='c2b' srcActor='C' srcPort='outb' dstActor='B' dstPort='inc' initialTokens='190'/>
+            <channel name='c2c' srcActor='C' srcPort='outc' dstActor='C' dstPort='inc' initialTokens='1'/>
+          </sdf>
+        <sdfProperties>
+                <actorProperties actor='A'>
+                    <processor type='p1' default='true'>
+                        <executionTime time='1'/> 
+                    </processor>
+                </actorProperties>
+                <actorProperties actor='B'>
+                    <processor type='p1' default='true'>
+                        <executionTime time='1'/>
+                    </processor>
+                </actorProperties>
+                <actorProperties actor='C'>
+                    <processor type='p1' default='true'>
+                        <executionTime time='1'/>
+                    </processor>
+                </actorProperties>
+        </sdfProperties>
+    </applicationGraph>
+</sdf3>

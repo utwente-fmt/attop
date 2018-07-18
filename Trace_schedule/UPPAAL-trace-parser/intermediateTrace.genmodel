@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/UPPAAL-trace-parser/src" modelPluginID="UPPAAL-trace-parser"
+    modelName="IntermediateTrace" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>intermediateTrace.ecore</foreignModel>
+  <genPackages prefix="IntermediateTrace" disposableProviderFactory="true" ecorePackage="intermediateTrace.ecore#/">
+    <genClasses ecoreClass="intermediateTrace.ecore#//State">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//State/transitionTo"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//State/locations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//State/valuations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//State/clocks"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//State/transitionFrom"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//State/templates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//State/time"/>
+    </genClasses>
+    <genClasses ecoreClass="intermediateTrace.ecore#//Valuation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//Valuation/variable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//Valuation/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//Valuation/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//Valuation/template"/>
+    </genClasses>
+    <genClasses ecoreClass="intermediateTrace.ecore#//TemplateInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//TemplateInstance/template"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//TemplateInstance/locations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//TemplateInstance/name"/>
+    </genClasses>
+    <genClasses ecoreClass="intermediateTrace.ecore#//LocationInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//LocationInstance/location"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference intermediateTrace.ecore#//LocationInstance/template"/>
+    </genClasses>
+    <genClasses ecoreClass="intermediateTrace.ecore#//Trace">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//Trace/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//Trace/transitions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//Trace/templates"/>
+    </genClasses>
+    <nestedGenPackages prefix="Transitions" disposableProviderFactory="true" ecorePackage="intermediateTrace.ecore#//transitions">
+      <genClasses image="false" ecoreClass="intermediateTrace.ecore#//transitions/AbstractTransition">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference intermediateTrace.ecore#//transitions/AbstractTransition/source"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference intermediateTrace.ecore#//transitions/AbstractTransition/target"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//transitions/DelayTransition">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//transitions/DelayTransition/delay"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//transitions/EdgeTransition">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//transitions/EdgeTransition/edges"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Clocks" disposableProviderFactory="true" ecorePackage="intermediateTrace.ecore#//clocks">
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="intermediateTrace.ecore#//clocks/Relation">
+        <genEnumLiterals ecoreEnumLiteral="intermediateTrace.ecore#//clocks/Relation/EQ"/>
+        <genEnumLiterals ecoreEnumLiteral="intermediateTrace.ecore#//clocks/Relation/NE"/>
+        <genEnumLiterals ecoreEnumLiteral="intermediateTrace.ecore#//clocks/Relation/LT"/>
+        <genEnumLiterals ecoreEnumLiteral="intermediateTrace.ecore#//clocks/Relation/LE"/>
+        <genEnumLiterals ecoreEnumLiteral="intermediateTrace.ecore#//clocks/Relation/GT"/>
+        <genEnumLiterals ecoreEnumLiteral="intermediateTrace.ecore#//clocks/Relation/GE"/>
+      </genEnums>
+      <genClasses image="false" ecoreClass="intermediateTrace.ecore#//clocks/AbstractClockBoundary">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//clocks/AbstractClockBoundary/value"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//clocks/AbstractClockBoundary/relation"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//clocks/AbstractClockBoundary/target"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//clocks/SingleClockBoundary"/>
+      <genClasses ecoreClass="intermediateTrace.ecore#//clocks/InverseClockBoundary"/>
+      <genClasses ecoreClass="intermediateTrace.ecore#//clocks/CombinedClockBoundary">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//clocks/CombinedClockBoundary/subtrahend"/>
+      </genClasses>
+    </nestedGenPackages>
+    <nestedGenPackages prefix="Value" disposableProviderFactory="true" ecorePackage="intermediateTrace.ecore#//value">
+      <genClasses image="false" ecoreClass="intermediateTrace.ecore#//value/Value"/>
+      <genClasses image="false" ecoreClass="intermediateTrace.ecore#//value/BuiltInTypeValue"/>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/ChanValue"/>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/BoolValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//value/BoolValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/IntValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//value/IntValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/ClockValue">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//value/ClockValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/VoidValue"/>
+      <genClasses image="false" ecoreClass="intermediateTrace.ecore#//value/TypeSpecificationValue"/>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/ScalarSpecificationValue">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//value/ScalarSpecificationValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/StructSpecificationValue">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//value/StructSpecificationValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/RangeSpecificationValue">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//value/RangeSpecificationValue/value"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/DataVariableDeclarationValuation">
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute intermediateTrace.ecore#//value/DataVariableDeclarationValuation/dataVariableDeclaration"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//value/DataVariableDeclarationValuation/valuation"/>
+      </genClasses>
+      <genClasses ecoreClass="intermediateTrace.ecore#//value/ArrayValue">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference intermediateTrace.ecore#//value/ArrayValue/value"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

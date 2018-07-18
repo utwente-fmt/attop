@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/AFTModel/src" modelPluginID="AFTModel" modelName="Maintenance"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="UATMM.genmodel#//UATMM_structure"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>Maintenance.ecore</foreignModel>
+  <genPackages prefix="Maintenance" basePackage="nl.utwente.ewi.fmt.UATMM" disposableProviderFactory="true"
+      ecorePackage="Maintenance.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Maintenance.ecore#//EffectDiscipline">
+      <genEnumLiterals ecoreEnumLiteral="Maintenance.ecore#//EffectDiscipline/RANDOM"/>
+      <genEnumLiterals ecoreEnumLiteral="Maintenance.ecore#//EffectDiscipline/IN_ORDER"/>
+      <genEnumLiterals ecoreEnumLiteral="Maintenance.ecore#//EffectDiscipline/CUSTOM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Maintenance.ecore#//Operator">
+      <genEnumLiterals ecoreEnumLiteral="Maintenance.ecore#//Operator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="Maintenance.ecore#//Operator/OR"/>
+    </genEnums>
+    <genClasses ecoreClass="Maintenance.ecore#//Module">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Maintenance.ecore#//Module/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Maintenance.ecore#//Module/effects"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//Module/maxEffectsInProgress"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//Module/effectDiscipline"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Maintenance.ecore#//Condition"/>
+    <genClasses image="false" ecoreClass="Maintenance.ecore#//Effect"/>
+    <genClasses ecoreClass="Maintenance.ecore#//CombiningCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//CombiningCondition/operator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Maintenance.ecore#//CombiningCondition/children"/>
+    </genClasses>
+    <genClasses ecoreClass="Maintenance.ecore#//NodeCondition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//NodeCondition/state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//NodeCondition/orGreater"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Maintenance.ecore#//NodeCondition/node"/>
+    </genClasses>
+    <genClasses ecoreClass="Maintenance.ecore#//DelayCondition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Maintenance.ecore#//DelayCondition/child"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//DelayCondition/isPeriodic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Maintenance.ecore#//DelayCondition/delay"/>
+    </genClasses>
+    <genClasses ecoreClass="Maintenance.ecore#//ActivationCondition"/>
+    <genClasses ecoreClass="Maintenance.ecore#//MaintenancePolicy">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Maintenance.ecore#//MaintenancePolicy/modules"/>
+    </genClasses>
+    <genClasses ecoreClass="Maintenance.ecore#//RepairEffect">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//RepairEffect/newState"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Maintenance.ecore#//RepairEffect/delay"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Maintenance.ecore#//RepairEffect/node"/>
+    </genClasses>
+    <genClasses ecoreClass="Maintenance.ecore#//TriggerEffect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Maintenance.ecore#//TriggerEffect/target"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Maintenance.ecore#//Delay"/>
+    <genClasses ecoreClass="Maintenance.ecore#//ExponentialDelay">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//ExponentialDelay/meanTime"/>
+    </genClasses>
+    <genClasses ecoreClass="Maintenance.ecore#//BoundedDelay">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//BoundedDelay/minTime"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//BoundedDelay/maxTime"/>
+    </genClasses>
+    <genClasses ecoreClass="Maintenance.ecore#//CustomModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Maintenance.ecore#//CustomModule/model"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

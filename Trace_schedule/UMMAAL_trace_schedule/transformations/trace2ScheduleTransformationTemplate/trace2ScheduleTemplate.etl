@@ -1,0 +1,43 @@
+import "trace2ScheduleTemplateStateDependentOperations.eol";
+import "trace2ScheduleTemplateStateFreeOperations.eol";
+
+/*
+	Author: 
+		Bugra M. Yildiz
+		Stefano Schivo
+
+	Date: 
+		22 February 2017
+	
+	Description: 
+		This transformation provides a template for transformation traces to schedules. Please note that
+		this transformation does not work by itself unless it is overridden. 
+
+	Models:
+		The models in this transformation are:
+			
+			UPPAALTrace: an instance of IntermediateTrace metamodel. This model is read-only.
+			
+			Schedule: an instance of UMMAALSchedule metamodel. 
+
+	Assumptions:
+		None.			
+*/ 
+
+pre pre_trace2ScheduleTemplate
+{
+	var javaDate = new Native("java.util.Date");
+	javaDate.toString().println("trace2ScheduleTemplate is starting: ");
+
+	UPPAALTrace.modelFileUri.println("UPPAALTrace model: ");
+	UPPAALTrace.metamodelUris.println("UPPAALTrace metamodels: ");
+}
+
+post post_trace2ScheduleTemplate
+{
+	Schedule.modelFileUri.println("Schedule model: ");
+	Schedule.metamodelUris.println("Schedule metamodels: ");
+	
+	javaDate = new Native("java.util.Date");
+	javaDate.toString().println("trace2ScheduleTemplate has been completed: ");
+}

@@ -1,0 +1,2833 @@
+<?xml version="1.0" encoding="ASCII"?>
+<intermediateTrace:Trace xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:intermediateTrace="intermediateTrace" xmlns:myTrace.transitions="myTrace.transitions" xmlns:myTrace.value="myTrace.value">
+  <states transitionTo="//@transitions.0" locations="//@templates.0/@locations.0 //@templates.1/@locations.0 //@templates.2/@locations.0 //@templates.3/@locations.0 //@templates.4/@locations.0 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.0" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="activated" name="activated">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="activated" name="activated">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.1" locations="//@templates.0/@locations.1 //@templates.1/@locations.0 //@templates.2/@locations.0 //@templates.3/@locations.0 //@templates.4/@locations.0 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.0" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.2" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.0 //@templates.3/@locations.0 //@templates.4/@locations.0 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.1" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.3" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.1 //@templates.3/@locations.0 //@templates.4/@locations.0 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.2" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.4" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.1 //@templates.3/@locations.0 //@templates.4/@locations.1 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.3" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.5" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.2 //@templates.3/@locations.0 //@templates.4/@locations.1 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.4" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.6" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.2 //@templates.3/@locations.1 //@templates.4/@locations.1 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.5" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.7" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.1 //@templates.5/@locations.0 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.6" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.8" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.1 //@templates.5/@locations.1 //@templates.6/@locations.0 //@templates.7/@locations.1" transitionFrom="//@transitions.7" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.9" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.1 //@templates.5/@locations.1 //@templates.6/@locations.1 //@templates.7/@locations.1" transitionFrom="//@transitions.8" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.10" locations="//@templates.0/@locations.1 //@templates.1/@locations.1 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.2 //@templates.5/@locations.1 //@templates.6/@locations.1 //@templates.7/@locations.1" transitionFrom="//@transitions.9" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.11" locations="//@templates.0/@locations.1 //@templates.1/@locations.2 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.2 //@templates.5/@locations.1 //@templates.6/@locations.1 //@templates.7/@locations.1" transitionFrom="//@transitions.10" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.12" locations="//@templates.0/@locations.1 //@templates.1/@locations.2 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.2 //@templates.5/@locations.1 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.11" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="20"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.13" locations="//@templates.0/@locations.2 //@templates.1/@locations.2 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.2 //@templates.5/@locations.1 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.12" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="20"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.14" locations="//@templates.0/@locations.2 //@templates.1/@locations.2 //@templates.2/@locations.2 //@templates.3/@locations.2 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.13" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.15" locations="//@templates.0/@locations.2 //@templates.1/@locations.3 //@templates.2/@locations.2 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.14" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.16" locations="//@templates.0/@locations.3 //@templates.1/@locations.4 //@templates.2/@locations.2 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.15" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.17" locations="//@templates.0/@locations.2 //@templates.1/@locations.4 //@templates.2/@locations.2 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.16" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.18" locations="//@templates.0/@locations.2 //@templates.1/@locations.5 //@templates.2/@locations.2 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.17" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.19" locations="//@templates.0/@locations.2 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.18" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.20" locations="//@templates.0/@locations.2 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.2 //@templates.7/@locations.1" transitionFrom="//@transitions.19" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7" time="1.0">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.21" locations="//@templates.0/@locations.2 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.3 //@templates.5/@locations.2 //@templates.6/@locations.3 //@templates.7/@locations.1" transitionFrom="//@transitions.20" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7" time="1.0">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.22" locations="//@templates.0/@locations.2 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.3 //@templates.7/@locations.1" transitionFrom="//@transitions.21" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7" time="1.0">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.23" locations="//@templates.0/@locations.2 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.2 //@templates.5/@locations.2 //@templates.6/@locations.3 //@templates.7/@locations.1" transitionFrom="//@transitions.22" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7" time="10.0">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.24" locations="//@templates.0/@locations.2 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.3 //@templates.5/@locations.3 //@templates.6/@locations.3 //@templates.7/@locations.1" transitionFrom="//@transitions.23" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7" time="10.0">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states transitionTo="//@transitions.25" locations="//@templates.0/@locations.3 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.4 //@templates.5/@locations.3 //@templates.6/@locations.3 //@templates.7/@locations.1" transitionFrom="//@transitions.24" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7" time="10.0">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <states locations="//@templates.0/@locations.4 //@templates.1/@locations.5 //@templates.2/@locations.3 //@templates.3/@locations.3 //@templates.4/@locations.4 //@templates.5/@locations.3 //@templates.6/@locations.3 //@templates.7/@locations.2" transitionFrom="//@transitions.25" templates="//@templates.0 //@templates.1 //@templates.2 //@templates.3 //@templates.4 //@templates.5 //@templates.6 //@templates.7" time="10.0">
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="elapsedTime" name="elapsedTime" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="time" name="time" template="//@templates.7">
+      <value xsi:type="myTrace.value:IntValue" value="10"/>
+    </valuations>
+    <valuations variable="cost" name="cost">
+      <value xsi:type="myTrace.value:IntValue" value="25"/>
+    </valuations>
+    <valuations variable="result_DiffLMH1" name="result_DiffLMH1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="DiffLMH1" name="DiffLMH1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+      </value>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.0">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="1"/>
+        <value xsi:type="myTrace.value:IntValue" value="4"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.0">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.1">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="2"/>
+        <value xsi:type="myTrace.value:IntValue" value="3"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.1">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.2">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.3">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="children" name="children" template="//@templates.4">
+      <value xsi:type="myTrace.value:ArrayValue">
+        <value xsi:type="myTrace.value:IntValue" value="5"/>
+        <value xsi:type="myTrace.value:IntValue" value="6"/>
+        <value xsi:type="myTrace.value:IntValue"/>
+      </value>
+    </valuations>
+    <valuations variable="activated" name="activated" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="completionCount" name="completionCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue" value="2"/>
+    </valuations>
+    <valuations variable="abortCount" name="abortCount" template="//@templates.4">
+      <value xsi:type="myTrace.value:IntValue"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.5">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+    <valuations variable="parentCount" name="parentCount" template="//@templates.6">
+      <value xsi:type="myTrace.value:IntValue" value="1"/>
+    </valuations>
+  </states>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.0" target="//@states.1">
+    <edges>toplevel.Init->toplevel.Waiting{1,activate[0]!,1}</edges>
+    <edges>process0.Init->process0.Activating{1,activate[0]?,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.1" target="//@states.2">
+    <edges>process0.Activating->process0.Activating{activated&lt;2,activate[children[activated]]!,activated:=activated+1}</edges>
+    <edges>process1.Init->process1.Activating{1,activate[1]?,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.2" target="//@states.3">
+    <edges>process1.Activating->process1.Activating{activated&lt;2,activate[children[activated]]!,activated:=activated+1}</edges>
+    <edges>process2.Init->process2.Activating{1,activate[2]?,elapsedTime:=0}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.3" target="//@states.4">
+    <edges>process0.Activating->process0.Activating{activated&lt;2,activate[children[activated]]!,activated:=activated+1}</edges>
+    <edges>process4.Init->process4.Activating{1,activate[4]?,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.4" target="//@states.5">
+    <edges>process2.Activating->process2.Aborting{1,tau,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.5" target="//@states.6">
+    <edges>process1.Activating->process1.Activating{activated&lt;2,activate[children[activated]]!,activated:=activated+1}</edges>
+    <edges>process3.Init->process3.Activating{1,activate[3]?,elapsedTime:=0}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.6" target="//@states.7">
+    <edges>process3.Activating->process3.Aborting{1,tau,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.7" target="//@states.8">
+    <edges>process4.Activating->process4.Activating{activated&lt;2,activate[children[activated]]!,activated:=activated+1}</edges>
+    <edges>process5.Init->process5.Activating{1,activate[5]?,elapsedTime:=0}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.8" target="//@states.9">
+    <edges>process4.Activating->process4.Activating{activated&lt;2,activate[children[activated]]!,activated:=activated+1}</edges>
+    <edges>process6.Init->process6.Activating{1,activate[6]?,elapsedTime:=0}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.9" target="//@states.10">
+    <edges>process4.Activating->process4.Waiting{activated==2,tau,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.10" target="//@states.11">
+    <edges>process1.Activating->process1.Waiting{activated==2,tau,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.11" target="//@states.12">
+    <edges>process6.Activating->process6.Active{1,tau,cost:=cost+20}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.12" target="//@states.13">
+    <edges>process0.Activating->process0.Waiting{activated==2,tau,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.13" target="//@states.14">
+    <edges>process5.Activating->process5.Active{1,tau,cost:=cost+5}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.14" target="//@states.15">
+    <edges>process3.Aborting->process3.Completed{1,abort[3]!,1}</edges>
+    <edges>process1.Waiting->process1.Comparing{1,abort[3]?,abortCount++}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.15" target="//@states.16">
+    <edges>process1.Comparing->process1.Finishing{abortCount==1,abort[1]!,1}</edges>
+    <edges>process0.Waiting->process0.Comparing{1,abort[1]?,abortCount++}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.16" target="//@states.17">
+    <edges>process0.Comparing->process0.Waiting{completionCount&lt;1&amp;&amp;abortCount&lt;2,tau,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.17" target="//@states.18">
+    <edges>process1.Finishing->process1.Completed{1,dontcare[1]!,completionCount:=0,abortCount:=0}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.18" target="//@states.19">
+    <edges>process2.Aborting->process2.Completed{1,abort[2]!,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:DelayTransition" source="//@states.19" target="//@states.20" delay="1.0"/>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.20" target="//@states.21">
+    <edges>process6.Active->process6.Completed{elapsedTime>=1,complete[6]!,handleDiffLMH1(3)}</edges>
+    <edges>process4.Waiting->process4.Comparing{1,complete[6]?,completionCount++}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.21" target="//@states.22">
+    <edges>process4.Comparing->process4.Waiting{completionCount&lt;2&amp;&amp;abortCount&lt;1,tau,1}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:DelayTransition" source="//@states.22" target="//@states.23" delay="9.0"/>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.23" target="//@states.24">
+    <edges>process5.Active->process5.Completed{elapsedTime>=10,complete[5]!,handleDiffLMH1(2)}</edges>
+    <edges>process4.Waiting->process4.Comparing{1,complete[5]?,completionCount++}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.24" target="//@states.25">
+    <edges>process4.Comparing->process4.Finishing{completionCount==2,complete[4]!,1}</edges>
+    <edges>process0.Waiting->process0.Comparing{1,complete[4]?,completionCount++}</edges>
+  </transitions>
+  <transitions xsi:type="myTrace.transitions:EdgeTransition" source="//@states.25" target="//@states.26">
+    <edges>process0.Comparing->process0.Finishing{completionCount==1,complete[0]!,1}</edges>
+    <edges>toplevel.Waiting->toplevel.Completed{1,complete[0]?,1}</edges>
+  </transitions>
+  <templates template="process0" name="process0">
+    <locations location="Init"/>
+    <locations location="Activating"/>
+    <locations location="Waiting"/>
+    <locations location="Comparing"/>
+    <locations location="Finishing"/>
+  </templates>
+  <templates template="process1" name="process1">
+    <locations location="Init"/>
+    <locations location="Activating"/>
+    <locations location="Waiting"/>
+    <locations location="Comparing"/>
+    <locations location="Finishing"/>
+    <locations location="Completed"/>
+  </templates>
+  <templates template="process2" name="process2">
+    <locations location="Init"/>
+    <locations location="Activating"/>
+    <locations location="Aborting"/>
+    <locations location="Completed"/>
+  </templates>
+  <templates template="process3" name="process3">
+    <locations location="Init"/>
+    <locations location="Activating"/>
+    <locations location="Aborting"/>
+    <locations location="Completed"/>
+  </templates>
+  <templates template="process4" name="process4">
+    <locations location="Init"/>
+    <locations location="Activating"/>
+    <locations location="Waiting"/>
+    <locations location="Comparing"/>
+    <locations location="Finishing"/>
+  </templates>
+  <templates template="process5" name="process5">
+    <locations location="Init"/>
+    <locations location="Activating"/>
+    <locations location="Active"/>
+    <locations location="Completed"/>
+  </templates>
+  <templates template="process6" name="process6">
+    <locations location="Init"/>
+    <locations location="Activating"/>
+    <locations location="Active"/>
+    <locations location="Completed"/>
+  </templates>
+  <templates template="toplevel" name="toplevel">
+    <locations location="Init"/>
+    <locations location="Waiting"/>
+    <locations location="Completed"/>
+  </templates>
+</intermediateTrace:Trace>

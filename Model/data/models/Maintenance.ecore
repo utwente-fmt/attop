@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Maintenance" nsURI="uuid:1e590a30-ec20-11e5-9a8e-082e5f80574e"
+    nsPrefix="nl.utwente.ewi.fmt.UATMM">
+  <eClassifiers xsi:type="ecore:EClass" name="Module">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" lowerBound="1"
+        eType="#//Condition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="effects" lowerBound="1"
+        upperBound="-1" eType="#//Effect" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxEffectsInProgress" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="effectDiscipline" lowerBound="1"
+        eType="#//EffectDiscipline"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EffectDiscipline">
+    <eLiterals name="RANDOM"/>
+    <eLiterals name="IN_ORDER" value="1"/>
+    <eLiterals name="NONDETERMINISTIC" value="2"/>
+    <eLiterals name="CUSTOM" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Condition" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Effect" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CombiningCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
+        eType="#//Operator" defaultValueLiteral="OR"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" lowerBound="1"
+        upperBound="-1" eType="#//Condition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Operator">
+    <eLiterals name="AND"/>
+    <eLiterals name="OR"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="orGreater" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="ecore:EClass UATMM_structure.ecore#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="state" lowerBound="1" eType="#//NodeState"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DelayCondition" eSuperTypes="#//Condition">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPeriodic" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delay" lowerBound="1" eType="#//Delay"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivationCondition" eSuperTypes="#//Condition"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MaintenancePolicy">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modules" ordered="false"
+        upperBound="-1" eType="#//Module" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepairEffect" eSuperTypes="#//Effect">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delay" eType="#//Delay"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" lowerBound="1" eType="ecore:EClass UATMM_structure.ecore#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="newState" lowerBound="1"
+        eType="#//NodeState" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TriggerEffect" eSuperTypes="#//Effect">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//ActivationCondition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Delay" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExponentialDelay" eSuperTypes="#//Delay">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="meanTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BoundedDelay" eSuperTypes="#//Delay">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxTime" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomModule" eSuperTypes="#//Module">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NodeState" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LinearNodeState" eSuperTypes="#//NodeState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fraction" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relative" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PhaseTypeState" eSuperTypes="#//NodeState">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stateNumber" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="UATMM_structure" nsURI="ecore:UATMM_structure" nsPrefix="nl.utwente.ewi.fmt.UATMM">
+  <eClassifiers xsi:type="ecore:EClass" name="AttackTree">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Root" lowerBound="1" eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Nodes" lowerBound="1" upperBound="-1"
+        eType="#//Node" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Edges" upperBound="-1"
+        eType="#//Edge" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" upperBound="-1"
+        eType="#//TreeMetaData" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="#//Connector"
+        containment="true" eOpposite="#//Connector/gate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/parents" eKeys="#//Node/id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parents" ordered="false"
+        upperBound="-1" eType="#//Node" eOpposite="#//Node/children"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nature" lowerBound="1"
+        eType="#//Nature" defaultValueLiteral="Attack"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" lowerBound="1" eType="#//RoleType"
+        defaultValueLiteral="Contributing"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Edge">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Target" lowerBound="1"
+        eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Source" lowerBound="1"
+        eType="#//Node"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="edgeKind" lowerBound="1"
+        eType="#//EdgeKind" defaultValueLiteral="DEPENDENCY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RoleType">
+    <eLiterals name="Contributing"/>
+    <eLiterals name="Counteracting" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Connector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gate" lowerBound="1" eType="#//Node"
+        eOpposite="#//Node/connector"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OR" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="XOR" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TreeMetaData">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PAND" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TAND" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="KofN" eSuperTypes="#//Connector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Threshold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Weighted" eSuperTypes="#//Connector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Treshold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Weights" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SAND" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SOR" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FDEP" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Spare" eSuperTypes="#//Connector"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="Nature">
+    <eLiterals name="Attack"/>
+    <eLiterals name="Fault" value="1"/>
+    <eLiterals name="Hybrid" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EdgeKind">
+    <eLiterals name="DEPENDENCY" value="1"/>
+    <eLiterals name="TRIGGER" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RDEP" eSuperTypes="#//Connector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="factor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="1.0"/>
+  </eClassifiers>
+</ecore:EPackage>

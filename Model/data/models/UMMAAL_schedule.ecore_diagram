@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_xssMwPODEeamlNstikAWTg" type="Ecore" measurementUnit="Pixel">
+  <children xmi:type="notation:Shape" xmi:id="_ypkrwPODEeamlNstikAWTg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_yplS0PODEeamlNstikAWTg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_yplS0fODEeamlNstikAWTg" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_5tE40POFEeamlNstikAWTg" type="3001">
+        <element xmi:type="ecore:EAttribute" href="UMMAAL_schedule.ecore#//Executor/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_5tFf4POFEeamlNstikAWTg"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_yplS0vODEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_yplS0_ODEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_yplS1PODEeamlNstikAWTg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_yplS1fODEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_yplS1vODEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_yplS1_ODEeamlNstikAWTg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_yplS2PODEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_yplS2fODEeamlNstikAWTg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="UMMAAL_schedule.ecore#//Executor"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ypkrwfODEeamlNstikAWTg" x="288" y="312" width="133" height="121"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_4tbEkPODEeamlNstikAWTg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_4tbroPODEeamlNstikAWTg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_4tbrofODEeamlNstikAWTg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_4tbrovODEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_4tbro_ODEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_4tbrpPODEeamlNstikAWTg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_4tbrpfODEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_4tbrpvODEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_4tbrp_ODEeamlNstikAWTg" type="7003">
+      <children xmi:type="notation:Node" xmi:id="_FXXKwPgdEeamlNstikAWTg" type="3003">
+        <element xmi:type="ecore:EAnnotation" href="UMMAAL_schedule.ecore#//Executable/%abstract%"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_FXXKwfgdEeamlNstikAWTg"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_4tbrqPODEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_4tbrqfODEeamlNstikAWTg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="UMMAAL_schedule.ecore#//Executable"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4tbEkfODEeamlNstikAWTg" x="492" y="108" width="121" height="120"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_2eqRgPOEEeamlNstikAWTg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2eqRgvOEEeamlNstikAWTg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_2eqRg_OEEeamlNstikAWTg" type="7001">
+      <children xmi:type="notation:Node" xmi:id="_3jUMcPOEEeamlNstikAWTg" type="3001">
+        <element xmi:type="ecore:EAttribute" href="UMMAAL_schedule.ecore#//Time/value"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_3jUMcfOEEeamlNstikAWTg"/>
+      </children>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eqRhPOEEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eqRhfOEEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_2eqRhvOEEeamlNstikAWTg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eqRh_OEEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eqRiPOEEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_2eq4kPOEEeamlNstikAWTg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_2eq4kfOEEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_2eq4kvOEEeamlNstikAWTg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="UMMAAL_schedule.ecore#//Time"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2eqRgfOEEeamlNstikAWTg" x="492" y="444" width="114" height="86"/>
+  </children>
+  <children xmi:type="notation:Shape" xmi:id="_9SNo8POEEeamlNstikAWTg" type="2001" fontName="Ubuntu">
+    <children xmi:type="notation:DecorationNode" xmi:id="_9SOQAPOEEeamlNstikAWTg" type="5001"/>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_9SOQAfOEEeamlNstikAWTg" type="7001">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_9SOQAvOEEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_9SOQA_OEEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_9SOQBPOEEeamlNstikAWTg" type="7002">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_9SOQBfOEEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_9SOQBvOEEeamlNstikAWTg"/>
+    </children>
+    <children xmi:type="notation:BasicCompartment" xmi:id="_9SOQB_OEEeamlNstikAWTg" type="7003">
+      <styles xmi:type="notation:SortingStyle" xmi:id="_9SOQCPOEEeamlNstikAWTg"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_9SOQCfOEEeamlNstikAWTg"/>
+    </children>
+    <element xmi:type="ecore:EClass" href="UMMAAL_schedule.ecore#//Task"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_9SNo8fOEEeamlNstikAWTg" x="492" y="300" width="121" height="72"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_xssMwfODEeamlNstikAWTg"/>
+  <element xmi:type="ecore:EPackage" href="UMMAAL_schedule.ecore#/"/>
+  <edges xmi:type="notation:Connector" xmi:id="_H92FMPOFEeamlNstikAWTg" type="4002" source="_9SNo8POEEeamlNstikAWTg" target="_2eqRgPOEEeamlNstikAWTg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_H92sQPOFEeamlNstikAWTg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_H92sQfOFEeamlNstikAWTg" x="-12" y="11"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_H92sQvOFEeamlNstikAWTg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_H92sQ_OFEeamlNstikAWTg" x="-25" y="9"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_H92FMfOFEeamlNstikAWTg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="UMMAAL_schedule.ecore#//Task/startTime"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_H92FMvOFEeamlNstikAWTg" points="[2, 4, 0, -97]$[2, 100, 0, -1]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_H95vkPOFEeamlNstikAWTg" id="(0.4845360824742268,0.9444444444444444)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_H95vkfOFEeamlNstikAWTg" id="(0.21052631578947367,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_PPJvoPOFEeamlNstikAWTg" type="4002" source="_9SNo8POEEeamlNstikAWTg" target="_2eqRgPOEEeamlNstikAWTg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_PPKWsPOFEeamlNstikAWTg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PPKWsfOFEeamlNstikAWTg" x="-18" y="-26"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_PPKWsvOFEeamlNstikAWTg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PPKWs_OFEeamlNstikAWTg" x="-18" y="-16"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PPJvofOFEeamlNstikAWTg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="UMMAAL_schedule.ecore#//Task/endTime"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PPJvovOFEeamlNstikAWTg" points="[0, 0, -35, -204]$[36, 174, 1, -30]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PPNaAPOFEeamlNstikAWTg" id="(1.0,0.4027777777777778)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PPNaAfOFEeamlNstikAWTg" id="(0.7807017543859649,0.27906976744186046)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_euSXIPOFEeamlNstikAWTg" type="4002" source="_9SNo8POEEeamlNstikAWTg" target="_4tbEkPODEeamlNstikAWTg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_euSXI_OFEeamlNstikAWTg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_euSXJPOFEeamlNstikAWTg" x="10" y="41"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_euSXJfOFEeamlNstikAWTg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_euSXJvOFEeamlNstikAWTg" x="-33" y="20"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_euSXIfOFEeamlNstikAWTg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="UMMAAL_schedule.ecore#//Task/executable"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_euSXIvOFEeamlNstikAWTg" points="[-22, -52, 28, 65]$[-48, -97, 2, 20]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_euVacPOFEeamlNstikAWTg" id="(0.5454545454545454,0.05555555555555555)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_euVacfOFEeamlNstikAWTg" id="(0.518796992481203,0.8666666666666667)"/>
+  </edges>
+  <edges xmi:type="notation:Connector" xmi:id="_-IKkEPOFEeamlNstikAWTg" type="4002" source="_ypkrwPODEeamlNstikAWTg" target="_9SNo8POEEeamlNstikAWTg">
+    <children xmi:type="notation:DecorationNode" xmi:id="_-ILLIPOFEeamlNstikAWTg" type="6001">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_-ILLIfOFEeamlNstikAWTg" x="-12" y="12"/>
+    </children>
+    <children xmi:type="notation:DecorationNode" xmi:id="_-ILLIvOFEeamlNstikAWTg" type="6003">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_-ILLI_OFEeamlNstikAWTg" x="-40" y="24"/>
+    </children>
+    <styles xmi:type="notation:FontStyle" xmi:id="_-IKkEfOFEeamlNstikAWTg" fontName="Ubuntu"/>
+    <element xmi:type="ecore:EReference" href="UMMAAL_schedule.ecore#//Executor/tasks"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_-IKkEvOFEeamlNstikAWTg" points="[97, 91, -119, -111]$[217, 225, 1, 23]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-INAUPOFEeamlNstikAWTg" id="(0.0,0.39669421487603307)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_-INAUfOFEeamlNstikAWTg" id="(0.04132231404958678,0.75)"/>
+  </edges>
+</notation:Diagram>

@@ -1,0 +1,90 @@
+import "../trace2ScheduleTransformationTemplate/trace2ScheduleTemplateStateFreeOperations.eol";
+
+/*
+
+	Author: 
+		Bugra M. Yildiz
+		Stefano Schivo
+
+	Date: 22 February 2017
+
+	Description: 
+		This file includes the state-free helper operations for the sdfTrace2ScheduleTransformation transformation.
+
+		State-free means, the operations in this file do not depend on the execution state of the 
+		transformation, and as a result of this, they don't require any assumptions before calling.  
+
+	Models:
+		The same as sdfTrace2ScheduleTransformation.etl.
+
+	Assumptions:
+		The same as sdfTrace2ScheduleTransformation.etl.
+*/
+
+/*************************************************************************
+
+						CONSTANTS
+
+**************************************************************************/
+
+@cached
+operation getGlobalClockName(): String
+{
+	return "time";
+}
+
+
+@cached
+operation getTopLevelTemplateName(): String
+{
+	return "TopLevel";
+}
+
+@cached
+operation getGatePrefix(): String
+{
+	return "gate_";
+}
+
+/*
+	Returns the name of the channel for firing 
+*/
+@cached
+operation getChannelNameForFiring(): String
+{
+	return "activate";
+}
+
+/*
+	Returns the name of the channel for end 
+*/
+@cached
+operation getChannelNameForEnding(): String
+{
+	return "complete";
+}
+
+
+/*************************************************************************
+
+						GENERAL PURPOSE OPERATIONS
+
+**************************************************************************/
+
+/*
+	Returns the basic event name string with the prefix part removed.
+
+	Returns the same string if the string contains no "_".
+*/
+operation String getATnodeID(): String 
+{
+	//TODO: This should be correct, but the template name is not available: we just get the instantiated process name, which just ends with a number
+	/*var idx = self.lastIndexOf("_");
+	if( idx == -1 )
+	{
+		return self;
+	}
+	
+	return self.substring( idx + 1 );*/
+	return self.substring("process".length());
+}

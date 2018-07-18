@@ -1,0 +1,197 @@
+import "sdfTrace2ScheduleTransformationStateFreeOperations.eol";
+import "../trace2ScheduleTransformationTemplate/trace2ScheduleTemplateStateDependentOperations.eol";
+
+/*
+
+	Author: 
+		Bugra M. Yildiz
+		Stefano	Schivo
+
+	Date: 22 February 2017
+
+	Description: 
+		This file includes the state-free helper operations for the sdfTrace2ScheduleTransformation transformation.
+		
+		To use the operations in this file, one needs to check the assumptions of each operation.
+		These assumptions are prerequisites that need to be fulfilled before using the related 
+		operation.    
+
+	Models:
+		The same as sdfTrace2ScheduleTransformation.etl.
+
+	Assumptions:
+		The same as sdfTrace2ScheduleTransformation.etl.
+*/
+
+/*
+	An executor is represented by a template instance with a name different than "Scheduler" and 
+	"SDF_Graph".
+
+	Returns if this TemplateInstance represents an executor. 
+*/
+operation InIntermediateTraceModel!TemplateInstance representsExecutor(): Boolean
+{
+	return not self.template.endsWith(getSDFTemplateName()) and not self.template.endsWith(getSchedulerTemplateName());
+}
+
+/*
+	Returns name of the actor that is firing on this EdgeTransition.
+
+	Returns null if there is no firing.
+
+*/
+operation InIntermediateTraceModel!EdgeTransition getActorNameFiring(): String
+{
+	var result = null;
+	if (self.edges.size() == 0) {
+		return null;
+	}
+	for (edge in self.edges) {
+		if (edge <> null and edge.contains(getChannelNameForFiring())) {
+			var channelSynch = edge.substring(edge.indexOf(getChannelNameForFiring()));
+			var startName = channelSynch.indexOf("][") + 2; //Look for the second index in the "fire" channel: it should indicate the actor. +2 is to skip the "][" characters
+			var endName = channelSynch.indexOf("]!");
+			if (endName <> -1) { //We may have found "]?" instead, which uses another naming convention, so we don't try anything with it
+				result = channelSynch.substring(startName, endName); //This should be something like "c_SDF_Graph_template"
+				result = result.getSuffixRemoved(getSDFTemplateSuffix()); //The result should be "c"
+				break;
+			}
+		}
+	}
+	return result;
+}
+
+/*
+	Returns name of the actor that is ending on this EdgeTransition.
+
+	Returns null if there is no ending.
+
+*/
+operation InIntermediateTraceModel!EdgeTransition getActorNameEnding(): String
+{
+	var result = null;	
+	
+	if (self.edges.size() == 0) 
+	{
+		return null;
+	}
+	
+	for (edge in self.edges) 
+	{
+		if(edge.contains(getChannelNameForEnding())) 
+		{
+			var channelSynch = edge.substring(edge.indexOf(getChannelNameForEnding()));
+			
+			//Look for the second index in the "end" channel: it should indicate the actor. +2 is to skip the "][" characters
+			var startName = channelSynch.indexOf("][") + 2; 
+			
+			var endName = channelSynch.indexOf("]!");
+			
+			if (endName <> -1) 
+			{ //We may have found "]?" instead, which uses another naming convention, so we don't try anything with it
+				result = channelSynch.substring(startName, endName); //This should be something like "c_PAM_template"
+				result = result.getSuffixRemoved(getPAMTemplateSuffix()); //The result should be "c"
+				break;
+			}
+		}
+	}
+	
+	return result;
+}
+
+/*
+	Same operations for delay transitions: just return null
+*/
+operation InIntermediateTraceModel!DelayTransition getActorNameFiring(): String
+{
+	return null;
+}
+
+operation InIntermediateTraceModel!DelayTransition getActorNameEnding(): String
+{
+	return null;
+}
+
+
+/*
+	Returns name of the executor/processor this EdgeTransition.
+
+	Returns null if there is no executor/processor.
+
+*/
+operation InIntermediateTraceModel!EdgeTransition getProcessorName(): String
+{
+	var result = null;
+	if (self.edges.size() == 0) {
+		return null;
+	}
+	for (edge in self.edges) {
+		if (edge <> null and edge.contains(getProcessorTemplateInstanceNamePrefix())) {
+			result = edge.substring(edge.indexOf(getProcessorTemplateInstanceNamePrefix()));
+			result = result.substring(0, result.indexOf("."));
+			result = result.getPrefixRemoved(getProcessorTemplateInstanceNamePrefix());
+			break;
+		}
+	}
+	return result;
+}
+
+/*
+	Returns the value of the global clock.
+
+	Assumed to be an integer value. Otherwise, returns -1. 
+
+*/
+operation InIntermediateTraceModel!State getGlobalClockValue(): Integer
+{
+	var globalClockName = getGlobalClockName();
+	var result = -1;
+	var clockVar = self.valuations.select(v | v.variable = getGlobalClockName()).at(0);
+	if (clockVar <> null and clockVar.isDefined()) {
+		result = clockVar.value.value;
+	}
+	return result;
+}
+
+/*
+	Assumption: This edgeTransition has an actor ending.  
+		If not, this operation returns null.
+
+	This operation returns the firing EdgeTransformation for the actor (task)
+	that ends here.
+*/
+operation InIntermediateTraceModel!EdgeTransition getFiringTransition(): InIntermediateTraceModel!EdgeTransition
+{
+	var actorNameEndingHere = self.getActorNameEnding();
+	
+	if ( actorNameEndingHere = null) {
+		return null;
+	}
+	
+	var processorEndingHere = self.getProcessorName();
+	
+	if (processorEndingHere = null) {
+		return null;
+	}
+	
+	//Initialization for the search
+	var edgeTransitionUnderExamination = self.source.transitionFrom;
+	
+	//Go back in time looking for the transition that started this task:
+	// - it must be an EdgeTransition (not a DelayTransition)
+	// - its actor must be the same as mine (and not null)
+	// - its processor must be the same as mine (and not null)
+	while( edgeTransitionUnderExamination.type().name <> "EdgeTransition"
+		 or edgeTransitionUnderExamination.getActorNameFiring() = null
+		 or edgeTransitionUnderExamination.getActorNameFiring() <> actorNameEndingHere
+		 or edgeTransitionUnderExamination.getProcessorName() = null
+		 or edgeTransitionUnderExamination.getProcessorName() <> processorEndingHere) {
+		 
+		if (edgeTransitionUnderExamination == null or not edgeTransitionUnderExamination.isDefined()) { //We can go no further: it means that we found no corresponding firing action (??)
+			return null;
+		}
+		edgeTransitionUnderExamination = edgeTransitionUnderExamination.source.transitionFrom;
+	}
+	
+	return edgeTransitionUnderExamination;	
+}

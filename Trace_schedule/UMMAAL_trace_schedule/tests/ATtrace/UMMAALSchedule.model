@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ummaalschedule="http://nl.utwente.fmt/ummaalschedule" xmlns:ummaalschedulesimple="http://nl.utwente.fmt/ummaalschedulesimple">
+  <ummaalschedulesimple:SimpleExecutor uuid="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg" name="Attacker"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="0_Lu4rYJ1OEeeQeLO5CDdgPg" name="0"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="1_Lu5ScJ1OEeeQeLO5CDdgPg" name="1"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="2_Lu5ScZ1OEeeQeLO5CDdgPg" name="2"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="3_Lu5Scp1OEeeQeLO5CDdgPg" name="3"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="4_LvJKEJ1OEeeQeLO5CDdgPg" name="4"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="5_LvJKEZ1OEeeQeLO5CDdgPg" name="5"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="6_LvJxIJ1OEeeQeLO5CDdgPg" name="6"/>
+  <ummaalschedule:Task uuid="_LvM0cJ1OEeeQeLO5CDdgPg" executable="0_Lu4rYJ1OEeeQeLO5CDdgPg" executor="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg">
+    <startTime xsi:type="ummaalschedule:ExactTimeInt"/>
+    <endTime xsi:type="ummaalschedule:ExactTimeInt" value="10"/>
+  </ummaalschedule:Task>
+  <ummaalschedule:Task uuid="_LvQe0J1OEeeQeLO5CDdgPg" executable="1_Lu5ScJ1OEeeQeLO5CDdgPg" executor="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg">
+    <startTime xsi:type="ummaalschedule:ExactTimeInt"/>
+  </ummaalschedule:Task>
+  <ummaalschedule:Task uuid="_LvUwQJ1OEeeQeLO5CDdgPg" executable="2_Lu5ScZ1OEeeQeLO5CDdgPg" executor="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg">
+    <startTime xsi:type="ummaalschedule:ExactTimeInt"/>
+  </ummaalschedule:Task>
+  <ummaalschedule:Task uuid="_LvZBsJ1OEeeQeLO5CDdgPg" executable="4_LvJKEJ1OEeeQeLO5CDdgPg" executor="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg">
+    <startTime xsi:type="ummaalschedule:ExactTimeInt"/>
+    <endTime xsi:type="ummaalschedule:ExactTimeInt" value="10"/>
+  </ummaalschedule:Task>
+  <ummaalschedule:Task uuid="_LvcsEJ1OEeeQeLO5CDdgPg" executable="3_Lu5Scp1OEeeQeLO5CDdgPg" executor="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg">
+    <startTime xsi:type="ummaalschedule:ExactTimeInt"/>
+  </ummaalschedule:Task>
+  <ummaalschedule:Task uuid="_LvhkkJ1OEeeQeLO5CDdgPg" executable="5_LvJKEZ1OEeeQeLO5CDdgPg" executor="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg">
+    <startTime xsi:type="ummaalschedule:ExactTimeInt"/>
+    <endTime xsi:type="ummaalschedule:ExactTimeInt" value="10"/>
+  </ummaalschedule:Task>
+  <ummaalschedule:Task uuid="_LvmdEJ1OEeeQeLO5CDdgPg" executable="6_LvJxIJ1OEeeQeLO5CDdgPg" executor="Attacker_Lu4EUJ1OEeeQeLO5CDdgPg">
+    <startTime xsi:type="ummaalschedule:ExactTimeInt"/>
+    <endTime xsi:type="ummaalschedule:ExactTimeInt" value="1"/>
+  </ummaalschedule:Task>
+</xmi:XMI>

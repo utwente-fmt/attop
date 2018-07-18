@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="UMMAALSchedule" nsURI="http://fmt.ewi.utwente.nl/ummaalschedule"
+    nsPrefix="ummaalschedule">
+  <eAnnotations source="http://www.eclipse.org/OCL/Import">
+    <details key="ecore" value="http://www.eclipse.org/emf/2002/Ecore"/>
+  </eAnnotations>
+  <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+    <details key="invocationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="settingDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+    <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uuid" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Root" eSuperTypes="#//Identifiable">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
+      <details key="constraints" value="SingletonRoot"/>
+    </eAnnotations>
+    <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot">
+      <details key="SingletonRoot" value="self.oclType().allInstances()->size() = 1"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executors" lowerBound="1"
+        upperBound="-1" eType="#//Executor" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executables" lowerBound="1"
+        upperBound="-1" eType="#//Executable" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Executor" abstract="true" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="externalReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Executable" abstract="true" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="externalReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Time" abstract="true" eSuperTypes="#//Identifiable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startTime" lowerBound="1"
+        eType="#//Time" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endTime" eType="#//Time"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executable" lowerBound="1"
+        eType="#//Executable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executor" lowerBound="1"
+        eType="#//Executor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextInStartTime" eType="#//Task"
+        eOpposite="#//Task/previousInStartTime"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousInStartTime" eType="#//Task"
+        eOpposite="#//Task/nextInStartTime"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextInEndTime" eType="#//Task"
+        eOpposite="#//Task/previousInEndTime"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousInEndTime" eType="#//Task"
+        eOpposite="#//Task/nextInEndTime"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nextInExecutor" eType="#//Task"
+        eOpposite="#//Task/previousInExecutor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousInExecutor" eType="#//Task"
+        eOpposite="#//Task/nextInExecutor"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExactTimeInt" eSuperTypes="#//Time">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExactTimeDouble" eSuperTypes="#//Time">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+</ecore:EPackage>

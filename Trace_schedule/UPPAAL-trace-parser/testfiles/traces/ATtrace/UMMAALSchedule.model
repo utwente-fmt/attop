@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ummaalschedulesimple="http://nl.utwente.fmt/ummaalschedulesimple">
+  <ummaalschedulesimple:SimpleExecutor uuid="Attacker_IRC1cB6wEeeORN_wVE9jxg" name="Attacker"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="process0_IRDcgB6wEeeORN_wVE9jxg" name="process0"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="process1_IRDcgR6wEeeORN_wVE9jxg" name="process1"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="process2_IRDcgh6wEeeORN_wVE9jxg" name="process2"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="process3_IRDcgx6wEeeORN_wVE9jxg" name="process3"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="process4_IREDkB6wEeeORN_wVE9jxg" name="process4"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="process5_IREDkR6wEeeORN_wVE9jxg" name="process5"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="process6_IREDkh6wEeeORN_wVE9jxg" name="process6"/>
+  <ummaalschedulesimple:SimpleExecutable uuid="toplevel_IREDkx6wEeeORN_wVE9jxg" name="toplevel"/>
+</xmi:XMI>

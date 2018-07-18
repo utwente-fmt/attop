@@ -1,0 +1,186 @@
+@lazy
+@cached
+rule maintMod
+	transform module : UATM!Module
+	to ret : List
+	{
+		var tmpl = new Uppaal!Template();
+		tmpl.name = "Maintenance_" + module.name;
+		tmpl.declarations = new Uppaal!LocalDeclarations();
+		ret.add(tmpl);
+		
+		var nonInitStates = Set {};
+
+		var conditions = module.condition;
+		while (not conditions.select(c | c.isKindOf(UATM!CombiningCondition)).isEmpty()) {
+			var newConditions : Collection = Collection {};
+			for (c in conditions.select(c | c.isKindOf(UATM!CombiningCondition)))
+				newConditions.addAll(c.children);
+			conditions = conditions.select(c | not c.isKindOf(UATM!CombiningCondition));
+			conditions.addAll(newConditions);
+		}
+
+		var conditionsArray : Uppaal!Variable = createVariable("conditions").makeArray(conditions.size());
+		var decl = createDataDeclaration(conditionsArray);
+		decl.typeDefinition.referredType = Uppaal!PredefinedType.allInstances().select(t | t.name = "bool").first();
+		tmpl.declarations.declaration.add(decl);
+
+		/* Count how many parents are still waiting for our completion. */
+		var initLocation = tmpl.createLocation("Init");
+		tmpl.init = initLocation;
+
+		var comparingLocation = tmpl.createLocation("Comparing").makeCommitted();
+		nonInitStates.add(comparingLocation);
+
+		/* Start with the effects */
+		var currentLocation = comparingLocation;
+		var i : Integer = 0;
+
+		var firstExecutingEdge = null;
+		for (rep in module.effects.select(r | r.isKindOf(UATM!RepairEffect))) {
+			var tmpLoc = tmpl.createLocation("Repair" + i).makeCommitted();
+			nonInitStates.add(tmpLoc);
+			var executingEdge = tmpl.createEdge(currentLocation, tmpLoc);
+			if (firstExecutingEdge == null)
+				firstExecutingEdge = executingEdge; /* This edge gets the guard */
+			currentLocation = tmpLoc;
+			var signum = repairSignals.get(nodeId2LeafId.get(rep.node.id) + "(" + rep.newState + ")");
+			executingEdge.setSync(repairArray.createReferringExpression().makeArrayExpression(signum), true);
+			i = i + 1;
+		}
+		i = 0;
+		for (trig in module.effects.select(r | r.isKindOf(UATM!TriggerEffect))) {
+			var tmpLoc = tmpl.createLocation("Trigger" + i).makeCommitted();
+			nonInitStates.add(tmpLoc);
+			var executingEdge = tmpl.createEdge(currentLocation, tmpLoc);
+			if (firstExecutingEdge == null)
+				firstExecutingEdge = executingEdge; /* This edge gets the guard */
+			currentLocation = tmpLoc;
+			var target = trig.target;
+			while (target.isKindOf(UATM!Condition))
+				target = target.eContainer;
+			var signum = triggerSignals.get(target.name);
+			executingEdge.setSync(triggerArray.createReferringExpression().makeArrayExpression(signum), true);
+			i = i + 1;
+		}
+		var executingEdge = tmpl.createEdge(currentLocation, initLocation);
+		if (firstExecutingEdge == null)
+			firstExecutingEdge = executingEdge; /* This edge gets the guard */
+		
+		i = 0;
+		for (cond in conditions.select(c | c.isKindOf(UATM!NodeCondition))) {
+			cond.~number = i;
+			var signum = inspectionSignals.get(nodeId2LeafId.get(cond.node.id) + "(" + cond.state + ")");
+			var repSigNum = idToSignalNum.get(cond.node.id);
+			System.err.println("RepSigNum: " + repSigNum + " for " + cond.node.id);
+			var signal = inspArray.createReferringExpression().makeArrayExpression(signum);
+			var repSignal = repairedArray.createReferringExpression().makeArrayExpression(repSigNum);
+
+			var update = createAssignmentExpr(conditionsArray.createReferringExpression().makeArrayExpression(i), createLiteralExpression("true"));
+			var repUpdate = createAssignmentExpr(conditionsArray.createReferringExpression().makeArrayExpression(i), createLiteralExpression("false"));
+
+			var edge = tmpl.createEdge(initLocation, comparingLocation);
+			edge.setSync(signal, false);
+			edge.addUpdate(update);
+
+			edge = tmpl.createEdge(initLocation, initLocation);
+			edge.setSync(repSignal, false);
+			edge.addUpdate(repUpdate);
+
+			for (l in nonInitStates) {
+				edge = tmpl.createEdge(l, l);
+				update = createAssignmentExpr(conditionsArray.createReferringExpression().makeArrayExpression(i), createLiteralExpression("true"));
+				signal = inspArray.createReferringExpression().makeArrayExpression(signum);
+				edge.setSync(signal, false);
+				edge.addUpdate(update);
+
+				edge = tmpl.createEdge(l, l);
+				repUpdate = createAssignmentExpr(conditionsArray.createReferringExpression().makeArrayExpression(i), createLiteralExpression("false"));
+				repSignal = repairedArray.createReferringExpression().makeArrayExpression(repSigNum);
+				edge.setSync(repSignal, false);
+				edge.addUpdate(repUpdate);
+			}
+			i++;
+		}
+		for (cond in conditions.select(c | c.isKindOf(UATM!DelayCondition) and c.delay.isKindOf(UATM!BoundedDelay))) {
+			cond.~number = i;
+			var clock : Uppaal!Variable = tmpl.declareClock("clock" + i);
+			var invar = createComparison(clock.createReferringExpression(), Uppaal!CompareOperator#LESS_OR_EQUAL, createLiteralExpression(cond.delay.maxTime.asInteger()));
+
+			var update = createAssignmentExpr(conditionsArray.createReferringExpression().makeArrayExpression(i), createLiteralExpression("true"));
+			var guardExpr = createComparison(clock.createReferringExpression(), Uppaal!CompareOperator#GREATER_OR_EQUAL, createLiteralExpression(cond.delay.minTime.asInteger()));
+			var edge = tmpl.createEdge(initLocation, comparingLocation);
+			edge.setGuard(guardExpr);
+			edge.addUpdate(update);
+			if (cond.isPeriodic) {
+				/* Create the option to reset the clock once the inspection has been done */
+				edge = tmpl.createEdge(initLocation, initLocation);
+				guardExpr = createComparison(clock.createReferringExpression(), Uppaal!CompareOperator#GREATER_OR_EQUAL, createLiteralExpression(cond.delay.minTime.asInteger()));
+				guardExpr = createConjunction(guardExpr, conditionsArray.createReferringExpression().makeArrayExpression(i));
+				edge.addUpdate(clock.simpleAssignment(0));
+				edge.addUpdate(conditionsArray.createReferringExpression().makeArrayExpression(i).simpleAssignment("false"));
+				edge.setGuard(guardExpr);
+			} else {
+				invar = createDisjunction(invar, conditionsArray.createReferringExpression().makeArrayExpression(i));
+			}
+
+			if (initLocation.invariant == null) {
+				initLocation.invariant = invar;
+			} else {
+				initLocation.invariant = createConjunction(initLocation.invariant, invar);
+			}
+
+			i++;
+		}
+		for (cond in conditions.select(c | c.isKindOf(UATM!ActivationCondition))) {
+			cond.~number = i;
+			var signum = triggerSignals.get(module.name);
+			var signal = triggerArray.createReferringExpression().makeArrayExpression(signum);
+			var update = createAssignmentExpr(conditionsArray.createReferringExpression().makeArrayExpression(i), createLiteralExpression("true"));
+			var edge = tmpl.createEdge(initLocation, comparingLocation);
+			edge.setSync(signal, false);
+			edge.addUpdate(update);
+
+			edge = tmpl.createEdge(comparingLocation, comparingLocation);
+			signal = triggerArray.createReferringExpression().makeArrayExpression(signum);
+			update = createAssignmentExpr(conditionsArray.createReferringExpression().makeArrayExpression(i), createLiteralExpression("true"));
+			edge.setSync(signal, false);
+			edge.addUpdate(update);
+
+			i++;
+		}
+
+		var nonExecutingEdge = tmpl.createEdge(comparingLocation, initLocation);
+		var nonExecGuard = createComparison(getExpression(module.condition, conditionsArray), Uppaal!CompareOperator#EQUAL, createLiteralExpression("false"));
+		nonExecutingEdge.setGuard(nonExecGuard);
+		var execGuard = getExpression(module.condition, conditionsArray);
+		firstExecutingEdge.setGuard(execGuard);
+
+		/* Now adding template declaration */
+		var decl = new Uppaal!TemplateDeclaration();
+		ret.add(decl);
+
+		decl.declaredTemplate = new Uppaal!RedefinedTemplate();
+		decl.declaredTemplate.referredTemplate = tmpl;
+		decl.declaredTemplate.name = "process" + module.name.asString();
+	}
+
+operation getExpression(cond : UATM!Condition, conditionFlags : Uppaal!Variable) : Uppaal!Expression
+{
+	var ret = null;
+	if (cond.isKindOf(UATM!CombiningCondition)) {
+		for (child in cond.children) {
+			var newExpr = getExpression(child, conditionFlags);
+			if (ret == null) {
+				ret = newExpr;
+			} else if (cond.operator == UATM!Operator#OR) {
+				ret = createDisjunction(ret, newExpr);
+			} else {
+				ret = createConjunction(ret, newExpr);
+			}
+		}
+	} else {
+		ret = conditionFlags.createReferringExpression().makeArrayExpression(cond.~number);
+	}
+	return ret;
+}

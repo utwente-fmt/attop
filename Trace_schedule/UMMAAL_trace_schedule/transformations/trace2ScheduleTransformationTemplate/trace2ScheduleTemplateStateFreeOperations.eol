@@ -1,0 +1,147 @@
+
+/*
+
+	Author: 
+		Bugra M. Yildiz
+		Stefano Schivo
+
+	Date: 22 February 2017
+
+	Description: 
+		This file includes the state-free helper operations for the trace2ScheduleTemplate transformation.
+		State-free means, the operations in this file do not depend on the execution state of the 
+		transformation, and as a result of this, they don't require any assumptions before calling.  
+
+	Models:
+		The same as trace2ScheduleTemplate.etl.
+
+	Assumptions:
+		The same as trace2ScheduleTemplate.etl.
+*/
+
+
+/*************************************************************************
+
+						GENERAL PURPOSE OPERATIONS
+
+**************************************************************************/
+
+/*
+	Returns the string with the given prefix part removed.
+
+	Returns the same string if the given prefix is not a prefix of this string.
+*/
+operation String getPrefixRemoved( prefix : String ): String 
+{
+	if( not self.startsWith(prefix) )
+	{
+		return self;
+	}
+	
+	return self.substring( prefix.length() );
+}
+
+
+/*
+	Removes the given suffix from the string
+	Returns the same string if no change was made
+*/
+operation String getSuffixRemoved(suffix : String): String
+{
+	if ( not self.endsWith(suffix) )
+	{
+		return self;
+	}
+	return self.substring(0, self.lastIndexOf(suffix));
+}
+
+
+/*
+	Returns the index of the last occurrence of the given string,
+	or -1 if the string never occurs
+*/
+operation String lastIndexOf(str : String) : Integer
+{
+	var idx = -1;
+	var s = self;
+	while (str.isSubstringOf(s)) {
+		idx = s.indexOf(str);
+		s = s.substring(s.indexOf(str) + str.length() - 1);
+	}
+	return idx;
+}
+
+
+/*************************************************************************
+
+						OPERATIONS FOR SCHEDULES
+
+**************************************************************************/
+
+
+/*
+	Returns a new uuid.
+*/
+operation getUniqueUUID(): String
+{
+	//return "_"; //new Native("java.util.UUID")(123l, 123l).toString(); //java.util.UUID.randomUUID(); //new Native("org.eclipse.emf.ecore.util.EcoreUtil").generateUUID(); //"modeltransformationframeworkjavanativeplugin.UUIDGenerator").generateUUID();
+	//return new Native("org.eclipse.emf.ecore.util.EcoreUtil").generateUUID(); //new Native("modeltransformationframeworkjavanativeplugin.UUIDGenerator").generateUUID();
+	return new Native("modeltransformationframeworkjavanativeplugin.UUIDGenerator").generateUUID();
+}
+
+
+
+/*
+	Schedule!Executor OPERATIONS
+*/
+operation Schedule!Executor asString(): String
+{
+	if(self.name <> null)
+	{
+		return self.name;
+	}
+}
+
+/*
+		Schedule!Executable OPERATIONS
+*/
+operation Schedule!Executable asString(): String
+{
+	if(self.name <> null)
+	{
+		return self.name;
+	}
+}
+
+/*
+		Schedule!Task OPERATIONS
+*/
+operation Schedule!Task asString(): String
+{
+	var stringToReturn = "";
+	if(self.name <> null)
+	{
+		stringToReturn = self.name;
+	}
+	
+	stringToReturn = stringToReturn + "\nStartTime: " + self.startTime.asString();
+	stringToReturn = stringToReturn + "\nEndTime: " + self.endTime.asString();
+	
+	return stringToReturn;
+}
+
+/*
+	Schedule!ExactTimeInt OPERATIONS
+*/
+operation Schedule!ExactTimeInt asString(): String
+{
+	return self.value + "";
+}
+
+/*
+	Schedule!ExactTimeDouble OPERATIONS
+*/
+operation Schedule!ExactTimeDouble asString(): String
+{
+	return self.value + "";
+}

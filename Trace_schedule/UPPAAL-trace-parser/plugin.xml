@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://fmt.ewi.utwente.nl/FMT/AFTModel/uppaalTrace"
+            class="uppaalTrace.UppaalTracePackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="uppaalTrace.value"
+            class="uppaalTrace.value.ValuePackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="uppaalTrace.Clocks"
+            class="uppaalTrace.clocks.ClocksPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="uppaalTrace.transitions"
+            class="uppaalTrace.transitions.TransitionsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://fmt.ewi.utwente.nl/FMT/AFTModel/uppaalSMC"
+            class="nl.utwente.ewi.fmt.uppaalSMC.UppaalSMCPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/1.0.0"
+            class="org.muml.uppaal.UppaalPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/core/1.0.0"
+            class="org.muml.uppaal.core.CorePackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/types/1.0.0"
+            class="org.muml.uppaal.types.TypesPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/declarations/1.0.0"
+            class="org.muml.uppaal.declarations.DeclarationsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/core/1.0.0"
+            class="org.muml.uppaal.core.CorePackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/types/1.0.0"
+            class="org.muml.uppaal.types.TypesPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/declarations/1.0.0"
+            class="org.muml.uppaal.declarations.DeclarationsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated uppaalTrace -->
+      <parser
+            type="declarations"
+            class="org.muml.uppaal.declarations.util.DeclarationsResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/declarations/global/1.0.0"
+            class="org.muml.uppaal.declarations.global.GlobalPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/declarations/system/1.0.0"
+            class="org.muml.uppaal.declarations.system.SystemPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/templates/1.0.0"
+            class="org.muml.uppaal.templates.TemplatesPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/declarations/global/1.0.0"
+            class="org.muml.uppaal.declarations.global.GlobalPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/declarations/system/1.0.0"
+            class="org.muml.uppaal.declarations.system.SystemPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/templates/1.0.0"
+            class="org.muml.uppaal.templates.TemplatesPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated uppaalTrace -->
+      <parser
+            type="templates"
+            class="org.muml.uppaal.templates.util.TemplatesResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/statements/1.0.0"
+            class="org.muml.uppaal.statements.StatementsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/expressions/1.0.0"
+            class="org.muml.uppaal.expressions.ExpressionsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/visuals/1.0.0"
+            class="org.muml.uppaal.visuals.VisualsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/statements/1.0.0"
+            class="org.muml.uppaal.statements.StatementsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/expressions/1.0.0"
+            class="org.muml.uppaal.expressions.ExpressionsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uppaalTrace -->
+      <package
+            uri="http://www.muml.org/uppaal/visuals/1.0.0"
+            class="org.muml.uppaal.visuals.VisualsPackage"
+            genModel="uppaalTrace.genmodel"/>
+   </extension>
+</plugin>

@@ -1,0 +1,463 @@
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=0 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=0 counter_b=0 counter_c=0 buff_a2b=0 buff_b2a=2 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=0
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[0][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=0 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=0 counter_b=0 counter_c=0 buff_a2b=0 buff_b2a=1 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=0
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[1][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=0 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=0 counter_b=0 counter_c=0 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=0
+
+Delay: 4
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=4 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=0 counter_b=0 counter_c=0 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=32
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=4 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=1 counter_b=0 counter_c=0 buff_a2b=1 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=32
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=4 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=2 counter_b=0 counter_c=0 buff_a2b=2 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=32
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_a2b >= 2 && buff_c2b >= 3 && buff_b2b >= 1, fire[1][b_SDF_Graph_template]!, consume(buff_a2b, 2), consume(buff_c2b, 3), consume(buff_b2b, 1) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 { 1, fire[p_id][b_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 )
+globalClock=4 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=2 counter_b=0 counter_c=0 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=3 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=32
+
+Delay: 5
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 )
+globalClock=9 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=5 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=2 counter_b=0 counter_c=0 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=3 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=67
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 5, end[p_id][b_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][b_SDF_Graph_template]?, produce(buff_b2a, 2), produce(buff_b2c, 3), produce(buff_b2b, 1), counter_b++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=9 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=2 counter_b=1 counter_c=0 buff_a2b=0 buff_b2a=2 buff_b2c=3 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=67
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2c >= 2, fire[1][c_SDF_Graph_template]!, consume(buff_b2c, 2) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 { 1, fire[p_id][c_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=9 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=2 counter_b=1 counter_c=0 buff_a2b=0 buff_b2a=2 buff_b2c=1 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=67
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[0][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=9 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=2 counter_b=1 counter_c=0 buff_a2b=0 buff_b2a=1 buff_b2c=1 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=67
+
+Delay: 2
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=11 Redefined_PAM_p1_t2_id.x=2 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=2 counter_b=1 counter_c=0 buff_a2b=0 buff_b2a=1 buff_b2c=1 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=83
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 2, end[p_id][c_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][c_SDF_Graph_template]?, produce(buff_c2b, 2), counter_c++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=11 Redefined_PAM_p1_t2_id.x=2 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=2 counter_b=1 counter_c=1 buff_a2b=0 buff_b2a=1 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=83
+
+Delay: 2
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=13 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=2 counter_b=1 counter_c=1 buff_a2b=0 buff_b2a=1 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=97
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=13 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=3 counter_b=1 counter_c=1 buff_a2b=1 buff_b2a=1 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=97
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[0][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=13 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=3 counter_b=1 counter_c=1 buff_a2b=1 buff_b2a=0 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=97
+
+Delay: 4
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=17 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=6 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=3 counter_b=1 counter_c=1 buff_a2b=1 buff_b2a=0 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=125
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=17 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=6 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=4 counter_b=1 counter_c=1 buff_a2b=2 buff_b2a=0 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=125
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_a2b >= 2 && buff_c2b >= 3 && buff_b2b >= 1, fire[0][b_SDF_Graph_template]!, consume(buff_a2b, 2), consume(buff_c2b, 3), consume(buff_b2b, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4 { 1, fire[p_id][b_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=17 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=6 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=4 counter_b=1 counter_c=1 buff_a2b=0 buff_b2a=0 buff_b2c=1 buff_c2b=2 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=125
+
+Delay: 5
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=22 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=11 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=4 counter_b=1 counter_c=1 buff_a2b=0 buff_b2a=0 buff_b2c=1 buff_c2b=2 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=160
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 5, end[p_id][b_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][b_SDF_Graph_template]?, produce(buff_b2a, 2), produce(buff_b2c, 3), produce(buff_b2b, 1), counter_b++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=22 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=11 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=1 buff_a2b=0 buff_b2a=2 buff_b2c=4 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=160
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[1][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=22 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=1 buff_a2b=0 buff_b2a=1 buff_b2c=4 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=160
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2c >= 2, fire[0][c_SDF_Graph_template]!, consume(buff_b2c, 2) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 { 1, fire[p_id][c_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=22 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=1 buff_a2b=0 buff_b2a=1 buff_b2c=2 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=160
+
+Delay: 2
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=24 Redefined_PAM_p1_t2_id.x=2 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=1 buff_a2b=0 buff_b2a=1 buff_b2c=2 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=176
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 2, end[p_id][c_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][c_SDF_Graph_template]?, produce(buff_c2b, 2), counter_c++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=24 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=2 buff_a2b=0 buff_b2a=1 buff_b2c=2 buff_c2b=4 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=176
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2c >= 2, fire[0][c_SDF_Graph_template]!, consume(buff_b2c, 2) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 { 1, fire[p_id][c_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=24 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=2 buff_a2b=0 buff_b2a=1 buff_b2c=0 buff_c2b=4 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=176
+
+Delay: 2
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=26 Redefined_PAM_p1_t2_id.x=2 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=2 buff_a2b=0 buff_b2a=1 buff_b2c=0 buff_c2b=4 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=192
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 2, end[p_id][c_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][c_SDF_Graph_template]?, produce(buff_c2b, 2), counter_c++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=26 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=3 buff_a2b=0 buff_b2a=1 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=192
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[0][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=26 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=3 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=192
+
+Delay: 4
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=30 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=8 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=4 counter_b=2 counter_c=3 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=224
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=30 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=8 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=5 counter_b=2 counter_c=3 buff_a2b=1 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=224
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=30 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=6 counter_b=2 counter_c=3 buff_a2b=2 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=224
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_a2b >= 2 && buff_c2b >= 3 && buff_b2b >= 1, fire[0][b_SDF_Graph_template]!, consume(buff_a2b, 2), consume(buff_c2b, 3), consume(buff_b2b, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4 { 1, fire[p_id][b_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=30 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=6 counter_b=2 counter_c=3 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=3 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=224
+
+Delay: 5
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=35 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=5 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=6 counter_b=2 counter_c=3 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=3 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=259
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_B_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 5, end[p_id][b_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][b_SDF_Graph_template]?, produce(buff_b2a, 2), produce(buff_b2c, 3), produce(buff_b2b, 1), counter_b++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=35 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=5 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=6 counter_b=3 counter_c=3 buff_a2b=0 buff_b2a=2 buff_b2c=3 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=259
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2c >= 2, fire[1][c_SDF_Graph_template]!, consume(buff_b2c, 2) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 { 1, fire[p_id][c_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=35 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=6 counter_b=3 counter_c=3 buff_a2b=0 buff_b2a=2 buff_b2c=1 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=259
+
+Delay: 2
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=37 Redefined_PAM_p1_t2_id.x=2 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=6 counter_b=3 counter_c=3 buff_a2b=0 buff_b2a=2 buff_b2c=1 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=273
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[0][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=37 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=6 counter_b=3 counter_c=3 buff_a2b=0 buff_b2a=1 buff_b2c=1 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=273
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 2, end[p_id][c_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][c_SDF_Graph_template]?, produce(buff_c2b, 2), counter_c++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=37 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=6 counter_b=3 counter_c=4 buff_a2b=0 buff_b2a=1 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=273
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[1][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=37 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=6 counter_b=3 counter_c=4 buff_a2b=0 buff_b2a=0 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=273
+
+Delay: 4
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=41 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=6 counter_b=3 counter_c=4 buff_a2b=0 buff_b2a=0 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=305
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=41 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=7 counter_b=3 counter_c=4 buff_a2b=1 buff_b2a=0 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=305
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=41 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=8 counter_b=3 counter_c=4 buff_a2b=2 buff_b2a=0 buff_b2c=1 buff_c2b=5 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=305
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_a2b >= 2 && buff_c2b >= 3 && buff_b2b >= 1, fire[1][b_SDF_Graph_template]!, consume(buff_a2b, 2), consume(buff_c2b, 3), consume(buff_b2b, 1) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 { 1, fire[p_id][b_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 )
+globalClock=41 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=8 counter_b=3 counter_c=4 buff_a2b=0 buff_b2a=0 buff_b2c=1 buff_c2b=2 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=305
+
+Delay: 5
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 )
+globalClock=46 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=5 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=8 counter_b=3 counter_c=4 buff_a2b=0 buff_b2a=0 buff_b2c=1 buff_c2b=2 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=340
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 5, end[p_id][b_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][b_SDF_Graph_template]?, produce(buff_b2a, 2), produce(buff_b2c, 3), produce(buff_b2b, 1), counter_b++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=46 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=4 buff_a2b=0 buff_b2a=2 buff_b2c=4 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=340
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2c >= 2, fire[1][c_SDF_Graph_template]!, consume(buff_b2c, 2) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 { 1, fire[p_id][c_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=46 Redefined_PAM_p1_t2_id.x=5 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=4 buff_a2b=0 buff_b2a=2 buff_b2c=2 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=340
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2c >= 2, fire[0][c_SDF_Graph_template]!, consume(buff_b2c, 2) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 { 1, fire[p_id][c_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=46 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=4 buff_a2b=0 buff_b2a=2 buff_b2c=0 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=340
+
+Delay: 2
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=48 Redefined_PAM_p1_t2_id.x=2 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=4 buff_a2b=0 buff_b2a=2 buff_b2c=0 buff_c2b=2 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=356
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_C_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 2, end[p_id][c_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][c_SDF_Graph_template]?, produce(buff_c2b, 2), counter_c++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=48 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=5 buff_a2b=0 buff_b2a=2 buff_b2c=0 buff_c2b=4 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=356
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[0][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4 )
+globalClock=48 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=2 occupied_processor_count[0]=2 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=5 buff_a2b=0 buff_b2a=1 buff_b2c=0 buff_c2b=4 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=8 cost=356
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_C_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 2, end[p_id][c_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][c_SDF_Graph_template]?, produce(buff_c2b, 2), counter_c++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=48 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=6 buff_a2b=0 buff_b2a=1 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=356
+
+Delay: 4
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=52 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=8 counter_b=4 counter_c=6 buff_a2b=0 buff_b2a=1 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=384
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=52 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=9 counter_b=4 counter_c=6 buff_a2b=1 buff_b2a=1 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=384
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[1][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=52 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=9 counter_b=4 counter_c=6 buff_a2b=1 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=384
+
+Delay: 4
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4 )
+globalClock=56 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=9 counter_b=4 counter_c=6 buff_a2b=1 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=412
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=56 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=10 counter_b=4 counter_c=6 buff_a2b=2 buff_b2a=0 buff_b2c=0 buff_c2b=6 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=412
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_a2b >= 2 && buff_c2b >= 3 && buff_b2b >= 1, fire[1][b_SDF_Graph_template]!, consume(buff_a2b, 2), consume(buff_c2b, 3), consume(buff_b2b, 1) }
+  Redefined_PAM_p2_t2_id.Idle_pt2_id_4->Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 { 1, fire[p_id][b_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 )
+globalClock=56 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=10 counter_b=4 counter_c=6 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=3 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=412
+
+Delay: 5
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4 )
+globalClock=61 Redefined_PAM_p1_t2_id.x=9 Redefined_PAM_p2_t2_id.x=5 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=10 counter_b=4 counter_c=6 buff_a2b=0 buff_b2a=0 buff_b2c=0 buff_c2b=3 buff_b2b=0 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=447
+
+Transitions:
+  Redefined_PAM_p2_t2_id.InUse_B_pt2_id_4->Redefined_PAM_p2_t2_id.Idle_pt2_id_4 { x >= 5, end[p_id][b_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[1][b_SDF_Graph_template]?, produce(buff_b2a, 2), produce(buff_b2c, 3), produce(buff_b2b, 1), counter_b++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=61 Redefined_PAM_p1_t2_id.x=9 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=10 counter_b=5 counter_c=6 buff_a2b=0 buff_b2a=2 buff_b2c=3 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=447
+
+Transitions:
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { buff_b2a >= 1, fire[0][a_SDF_Graph_template]!, consume(buff_b2a, 1) }
+  Redefined_PAM_p1_t2_id.Idle_pt2_id_4->Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 { 1, fire[p_id][a_PAM_template]?, x := 0, occupied_processor_count[vfi_id]++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=61 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=0 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=10 counter_b=5 counter_c=6 buff_a2b=0 buff_b2a=1 buff_b2c=3 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=447
+
+Delay: 4
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=65 Redefined_PAM_p1_t2_id.x=4 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=1 curr_freq[0]=4 counter_a=10 counter_b=5 counter_c=6 buff_a2b=0 buff_b2a=1 buff_b2c=3 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=7 cost=475
+
+Transitions:
+  Redefined_PAM_p1_t2_id.InUse_A_pt2_id_4->Redefined_PAM_p1_t2_id.Idle_pt2_id_4 { x >= 4, end[p_id][a_PAM_template]!, x := 0, occupied_processor_count[vfi_id]-- }
+  Redefined_SDF_Graph.Initial->Redefined_SDF_Graph.Initial { 1, end[0][a_SDF_Graph_template]?, produce(buff_a2b, 1), counter_a++ }
+
+State:
+( Redefined_Scheduler.Initial Redefined_SDF_Graph.Initial Redefined_PAM_p1_t2_id.Idle_pt2_id_4 Redefined_PAM_p2_t2_id.Idle_pt2_id_4 )
+globalClock=65 Redefined_PAM_p1_t2_id.x=0 Redefined_PAM_p2_t2_id.x=4 occupied_processor_count[0]=0 curr_freq[0]=4 counter_a=11 counter_b=5 counter_c=6 buff_a2b=1 buff_b2a=1 buff_b2c=3 buff_c2b=3 buff_b2b=1 Redefined_SDF_Graph.a_SDF_Graph_template=0 Redefined_SDF_Graph.b_SDF_Graph_template=1 Redefined_SDF_Graph.c_SDF_Graph_template=2 Redefined_PAM_p1_t2_id.vfi_id=0 Redefined_PAM_p1_t2_id.p_id=0 Redefined_PAM_p1_t2_id.a_PAM_template=0 Redefined_PAM_p1_t2_id.b_PAM_template=1 Redefined_PAM_p1_t2_id.c_PAM_template=2 Redefined_PAM_p2_t2_id.vfi_id=0 Redefined_PAM_p2_t2_id.p_id=1 Redefined_PAM_p2_t2_id.a_PAM_template=0 Redefined_PAM_p2_t2_id.b_PAM_template=1 Redefined_PAM_p2_t2_id.c_PAM_template=2 rate=6 cost=475

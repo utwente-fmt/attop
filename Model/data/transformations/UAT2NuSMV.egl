@@ -1,0 +1,563 @@
+[%
+  	var javaDate = new Native("java.util.Date");
+  	javaDate.toString().println("Starting UAT2NuSMV generation: ");
+	var attackTree : UATS!AttackTree = UATS!AttackTree.allInstances().first();
+	var root : UATS!Node = attackTree.Root;
+	var nodes: Set = attackTree.Nodes;
+	var nodeIDs : Map;
+	var neededVotingGates : Set;
+	var neededPANDGates : Set;
+	var neededSpareGates : Set;
+	var neededFDEPGates : Set;
+	var delays = UATM!BoundedDelay.allInstances().sortBy(d | d.minTime);
+%]
+[* Start with printing the root*]
+MODULE main
+
+IVAR stepBE : 0 .. [%=nodes.select(n|n.children.size() == 0).size()%];
+VAR tmp : 0 .. [%=nodes.select(n|n.children.size() == 0).size()%];
+IVAR delay : 0 .. [%=UATM!BoundedDelay.allInstances().size()%];
+VAR tmpDelay : 0 .. [%=UATM!BoundedDelay.allInstances().size()%];
+
+INIT tmp = 0;
+TRANS next(tmp) = stepBE;
+INIT tmpDelay = 0;
+TRANS next(tmpDelay) = delay;
+TRANS !((delay > 0) & (stepBE > 0));
+TRANS ((tmpDelay = 0) & (tmp = 0)) <-> ((delay > 0) | (stepBE > 0));
+
+[%
+	if (delays.size() > 0) {%]
+VAR initial : 0 .. [%=delays.size()%];
+INIT initial = 1;
+TRANS ((initial > 0) & (tmpDelay = 0)) -> (delay = initial);
+TRANS (initial = 0) -> (next(initial) = 0);
+TRANS (initial > 0) -> (next(initial) = ((tmpDelay = 0) ? initial : (initial = [%=delays.size()%]) ? 0 : (initial + 1)));
+[%	}%]
+
+[* First we output the basic events *]
+[%
+var beNum : Integer = 1;
+var BEs = nodes.select(n|n.children.isEmpty()).sortBy(n|n.id);
+for (be in BEs) {
+	var rates = be.getRates();
+
+	if (rates.size() > 1) {
+		%]VAR BE_[%=beNum%] : ERLANG_BE(stepBE, tmp, [%=beNum%], [%=be.parentCount(root)%], [%=rates.size()%], [%=be.nFDEPs()%]);
+		[%
+	} else {
+		if (be.isColdBE()) {
+			%]VAR BE_[%=beNum%] : BE_COLD(stepBE, tmp, [%=beNum%], [%=be.parentCount(root)%], [%=be.nFDEPs()%]);
+			[%
+		} else {
+			%]VAR BE_[%=beNum%] : BE(stepBE, tmp, [%=beNum%], [%=be.parentCount(root)%], [%=be.nFDEPs()%]);
+			[%
+		}
+	}
+	nodeIDs.put(be.id, "BE_" + beNum);
+	beNum = beNum + 1;
+}
+
+%][* Repair triggers *][%
+var conditionNum : Integer = 1;
+for (d in UATM!BoundedDelay.allInstances()) {
+	d.~number = conditionNum;
+	d.~name = "(tmpDelay = " + conditionNum + ")";
+	conditionNum = conditionNum + 1;
+}
+for (d in UATM!DelayCondition.allInstances()) {
+	if (not (d.delay.isKindOf(UATM!BoundedDelay))) {
+		throw "Unsupported delay type";
+	}
+	d.~name = d.delay.~name;
+}
+for (c in UATM!NodeCondition.allInstances()) {
+	c.~number = conditionNum;
+	if (not c.state.isKindOf(UATM!LinearNodeState)) {
+		throw "Unsupported node state present";
+	}
+	c.~name = "INSP_" + conditionNum;
+	if (c.node.getRates().size() > 1) {
+		var op = "=";
+		if (c.orGreater)
+			op = ">=";
+		c.~phase = (c.state.fraction * c.node.getRates().size()).floor();
+		%]DEFINE INSP_[%=conditionNum%] := ([%=nodeIDs.get(c.node.id)%].phase [%=op%] [%=c.~phase%]);
+[%
+	} else {
+		%]DEFINE INSP_[%=conditionNum%] := ([%=nodeIDs.get(c.node.id)%].failed);
+[%
+	}
+	conditionNum = conditionNum + 1;
+}
+
+for (c in UATM!CombiningCondition.allInstances()) {
+	c.~number = conditionNum;
+	c.~name = "COND_" + conditionNum;
+	conditionNum = conditionNum + 1;
+}
+
+for (c in UATM!CombiningCondition.allInstances()) {
+	%]DEFINE [%=c.~name%] := ([%
+	var op;
+	if (c.operator = UATM!Operator#OR)
+		op = " | ";
+	else
+		op = " & ";
+	var first : Boolean;
+	first = true;
+	for (child in c.children) {
+		if (not first) {
+			%][%=op%][%
+		}
+		first = false;
+		%][%=child.~name%][%
+	}
+	%]);
+[%
+}
+
+for (b in BEs) {
+	var conds : Set;
+	for (m in UATM!Module.allInstances()) {
+		for (e in m.effects) {
+			if (not e.isKindOf(UATM!RepairEffect))
+				continue;
+			if (e.node.id <> b.id)
+				continue;
+			conds.add(m.condition.~name);
+		}
+	}
+	if (conds.size() == 0) {
+		%]INVAR ![%=nodeIDs.get(b.id)%].repair;
+[%
+	} else {
+		var first : Boolean = true;
+		%]INIT ![%=nodeIDs.get(b.id)%].repair;
+[%
+		%]INVAR [%=nodeIDs.get(b.id)%].repair = ([%
+		for (c in conds) {
+			if (not first) {
+				%] | [%
+			}
+			first = false;
+			%][%=c%][%
+		}
+		%]);
+[%
+	}
+}
+
+var gates = nodes.select(n | not n.children.isEmpty());
+var gateNum : Integer = 1;
+for (gate in gates) {
+	if (gate = root) {
+		nodeIDs.put(gate.id, "toplevel");
+	} else {
+		nodeIDs.put(gate.id, "GATE_" + gateNum);
+		gateNum = gateNum + 1;
+	}
+}
+
+for (gate in gates) {
+	if (gate.connector.isKindOf(UATS!AND) or gate.connector.isKindOf(UATS!OR) or gate.connector.isKindOf(UATS!KofN)) {
+		var threshold : Integer;
+		neededVotingGates.add(gate.children.size());
+		if (gate.connector.isKindOf(UATS!AND))
+			threshold = gate.children.size();
+		else if (gate.connector.isKindOf(UATS!OR))
+			threshold = 1;
+		else
+			threshold = gate.connector.Threshold;
+		%]VAR [%=nodeIDs.get(gate.id)%] : VOTING[%=gate.children.size()%]_GATE([%=gate.parentCount(root)%][%
+		for (c in gate.children) {
+			%], [%=nodeIDs.get(c.id)%][%
+		}
+		for (c in gate.children) {
+			%], [%=parentNum(gate, c)%][%
+		}
+		%], [%=threshold%][%
+	} else if (gate.connector.isKindOf(UATS!Spare)) {
+		neededSpareGates.add(gate.children.size());
+		%]VAR [%=nodeIDs.get(gate.id)%] : SPARE[%=gate.children.size()%]_GATE([%=gate.parentCount(root)%][%
+		for (c in gate.children) {
+			%], [%=nodeIDs.get(c.id)%][%
+		}
+		for (c in gate.children) {
+			%], [%=parentNum(gate, c)%][%
+		}
+	} else if (gate.connector.isKindOf(UATS!PAND)) {
+		neededPANDGates.add(gate.children.size());
+		%]VAR [%=nodeIDs.get(gate.id)%] : PAND[%=gate.children.size()%]_GATE([%=gate.parentCount(root)%][%
+		for (c in gate.children) {
+			%], [%=nodeIDs.get(c.id)%][%
+		}
+		for (c in gate.children) {
+			%], [%=parentNum(gate, c)%][%
+		}
+	} else if (gate.connector.isKindOf(UATS!FDEP)) {
+		neededFDEPGates.add(gate.children.size());
+		%]VAR [%=nodeIDs.get(gate.id)%] : FDEP[%=gate.children.size()%]_GATE([%=gate.parentCount(root)%][%
+		for (c in gate.children) {
+			%], [%=nodeIDs.get(c.id)%][%
+		}
+		%], [%=parentNum(gate, gate.children.get(0))%][%
+		for (c in gate.children) {
+			if (loopCount > 1) {
+				%], [%=FDEPNum(gate, c)%][%
+			}
+		}
+	}
+	%]);
+	[%
+}
+
+%]--TRANS [%=nodeIDs.get(root.id)%].failed -> FALSE --Deadlock once TLE reached
+INVAR [%=nodeIDs.get(root.id)%].active = 1;
+
+[%
+
+for (n in neededVotingGates) {
+	%]MODULE VOTING[%=n%]_GATE(n_parents, [%
+	var i : Integer = 1;
+	while (i <= n) {
+		%]child[%=i%], [%
+		i = i + 1;
+	}
+	i = 1;
+	while (i <= n) {
+		%]act[%=i%], [%
+		i = i + 1;
+	}
+	%]threshold)
+	VAR failed : boolean;
+	VAR active : 0 .. n_parents;
+	INVAR failed = (threshold <= count(child1.failed[%
+	i = 2;
+	while (i <= n) {
+		%], child[%=i%].failed[%
+		i = i + 1;
+	}
+	%]));
+	[%
+	i = 1;
+	while (i <= n) {
+		%]
+		INVAR (active > 0) -> (child[%=i%].active >= act[%=i%]);
+		INVAR (active = 0) -> (child[%=i%].active != act[%=i%]);
+		[%
+		i = i + 1;
+	}
+}
+%]
+
+[%
+for (n in neededPANDGates) {
+	%]MODULE PAND[%=n%]_GATE(n_parents[%
+	var i : Integer = 1;
+	while (i <= n) {
+		%], child[%=i%][%
+		i = i + 1;
+	}
+	i = 1;
+	while (i <= n) {
+		%], act[%=i%][%
+		i = i + 1;
+	}
+	%])
+	VAR failed : boolean;
+	VAR active : 0 .. n_parents;
+	VAR out_of_order : boolean;
+	INIT out_of_order = FALSE;
+	INVAR failed = (!out_of_order & child1.failed[%
+	i = 2;
+	while (i <= n) {
+		%] & child[%=i%].failed[%
+		i = i + 1;
+	}
+	%]);
+	[%
+	i = 1;
+	while (i <= n) {
+		%]
+		INVAR (active > 0) -> (child[%=i%].active >= act[%=i%]);
+		INVAR (active = 0) -> (child[%=i%].active != act[%=i%]);
+		[%
+		i = i + 1;
+	}
+	%]
+	TRANS next(out_of_order) <-> (out_of_order [%
+	i = 2;
+	while (i <= n) {
+		%]| (next(child[%=i%].failed) & !next(child[%=(i-1)%].failed))[%
+		i = i + 1;
+	}
+	%]) & (next(child1.failed)[%
+		i = 2;
+		while (i <= n) {
+			%] | next(child[%=i%].failed) [%
+			i = i + 1;
+		}
+	%]);
+	[%
+}
+%]
+
+[%
+
+for (n in neededSpareGates) {
+	%]MODULE SPARE[%=n%]_GATE(n_parents[%
+	var i : Integer = 1;
+	while (i <= n) {
+		%], child[%=i%][%
+		i = i + 1;
+	}
+	i = 1;
+	while (i <= n) {
+		%], act[%=i%][%
+		i = i + 1;
+	}
+	%])
+	VAR failed : boolean;
+	VAR active : 0 .. n_parents;
+	VAR using : 0 .. [%=n%];
+	[%
+	i = 1;
+	while (i <= n) {
+		%]
+		DEFINE other_using_[%=i%] := (child[%=i%].active > 0) & (using != [%=i%]);
+		[%
+		i = i + 1;
+	}
+
+	%]
+	
+	INVAR failed <-> ((child1.failed | other_using_1) [%
+	i = 2;
+	while (i <= n) {
+		%] & (child[%=i%].failed | other_using_[%=i%])[%
+		i = i + 1;
+	}
+	%]);
+	-- Enforce that the child's activation (by us) matches out using it.
+	[%
+	i = 1;
+	while (i <= n) {
+		%]
+		INVAR (using = [%=i%]) <-> (child[%=i%].active = act[%=i%]);
+		[%
+		i = i + 1;
+	}
+	%]
+	-- Enforce that we can't avoid using a child if we need one and it's available.
+	[%
+	i = 1;
+	while (i <= n) {
+		%]
+		INVAR (active > 0 & !child[%=i%].failed & child[%=i%].active = 0) -> (using > 0);
+		[%
+		i = i + 1;
+	}
+	%]
+	-- Enforce that we can't use a child if its preceding sibling is available.
+	[%
+	i = 2;
+	while (i <= n) {
+		%]
+		INVAR (using >= [%=i%]) -> (child[%=(i-1)%].failed | (child[%=(i-1)%].active > 0));
+		[%
+		i = i + 1;
+	}
+	%]
+	-- Enforce that we can't use a failed child
+	[%
+	i = 1;
+	while (i <= n) {
+		%]
+		INVAR (using = [%=i%]) -> !child[%=i%].failed;
+		[%
+		i = i + 1;
+	}
+	%]
+	-- We use nothing before being activated ourselves.
+	INVAR (active = 0) -> (using = 0);
+	[%
+	
+}
+%]
+
+[%
+for (n in neededFDEPGates) {
+	%]MODULE FDEP[%=n%]_GATE(n_parents[%
+	var i : Integer = 1;
+	while (i <= n) {
+		%], child[%=i%][%
+		i = i + 1;
+	}
+	%], act1[%
+	i = 2;
+	while (i <= n) {
+		%], fd[%=i%][%
+		i = i + 1;
+	}
+	%])
+	VAR failed : boolean;
+	INVAR failed = FALSE;
+	VAR active : (n_parents + 1) .. (n_parents + 1);
+	INVAR (active > 0) -> (child1.active >= act1);
+	INVAR (active = 0) -> (child1.active != act1);
+	[%
+	i = 2;
+	while (i <= n) {
+		%]
+		INVAR child1.failed -> (child[%=i%].FDEP_failed >= fd[%=i%]);
+		INVAR !child1.failed -> (child[%=i%].FDEP_failed != fd[%=i%]);
+		[%
+		i = i + 1;
+	}
+}
+
+%]
+
+MODULE BE(nextLabel, label, num, n_parents, n_FDEPs)
+	VAR repair : boolean;
+	VAR failed : boolean;
+	VAR active : 0 .. n_parents;
+	VAR FDEP_failed : 0 .. n_FDEPs;
+	IVAR active_transition : boolean;
+	IVAR dormant_transition : boolean;
+
+	TRANS (toint(nextLabel) = num & active > 0) <-> active_transition;
+	TRANS (toint(nextLabel) = num & active = 0) <-> dormant_transition;
+	TRANS (toint(nextLabel) = num) -> !failed;
+
+	INIT !failed
+	TRANS (toint(label) = num) -> next(failed);
+	TRANS (toint(label) != num) -> (next(failed) = (!repair & (failed | (next(FDEP_failed) > 0))));
+
+MODULE BE_COLD(nextLabel, label, num, n_parents, n_FDEPs)
+	VAR repair : boolean;
+	VAR failed : boolean;
+	VAR active : 0 .. n_parents;
+	VAR FDEP_failed : 0 .. n_FDEPs;
+	IVAR active_transition : boolean;
+
+	TRANS (nextLabel = num) <-> active_transition;
+	TRANS (nextLabel = num) -> (active > 0);
+	TRANS (nextLabel = num) -> !failed;
+
+	INIT !failed
+	TRANS (toint(label) = num) -> next(failed);
+	TRANS (toint(label) != num) -> (next(failed) = !repair & (failed | (next(FDEP_failed) > 0)));
+
+MODULE ERLANG_BE(nextlabel, label, num, n_parents, n_phases, n_FDEPs)
+	IVAR active_transition : -1..n_phases;
+	IVAR dormant_transition : -1..n_phases;
+	VAR phase : 0..n_phases;
+	VAR repair : boolean;
+	VAR failed : boolean;
+	VAR active : 0..n_parents;
+	VAR FDEP_failed : 0 .. n_FDEPs;
+
+	DEFINE transition := nextlabel = num;
+
+	TRANS !transition -> (active_transition = -1) & (dormant_transition = -1);
+	TRANS (active > 0) -> (dormant_transition = -1);
+	TRANS (active = 0) -> (active_transition = -1);
+	TRANS (transition & active > 0) -> (active_transition = phase);
+	TRANS (transition & active = 0) -> (dormant_transition = phase);
+	TRANS transition -> !failed;
+
+	INIT phase = 0
+	INVAR phase <= n_phases;
+	INVAR failed = ((phase = n_phases) | (FDEP_failed > 0));
+	TRANS next(phase) = (repair ? 0 : (transition ? (phase + 1) : phase));
+	TRANS !repair -> (next(phase) >= phase);
+[%
+
+var javaDate = new Native("java.util.Date");
+javaDate.toString().println("Completed UAT2NuSMV generation: ");
+  	
+// Given a child of N parents, returns a unique number in [0, N-1] for each parent.
+ operation parentNum(parent : UATS!Node, child : UATS!Node)
+ {
+	var parents = child.parents.sortBy(p | p.id);
+	parents = parents.select(p | not p.connector.isKindOf(UATS!RDEP));
+	var ret = 0;
+	while (parents.get(ret).id <> parent.id) {
+		ret = ret + 1;
+	}
+	return ret + 1;
+ }
+
+// Given a dependent child of N FDEPs, returns a unique number in [0, N-1] for each gate.
+ operation FDEPNum(parent : UATS!Node, child : UATS!Node)
+ {
+	var parents = child.parents.select(p | p.connector.isKindOf(UATS!FDEP));
+	parents = parents.sortBy(p | p.id);
+ 	var ret = 0;
+ 	while (parents.get(ret).id <> parent.id) {
+ 		ret = ret + 1;
+	}
+ 	return ret + 1;
+ }
+
+// Returns an associated exponential time, or -1 if there is no such attribute.
+@cached
+operation UATS!Node getExpRate()
+{
+	var attributes = UATV!Attribute.allInstances().select(n | n.node.id = self.id);
+	var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+	var expAttrs = delayAttrs.select(a | a.eContainer.purpose.timeType = UATV!TimeType#EXPONENTIAL);
+	if (expAttrs.isEmpty())
+		return -1;
+	return expAttrs.first().value.value.asReal();
+}
+
+// Returns a sequence describing a the rate to leave each phase, or the empty sequence of the
+// BE does not have a hyper-exponential distribution.
+@cached
+operation UATS!Node getRates() : Sequence
+{
+	var exp : Real = self.getExpRate();
+	if (exp > -1)
+		return Sequence {exp};
+	var attributes = UATV!Attribute.allInstances().select(n | n.node.id = self.id);
+	var delayAttrs = attributes.select(a | a.eContainer.purpose.isKindOf(UATV!TimePurpose));
+	var expAttrs = delayAttrs.select(a | a.eContainer.purpose.timeType = UATV!TimeType#HYPO_EXPONENTIAL);
+	if (expAttrs.isEmpty())
+		return Sequence {};
+	return expAttrs.first().value.sequence.asSequence();
+}
+
+operation UATS!Node nFDEPs() : Integer
+{
+	var FDEPs = self.parents.select(g | g.connector.isKindOf(UATS!FDEP));
+	FDEPs = FDEPs.select(p | p.children.get(0).id <> self.id);
+	return FDEPs.size();
+}
+
+@cached
+operation UATS!Node parentCount(root : UATS!Node) : Integer
+{
+	if (root = self) {
+		return 1;
+	} else {
+		var parents = self.parents;
+		parents = parents.select(p | not p.connector.isKindOf(UATS!RDEP));
+		return parents.size();
+	}
+}
+
+// Returns whether the specified BE has a dormancy factor of 0.
+@cached
+operation UATS!Node isColdBE()
+{
+	var attributes = UATV!Attribute.allInstances().select(n | n.node.id == self.id);
+	var dormAttrs = attributes.select(a | a.eContainer.name.equals("dorm"));
+	if (dormAttrs.isEmpty())
+		return false;
+	return dormAttrs.first().value.value.asReal() = 0;
+}
+
+%]

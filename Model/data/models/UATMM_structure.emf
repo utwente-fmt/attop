@@ -1,0 +1,87 @@
+@namespace(uri="ecore:UATMM_structure", prefix="nl.utwente.ewi.fmt.UATMM")
+package UATMM_structure;
+
+class AttackTree {
+  ref Node[1] Root;
+  val Node[+] Nodes;
+  val Edge[*] Edges;
+  val TreeMetaData[*] metadata;
+}
+
+class Node {
+  val Connector connector;
+  ref Node[*]#parents children;
+  !ordered ref Node[*]#children parents;
+  id attr String ~id;
+  attr String label;
+  attr Nature nature;
+  attr RoleType role;
+}
+
+class Edge {
+  ref Node[1] Target;
+  ref Node[1] Source;
+  attr EdgeKind[1] edgeKind;
+}
+
+enum RoleType {
+  Contributing = 0;
+  Counteracting = 1;
+}
+
+class Connector {
+}
+
+class AND extends Connector {
+}
+
+class OR extends Connector {
+}
+
+class XOR extends Connector {
+}
+
+class TreeMetaData {
+  attr String Key;
+  attr String Value;
+}
+
+class PAND extends Connector {
+}
+
+class TAND extends Connector {
+}
+
+class KofN extends Connector {
+  attr int Threshold;
+}
+
+class Weighted extends Connector {
+  attr float Treshold;
+  attr float[*] Weights;
+}
+
+class SAND extends Connector {
+}
+
+class SOR extends Connector {
+}
+
+class FDEP extends Connector {
+}
+
+class Spare extends Connector {
+}
+
+enum Nature {
+  Bagigi = 3;
+  Fault = 1;
+  Hybrid = 2;
+  Attack = 0;
+}
+
+enum EdgeKind {
+  DEPENCENCY = 1;
+  TRIGGER = 2;
+}
+

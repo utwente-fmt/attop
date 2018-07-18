@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="myTrace" nsURI="myTrace" nsPrefix="myTrace">
+  <eClassifiers xsi:type="ecore:EClass" name="State">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionTo" eType="#//transitions/AbstractTransition"
+        eOpposite="#//transitions/AbstractTransition/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
+        eType="#//LocationInstance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valuations" upperBound="-1"
+        eType="#//Valuation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clocks" upperBound="-1"
+        eType="#//clocks/AbstractClockBoundary" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitionFrom" eType="#//transitions/AbstractTransition"
+        eOpposite="#//transitions/AbstractTransition/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
+        eType="#//TemplateInstance"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Valuation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1"
+        eType="ecore:EClass uppaal.ecore#//declarations/Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass uppaal.ecore#//types/Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//value/Value"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" eType="#//TemplateInstance"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TemplateInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" lowerBound="1"
+        eType="ecore:EClass uppaal.ecore#//templates/Template"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="locations" upperBound="-1"
+        eType="#//LocationInstance" containment="true" eOpposite="#//LocationInstance/template"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocationInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="location" lowerBound="1"
+        eType="ecore:EClass uppaal.ecore#//templates/Location"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="template" lowerBound="1"
+        eType="#//TemplateInstance" eOpposite="#//TemplateInstance/locations"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trace">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" upperBound="-1"
+        eType="#//State" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="NTA" lowerBound="1" eType="ecore:EClass uppaal.ecore#//NTA"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
+        eType="#//transitions/AbstractTransition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="templates" upperBound="-1"
+        eType="#//TemplateInstance" containment="true"/>
+  </eClassifiers>
+  <eSubpackages name="transitions" nsURI="myTrace.transitions" nsPrefix="myTrace.transitions">
+    <eClassifiers xsi:type="ecore:EClass" name="AbstractTransition" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+          eType="#//State" eOpposite="#//State/transitionTo"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="#//State" eOpposite="#//State/transitionFrom"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DelayTransition" eSuperTypes="#//transitions/AbstractTransition">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EdgeTransition" eSuperTypes="#//transitions/AbstractTransition">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="edges" upperBound="-1"
+          eType="ecore:EClass uppaal.ecore#//templates/Edge"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="clocks" nsURI="myTrace.Clocks" nsPrefix="myTrace.Clocks">
+    <eClassifiers xsi:type="ecore:EClass" name="AbstractClockBoundary" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="relation" lowerBound="1"
+          eType="#//clocks/Relation" defaultValueLiteral="LE"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+          defaultValueLiteral=""/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="SingleClockBoundary" eSuperTypes="#//clocks/AbstractClockBoundary"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InverseClockBoundary" eSuperTypes="#//clocks/AbstractClockBoundary"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CombinedClockBoundary" eSuperTypes="#//clocks/AbstractClockBoundary">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="subtrahend" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="Relation" instanceTypeName="Relation">
+      <eLiterals name="EQ"/>
+      <eLiterals name="NE" value="1"/>
+      <eLiterals name="LT" value="2"/>
+      <eLiterals name="LE" value="3"/>
+      <eLiterals name="GT" value="4"/>
+      <eLiterals name="GE" value="5"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="value" nsURI="myTrace.value" nsPrefix="myTrace.value">
+    <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BuiltInTypeValue" abstract="true"
+        eSuperTypes="#//value/Value"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ChanValue" eSuperTypes="#//value/BuiltInTypeValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="BoolValue" eSuperTypes="#//value/BuiltInTypeValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="IntValue" eSuperTypes="#//value/BuiltInTypeValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ClockValue" eSuperTypes="#//value/BuiltInTypeValue">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="VoidValue" eSuperTypes="#//value/BuiltInTypeValue"/>
+    <eClassifiers xsi:type="ecore:EClass" name="TypeSpecificationValue" abstract="true"
+        eSuperTypes="#//value/Value"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ScalarSpecificationValue" eSuperTypes="#//value/TypeSpecificationValue">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1"
+          eType="#//value/IntValue" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="StructSpecificationValue" eSuperTypes="#//value/TypeSpecificationValue">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+          eType="#//value/DataVariableDeclarationValuation" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="RangeSpecificationValue" eSuperTypes="#//value/TypeSpecificationValue">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//value/IntValue"
+          containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DataVariableDeclarationValuation">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="dataVariableDeclaration"
+          eType="ecore:EClass uppaal.ecore#//declarations/DataVariableDeclaration"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="valuation" upperBound="-1"
+          eType="#//Valuation" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ArrayValue" eSuperTypes="#//value/Value">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+          eType="#//value/Value" containment="true"/>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>
